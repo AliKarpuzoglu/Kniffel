@@ -6,39 +6,21 @@ import java.util.*;
  * 
  */
 public abstract class Spieler {
+    
+	public String name;
+	public Wurf wurf;
 
-    /**
-     * 
-     */
-    public Spieler() {
+    public Spieler(String name, Wurf wurf) {
+    	this.name=name;
+    	this.wurf=wurf;
     }
 
-    /**
-     * 
-     */
-    public Wurf wurf;
-
-    /**
-     * 
-     */
-    public String name;
-
-    /**
-     * 
-     */
-    public Ergebnisspalte ergebnisspalte;
-
-
-
-
-
-
+    
     /**
      * @return
      */
     public Wurf wuerfeln() {
-        // TODO implement here
-        return null;
+		return wurf;
     }
 
     /**

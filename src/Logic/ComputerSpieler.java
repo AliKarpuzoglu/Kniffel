@@ -2,24 +2,24 @@ package Logic;
 
 import java.util.*;
 
-/**
- * 
- */
+import Ergebnisse.Ergebnis;
+
 public class ComputerSpieler extends Spieler {
 
-    /**
-     * 
-     */
-    public ComputerSpieler() {
-    }
+	private static Wurf computerWurf;
 
-    /**
-     * @param wurf 
-     * @return
-     */
-    public Ergebnis optimiertesErgebnisAuswaehlen(Wurf wurf) {
-        // TODO implement here
-        return null;
-    }
+	public ComputerSpieler() {
+		super("Computer Spieler", computerWurf);
+
+	}
+
+	/**
+	 * @param wurf
+	 * @return
+	 */
+	public Ergebnis optimiertesErgebnisAuswaehlen(Wurf wurf) {
+		// TODO implement here
+		return null;
+	}
 
 }
