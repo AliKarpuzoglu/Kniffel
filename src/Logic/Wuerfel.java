@@ -5,31 +5,37 @@ import java.util.*;
  * 
  */
 public class Wuerfel {
-
+    private int augenzahl;
+    private boolean weggelegt;
     /**
      * 
      */
     public Wuerfel() {
+        weggelegt = false;
+        augenzahl = (int) (Math.random() * 6) + 1;
     }
 
-    /**
-     * 
-     */
-    private int augenzahl;
+
 
     /**
      * 
      */
-    private boolean weggelegt;
+    public void wuerfeln() {
+        augenzahl= (int) (Math.random() * 6) + 1;
+
+    }
+    public boolean isWeggelegt(){
+        return weggelegt;
+    }
+    
+    public int getAugenzahl() {
+        return augenzahl;
+    }
 
 
 
-    /**
-     * @return
-     */
-    public int wuerfeln() {
-        return (int) (Math.random() * 6) + 1;
-
+    public void beiseiteLegen(){
+        weggelegt = true;
     }
 
 }

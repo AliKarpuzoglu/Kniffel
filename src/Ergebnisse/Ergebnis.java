@@ -1,6 +1,8 @@
 
 import java.util.*;
 
+import Logic.Wurf;
+
 /**
  * 
  */
@@ -15,30 +17,33 @@ public abstract abstract class Ergebnis {
     /**
      * 
      */
-    private String name;
+    protected String name;
 
     /**
      * 
      */
-    private int summe;
+    protected int summe;
 
     /**
      * 
      */
-    private boolean oben;
+    protected boolean oben;
 
 
 
     /**
      * @param wurf
      */
-    public void ueberpruefen(Wurf wurf) {
-        // TODO implement here
-    }
+    public abstract boolean ueberpruefen(Wurf wurf);
+    
 
     /**
      * @param wurf
      */
-    public abstract void punkteBerechnen(Wurf wurf);
+    public abstract int punkteBerechnen(Wurf wurf);
+    
+    public abstract void punkteAnrechnen(Wurf wurf);
 
+
+    
 }

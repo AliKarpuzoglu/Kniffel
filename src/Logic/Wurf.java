@@ -1,38 +1,44 @@
-
 import java.util.*;
 
 /**
  * 
  */
 public class Wurf {
+    private Wuerfel[] alleWuerfel = new Wuerfel[5];
 
     /**
      * 
      */
     public Wurf() {
+       for(int i=0;i<5;i++){
+           alleWuerfel[i]= new Wuerfel();
+       }
     }
 
     /**
      * 
      */
-    private Wuerfel[5] wuerfel;
-
-
-
 
     /**
      * @return
      */
-    public Wurf wuerfeln() {
-        // TODO implement here
-        return null;
+    public void wuerfeln() {
+        for (Wuerfel w : alleWuerfel) {
+            if (!w.isWeggelegt()) {
+                w.wuerfeln();
+            }
+        }
     }
-
+    
     /**
-     * @param wuerfel
+     * 
      */
     public void wuerfelWeglegen(Wuerfel wuerfel) {
-        // TODO implement here
+        wuerfel.beiseiteLegen();
+    }
+
+    public Wuerfel[] getAlleWuerfel() {
+        return alleWuerfel;
     }
 
 }
