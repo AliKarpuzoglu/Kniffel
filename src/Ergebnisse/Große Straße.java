@@ -2,15 +2,36 @@ package Ergebnisse;
 
 import java.util.*;
 
+import Logic.Wurf;
+
 /**
  * 
  */
-public class Große Straße extends Ergebnis {
+public class GrosseStrasse extends Ergebnis {
 
     /**
      * 
      */
-    public Große Straße() {
+    public GrosseStrasse() {
+        oben=false;
+    }
+
+    @Override
+    public boolean ueberpruefen(Wurf wurf) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public int punkteBerechnen(Wurf wurf) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public void punkteAnrechnen(Wurf wurf) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

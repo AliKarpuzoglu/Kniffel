@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Wuerfel {
+public class Wuerfel implements Comparable<Wuerfel>{
     private int augenzahl;
     private boolean weggelegt;
     /**
@@ -39,4 +39,17 @@ public class Wuerfel {
         weggelegt = true;
     }
 
+
+
+    @Override
+    public int compareTo(Wuerfel o) {
+        if(this.augenzahl>o.augenzahl){
+            return 1;
+        }else if (this.augenzahl<o.augenzahl){
+            return -1;
+        }
+        return 0;
+    }
+    
+   
 }

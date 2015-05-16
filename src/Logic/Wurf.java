@@ -15,6 +15,7 @@ public class Wurf {
        for(int i=0;i<5;i++){
            alleWuerfel[i]= new Wuerfel();
        }
+       Arrays.sort(alleWuerfel);
     }
 
   
@@ -28,6 +29,8 @@ public class Wurf {
                 w.wuerfeln();
             }
         }
+        Arrays.sort(alleWuerfel);
+
     }
     
     /**vielleicht awkward
@@ -40,5 +43,12 @@ public class Wurf {
     public Wuerfel[] getAlleWuerfel() {
         return alleWuerfel;
     }
-
+    @Override
+    public String toString(){
+        String temp = "";
+        for(Wuerfel w: alleWuerfel){
+            temp+=w.getAugenzahl();
+        }
+        return temp;
+    }
 }
