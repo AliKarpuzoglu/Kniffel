@@ -1,3 +1,5 @@
+package Logic;
+
 import java.util.*;
 
 /**
@@ -15,9 +17,7 @@ public class Wurf {
        }
     }
 
-    /**
-     * 
-     */
+  
 
     /**
      * @return
@@ -30,7 +30,7 @@ public class Wurf {
         }
     }
     
-    /**
+    /**vielleicht awkward
      * 
      */
     public void wuerfelWeglegen(Wuerfel wuerfel) {

@@ -1,3 +1,4 @@
+package Ergebnisse;
 
 import java.util.*;
 
@@ -6,7 +7,7 @@ import Logic.Wurf;
 /**
  * 
  */
-public abstract abstract class Ergebnis {
+public abstract class Ergebnis {
 
     /**
      * 

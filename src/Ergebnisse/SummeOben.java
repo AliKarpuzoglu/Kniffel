@@ -3,11 +3,12 @@ package Ergebnisse;
 import java.util.*;
 import Logic.*;
 
-/**
+/**TODO============================ Eventuell abfrage, ob der wert zwischen 1 und 6 ist
  * 
  */
 public class SummeOben extends Ergebnis {
     private int wert;
+    
     /**
      * 
      */
@@ -15,6 +16,7 @@ public class SummeOben extends Ergebnis {
         this.wert=wert;
         oben=true;
     }
+    
     /**
      * rechnet aus, wie viele punkte dieser Wurf theoretisch geben würde.
      */
