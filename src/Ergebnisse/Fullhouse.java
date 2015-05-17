@@ -1,6 +1,7 @@
 package Ergebnisse;
 import java.util.*;
 
+import Logic.Wuerfel;
 import Logic.Wurf;
 
 /**
@@ -12,6 +13,7 @@ public class Fullhouse extends Ergebnis {
      * 
      */
     public Fullhouse() {
+    	oben = false;
     }
 
     @Override
@@ -22,13 +24,16 @@ public class Fullhouse extends Ergebnis {
 
     @Override
     public int punkteBerechnen(Wurf wurf) {
-        // TODO Auto-generated method stub
-        return 0;
+    	int temp=0;
+        for(Wuerfel w: wurf.getAlleWuerfel()){
+            temp=w.getAugenzahl()+temp;
+        }
+        return temp;
     }
 
     @Override
     public void punkteAnrechnen(Wurf wurf) {
-        // TODO Auto-generated method stub
+        summe = punkteBerechnen(wurf);
         
     }
 
