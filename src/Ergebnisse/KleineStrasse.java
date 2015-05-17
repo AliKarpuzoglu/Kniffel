@@ -1,6 +1,6 @@
 package Ergebnisse;
 
-import java.util.*;
+
 
 import Logic.Wurf;
 
@@ -30,5 +30,11 @@ public class KleineStrasse extends Ergebnis {
 	public void punkteAnrechnen(Wurf wurf) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean ueberpruefen(Wurf[] wurf) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

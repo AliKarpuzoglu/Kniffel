@@ -1,6 +1,6 @@
 package Ergebnisse;
 
-import java.util.*;
+
 
 import Logic.*;
 
@@ -33,6 +33,12 @@ public class Viererpash extends Ergebnis {
 	@Override
 	public void punkteAnrechnen(Wurf wurf) {
 		summe = punkteBerechnen(wurf);
+	}
+
+	@Override
+	public boolean ueberpruefen(Wurf[] wurf) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

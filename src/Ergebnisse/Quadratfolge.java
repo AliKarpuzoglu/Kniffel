@@ -1,6 +1,6 @@
 package Ergebnisse;
 
-import java.util.*;
+
 
 import Logic.Wurf;
 
@@ -33,5 +33,11 @@ public class Quadratfolge extends Ergebnis {
         // TODO Auto-generated method stub
         
     }
+
+	@Override
+	public boolean ueberpruefen(Wurf[] wurf) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

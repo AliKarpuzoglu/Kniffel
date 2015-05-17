@@ -1,7 +1,5 @@
 package Logic;
 
-import java.util.*;
-
 
 public class Wuerfel implements Comparable<Wuerfel>{
     private int augenzahl;

@@ -31,7 +31,8 @@ public class ErgebnisTest {
 
     @Test
     public void testGleicheZahlen() {
-        Wurf test1 = new Wurf();
+    	Wuerfel [] wuerfel = new Wuerfel[5];
+        Wurf test1 = new Wurf(wuerfel);
 
         System.out.println(test1);
         assertEquals(3, Ergebnis.gleicheZahlen(test1));
@@ -39,7 +40,8 @@ public class ErgebnisTest {
 
     @Test
     public void testAufsteigendeZahlen() {
-        Wurf test1 = new Wurf();
+    	Wuerfel [] wuerfel = new Wuerfel[5];
+        Wurf test1 = new Wurf(wuerfel);
 
         System.out.println(test1);
         assertEquals(3, Ergebnis.aufsteigendeZahlen(test1));

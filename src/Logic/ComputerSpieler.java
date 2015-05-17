@@ -1,6 +1,5 @@
 package Logic;
 
-import java.util.*;
 
 import Ergebnisse.Ergebnis;
 

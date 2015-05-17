@@ -5,7 +5,7 @@ import java.util.*;
 public class Wurf {
 	private Wuerfel[] alleWuerfel = new Wuerfel[5];
 
-	public Wurf() {
+	public Wurf(Wuerfel[] wuerfel) {
 		for (int i = 0; i < 5; i++) {
 			alleWuerfel[i] = new Wuerfel();
 		}

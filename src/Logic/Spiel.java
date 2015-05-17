@@ -1,6 +1,5 @@
 package Logic;
 
-import java.util.*;
 
 public class Spiel {
 	
@@ -12,6 +11,13 @@ public class Spiel {
 
 
     public void erstelleSpieler() {
+    	System.out.println("Wieviele Spieler möchten spielen?");
+    	//einlesen + Menschliche Spieler erstellen
+    	MenschlicheSpieler Spieler1 = new MenschlicheSpieler("Tobias", spielerWurf);
+    	
+    	System.out.println("Wieviele Computer Spieler sollen noch hinzugefügt werden?");
+    	//einlesen
+    	System.out.println("");
         
     }
 

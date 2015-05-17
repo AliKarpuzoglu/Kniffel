@@ -1,12 +1,9 @@
 package Ergebnisse;
 
-import java.util.*;
 
 import Logic.Wurf;
 
-/**
- * 
- */
+
 public class GrosseStrasse extends Ergebnis {
 
     /**
@@ -33,5 +30,11 @@ public class GrosseStrasse extends Ergebnis {
         // TODO Auto-generated method stub
         
     }
+
+	@Override
+	public boolean ueberpruefen(Wurf[] wurf) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

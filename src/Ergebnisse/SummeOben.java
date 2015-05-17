@@ -1,6 +1,6 @@
 package Ergebnisse;
 
-import java.util.*;
+
 import Logic.*;
 
 /**TODO============================ Eventuell abfrage, ob der wert zwischen 1 und 6 ist
@@ -50,6 +50,12 @@ public class SummeOben extends Ergebnis {
         }
         return false;
     }
+
+	@Override
+	public boolean ueberpruefen(Wurf[] wurf) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 
   

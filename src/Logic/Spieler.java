@@ -1,10 +1,6 @@
 package Logic;
 
-import java.util.*;
 
-/**
- * 
- */
 public abstract class Spieler {
 
 	public String name;
