@@ -1,0 +1,24 @@
+AI:
+get alle ergebnisse der tabelle,
+nutze den höchsten möglichen wert überlegen ob das sinnvoll ist
+
+-Achten auf die Zeichen des spielernamens
+
+			| 1 | 2 | 3 | 4 | 5 | 6 | Summe | Bonus | Dreier | Vierer | Quadrat | Full House | Kleine Straße | Große Straße | Kniffel | Chance | Summe | Gesamt
+Spieler1	|   |   |   |   |   |   |   	|   	|	     |   	  |		    |   		 |			     |   			|   	  |   	   |       |		
+
+
+KI Bedingungen
+1. Finde noch benötigte
+2. Finde bisher mögliche
+3. Schaue nach Straße/Pasch
+4. Schaue nach Quadratfolge
+5. Schaue nach Punkten möglich oben-momentane, ob man noch gut bei 63 landen kann
+6. Wähle das Ergebnis mit meisten Punkten
+7. Streiche eventuell ein ergebnis (Quadratfolge/Einer/Zweier...)
+
+
+AI MLE 
+history[]
+State[] contains the action to do for every specific state (table,dice)
+method do randomvalidmove(int State)

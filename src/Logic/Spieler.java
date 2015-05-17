@@ -2,6 +2,8 @@ package Logic;
 
 import java.util.*;
 
+import Ergebnisse.*;
+
 /**
  * 
  */
@@ -9,6 +11,7 @@ public abstract class Spieler {
     
 	public String name;
 	public Wurf wurf;
+	ErgebnisTabelle ergebnisTabelle;
 
     public Spieler(String name, Wurf wurf) {
     	this.name=name;
