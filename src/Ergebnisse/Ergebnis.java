@@ -29,7 +29,24 @@ public abstract class Ergebnis {
      * 
      */
     protected boolean oben;
+    
+    protected boolean gestrichen;
 
+
+
+    public int getSumme() {
+        return summe;
+    }
+
+
+    public boolean isOben() {
+        return oben;
+    }
+
+
+    public boolean isGestrichen() {
+        return gestrichen;
+    }
 
 
     /**

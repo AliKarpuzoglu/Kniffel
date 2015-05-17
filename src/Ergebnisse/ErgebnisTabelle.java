@@ -2,7 +2,7 @@ package Ergebnisse;
 
 import java.util.*;
 
-/**
+/**TODO : Change "ergebnis" to "ergebnisse"?
  * 
  */
 public class ErgebnisTabelle {
@@ -11,11 +11,12 @@ public class ErgebnisTabelle {
      * 
      */
     public ErgebnisTabelle() {
-        for(int i=1;i<=6;i++){
-            ergebnis[i-1] = new SummeOben(i);
+        for (int i = 1; i <= 6; i++) {
+            ergebnis[i - 1] = new SummeOben(i);
         }
-        ergebnis[6]= new Dreierpash();
-        
+        ergebnis[6] = new Dreierpasch();
+        ergebnis[7] = new Viererpash();
+
     }
 
     /**
@@ -43,9 +44,6 @@ public class ErgebnisTabelle {
      */
     private int summeGesamt;
 
-
-
-
     /**
      * 
      */
@@ -70,7 +68,7 @@ public class ErgebnisTabelle {
     /**
      * 
      */
-    public void ergebnisEintragen() {
+    public void ergebnisEintragen(Ergebnis ergebnis) {
         // TODO implement here
     }
 
@@ -86,6 +84,10 @@ public class ErgebnisTabelle {
      */
     public void berechneUnten() {
         // TODO implement here
+    }
+    
+    public Ergebnis[] getErgebnis(){
+        return ergebnis;
     }
 
 }
