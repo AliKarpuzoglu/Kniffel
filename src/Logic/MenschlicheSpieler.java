@@ -2,6 +2,8 @@ package Logic;
 
 import java.util.*;
 
+import Ergebnisse.Ergebnis;
+
 /**
  * 
  */
@@ -10,7 +12,8 @@ public class MenschlicheSpieler extends Spieler {
     /**
      * 
      */
-    public MenschlicheSpieler() {
+    public MenschlicheSpieler(String name , Wurf wurf) {
+    	super(name , wurf);
     }
 
     /**

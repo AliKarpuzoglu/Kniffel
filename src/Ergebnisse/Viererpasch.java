@@ -7,12 +7,12 @@ import Logic.*;
 /**
  * 
  */
-public class Viererpash extends Ergebnis {
+public class Viererpasch extends Ergebnis {
 
     /**
      * 
      */
-    public Viererpash() {
+    public Viererpasch() {
         oben=false;
     }
 
