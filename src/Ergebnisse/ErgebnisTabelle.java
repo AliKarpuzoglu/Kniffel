@@ -54,19 +54,11 @@ public class ErgebnisTabelle {
      *
      */
     public void tabelleAnzeigen() {
-        // TosTring
+        // ToString
     }
 
-    /**
-     *
-     */
-    public void gesamtSumme() {
-        for (Ergebnis e :ergebnis ) {
 
-        }
-    }
-
-    /**
+    /**AUSGABE FÜR DIE GUI
      *
      */
     public void toString() {
@@ -80,22 +72,39 @@ public class ErgebnisTabelle {
         // TODO implement here
     }
 
-    /**
+    /**VIELLEICHT AUF VOID SETZEN
      *
      */
-    public void berechneOben() {
-        // TODO implement here
+    public int berechneOben() {
+        int summe=0;
+        for(int i =0;i<5;i++){
+            summe+=ergebnis[i].getSumme();
+        }
+        return summe;
     }
 
-    /**
+    /**VIELLEICHT AUF VOID SETZEN
      *
      */
-    public void berechneUnten() {
-        // TODO implement here
+    public int berechneUnten() {
+        int summe=0;
+        for(int i=5;i<ergebnis.length;i++){
+            summe+=ergebnis[i].getSumme();
+        }
+        return summe;
     }
+    
+    /**VIELLEICHT AUF VOID SETZEN
+    *
+    */
+   public int gesamtSumme() {
+       return berechneOben()+berechneUnten();
+   }
+
 
     public Ergebnis[] getErgebnis(){
         return ergebnis;
     }
-
+    
+    
 }
