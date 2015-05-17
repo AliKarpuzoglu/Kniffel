@@ -2,25 +2,18 @@ package Logic;
 
 import java.util.*;
 
-/**
- * 
- */
+
 public class Wuerfel implements Comparable<Wuerfel>{
     private int augenzahl;
     private boolean weggelegt;
-    /**
-     * 
-     */
+
+    
     public Wuerfel() {
         weggelegt = false;
         augenzahl = (int) (Math.random() * 6) + 1;
     }
 
 
-
-    /**
-     * 
-     */
     public void wuerfeln() {
         augenzahl= (int) (Math.random() * 6) + 1;
 

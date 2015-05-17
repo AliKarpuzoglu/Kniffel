@@ -9,12 +9,10 @@ import Logic.*;
 public class SummeOben extends Ergebnis {
     private int wert;
     
-    /**
-     * 
-     */
+
     public SummeOben(int wert) {
+    	super("Summe oben", wert, true);
         this.wert=wert;
-        oben=true;
     }
     
     /**

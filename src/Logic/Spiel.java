@@ -2,44 +2,25 @@ package Logic;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Spiel {
+	
 
-    /**
-     * 
-     */
+	private Spieler[] spieler;
+
     public Spiel() {
     }
 
-    /**
-     * 
-     */
-    private Spieler[] spieler;
 
-
-
-
-    /**
-     * 
-     */
     public void erstelleSpieler() {
-        // TODO implement here
+        
     }
 
-    /**
-     * 
-     */
     public void wuerfelReihenfolgeAus() {
-        // TODO implement here
+
     }
 
-    /**
-     * 
-     */
+  
     public void spielen() {
-        // TODO implement here
     }
 
 }

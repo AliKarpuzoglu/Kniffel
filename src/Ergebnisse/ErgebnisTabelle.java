@@ -14,7 +14,7 @@ public class ErgebnisTabelle {
         for(int i=1;i<=6;i++){
             ergebnis[i-1] = new SummeOben(i);
         }
-        ergebnis[6]= new Dreierpash();
+        ergebnis[6]= new Dreierpasch();
         
     }
 
@@ -28,9 +28,6 @@ public class ErgebnisTabelle {
      */
     private final int BONUS = 35;
 
-    /**
-     * 
-     */
     private int summeOben;
 
     /**
@@ -63,7 +60,9 @@ public class ErgebnisTabelle {
     /**
      * 
      */
-    public void toString() {
+    @Override
+    public String toString() {
+		return null;
         // TODO implement here
     }
 

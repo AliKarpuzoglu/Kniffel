@@ -13,6 +13,7 @@ public class Kniffel extends Ergebnis {
      * 
      */
     public Kniffel() {
+    	super("Kniffel", 50, false);
     }
 
     @Override

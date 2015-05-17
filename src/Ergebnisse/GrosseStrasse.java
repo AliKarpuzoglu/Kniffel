@@ -13,7 +13,7 @@ public class GrosseStrasse extends Ergebnis {
      * 
      */
     public GrosseStrasse() {
-        oben=false;
+        super("Groﬂe Straﬂe", 25, false);
     }
 
     @Override

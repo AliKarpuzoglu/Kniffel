@@ -4,45 +4,22 @@ import java.util.*;
 
 import Logic.*;
 
-/**
- * 
- */
+
 public abstract class Ergebnis {
 
-    /**
-     * 
-     */
-    public Ergebnis() {
-    }
-
-    /**
-     * 
-     */
-    protected String name;
-
-    /**
-     * 
-     */
+	protected String name;
     protected int summe;
-
-    /**
-     * 
-     */
     protected boolean oben;
 
+    public Ergebnis(String name, int summe, boolean oben) {
+    	this.name=name;
+    	this.summe=summe;
+    	this.oben=oben;
+    }
+  
 
-
-    /**
-     * @param wurf
-     */
-    public abstract boolean ueberpruefen(Wurf wurf);
-    
-
-    /**
-     * @param wurf
-     */
-    public abstract int punkteBerechnen(Wurf wurf);
-    
+    public abstract boolean ueberpruefen(Wurf wurf);   
+    public abstract int punkteBerechnen(Wurf wurf); 
     public abstract void punkteAnrechnen(Wurf wurf);
     
     public static int gleicheZahlen(Wurf wurf){

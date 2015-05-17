@@ -1,3 +1,5 @@
+package Ergebnisse;
+
 
 import java.util.*;
 
@@ -12,6 +14,7 @@ public class Fullhouse extends Ergebnis {
      * 
      */
     public Fullhouse() {
+    	super("Full House", 60, false);
     }
 
     @Override

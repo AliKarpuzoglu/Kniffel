@@ -7,18 +7,18 @@ import Logic.*;
 /**
  * 
  */
-public class Dreierpasch extends Ergebnis {
+public class Viererpash extends Ergebnis {
 
 	/**
      * 
      */
-	public Dreierpasch() {
-		super("Dreierpasch", 9, false);
+	public Viererpash() {
+		super("Viererpasch", 16, false);
 	}
 
 	@Override
 	public boolean ueberpruefen(Wurf wurf) {
-		return super.gleicheZahlen(wurf) >= 3;
+		return super.gleicheZahlen(wurf) >= 4;
 	}
 
 	@Override

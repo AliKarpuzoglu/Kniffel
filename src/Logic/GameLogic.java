@@ -1,6 +1,6 @@
 package Logic;
 
-public class SpielLogik {
+public class GameLogic {
     public static final int NUMBER_OF_ROUNDS = 14; 
 //    public static final int NUMBER_OF_DICE = 5;
     static int numberPlayers=0;

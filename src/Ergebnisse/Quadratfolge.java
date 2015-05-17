@@ -13,6 +13,7 @@ public class Quadratfolge extends Ergebnis {
      * 
      */
     public Quadratfolge() {
+    	super("Quadratfolge", 40, false);
     }
 
     @Override
