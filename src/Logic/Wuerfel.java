@@ -6,7 +6,33 @@ import java.util.*;
  * 
  */
 public class Wuerfel implements Comparable<Wuerfel>{
-    private int augenzahl;
+    @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + augenzahl;
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Wuerfel other = (Wuerfel) obj;
+		if (augenzahl != other.augenzahl)
+			return false;
+		return true;
+	}
+
+
+
+	private int augenzahl;
     private boolean weggelegt;
     /**
      * 

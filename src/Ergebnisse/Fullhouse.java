@@ -10,7 +10,7 @@ import Logic.Wurf;
 public class Fullhouse extends Ergebnis {
 
     /**
-     * 
+     * schauen ob die ersten zwei oder die letzten zwei zahlen gleich sind
      */
     public Fullhouse() {
     	oben = false;
@@ -18,8 +18,10 @@ public class Fullhouse extends Ergebnis {
 
     @Override
     public boolean ueberpruefen(Wurf wurf) {
-        // TODO Auto-generated method stub
-        return false;
+    	
+    	Wuerfel[] temp = wurf.getAlleWuerfel();
+        
+        return super.gleicheZahlen(wurf) ==3&& ((equals(temp [1]) == equals(temp [2]) && equals(temp[1]) == equals(temp[3]) && equals(temp [4]) == equals (temp[5]) || ( equals(temp[1]) ==  equals(temp[2]) &&  equals(temp [1]) ==  equals(temp [3]) &&  equals(temp[4])==  equals(temp[5]))));
     }
 
     @Override
