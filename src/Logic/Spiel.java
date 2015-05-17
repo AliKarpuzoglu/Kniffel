@@ -12,8 +12,10 @@ public class Spiel {
 
     public void erstelleSpieler() {
     	System.out.println("Wieviele Spieler möchten spielen?");
-    	//einlesen + Menschliche Spieler erstellen
+    	Wurf spielerWurf = null;
+		//einlesen + Menschliche Spieler erstellen
     	MenschlicheSpieler Spieler1 = new MenschlicheSpieler("Tobias", spielerWurf);
+    	MenschlicheSpieler Spieler2= nwe MenschlicheSpieler("Basti", spielerWurf);
     	
     	System.out.println("Wieviele Computer Spieler sollen noch hinzugefügt werden?");
     	//einlesen
