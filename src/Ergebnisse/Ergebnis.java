@@ -44,7 +44,11 @@ public abstract class Ergebnis {
     public abstract int punkteBerechnen(Wurf wurf);
     
     public abstract void punkteAnrechnen(Wurf wurf);
-    
+    /**
+     * 
+     * @param wurf
+     * @return maximale anzahl der gleichen zahlen
+     */
     public static int gleicheZahlen(Wurf wurf){
         int gleicheZahlen = 1;
         Wuerfel[] temp = wurf.getAlleWuerfel();// CHECK IF THIS IS OKAYY!!!!!!!!!!!!!!!!!!!

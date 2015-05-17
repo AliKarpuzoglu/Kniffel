@@ -21,7 +21,7 @@ public class GrosseStrasse extends Ergebnis {
     public boolean ueberpruefen(Wurf wurf) {
     	
     	
-        return 
+        return false;
     }
 
     @Override
