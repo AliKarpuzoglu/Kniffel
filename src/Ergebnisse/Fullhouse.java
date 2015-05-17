@@ -1,4 +1,4 @@
-
+package Ergebnisse;
 import java.util.*;
 
 import Logic.Wurf;
