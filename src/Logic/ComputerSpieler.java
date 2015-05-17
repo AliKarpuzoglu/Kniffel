@@ -9,20 +9,20 @@ public class ComputerSpieler extends Spieler {
 
 //    private Wurf computerWurf;
 
-    public ComputerSpieler() {
+    public ComputerSpieler(String name, Wurf computerWurf) {
         super("Computer Spieler", computerWurf);
 
     }
 
     /**
-     * 1. Finde noch benötigte 
-     * 2. Finde bisher mögliche 
+     * 1. Finde noch benï¿½tigte 
+     * 2. Finde bisher mï¿½gliche 
      * 3. Schaue nach
-     * Straße/Pasch 
+     * Straï¿½e/Pasch 
      * 4. Schaue nach Quadratfolge 
-     * 5. Schaue nach Punkten möglich
+     * 5. Schaue nach Punkten mï¿½glich
      * oben-momentane, ob man noch gut bei 63 landen kann 
-     * 6. Wähle das Ergebnis
+     * 6. Wï¿½hle das Ergebnis
      * mit meisten Punkten (statt Kniffel zuerst die oben)
      * 7. Streiche eventuell ein ergebnis
      * (Quadratfolge/Einer/Zweier...)
