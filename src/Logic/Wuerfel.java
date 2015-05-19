@@ -7,13 +7,16 @@ import java.util.*;
  */
 public class Wuerfel implements Comparable<Wuerfel>{
     private int augenzahl;
-    private boolean weggelegt;
+    private boolean weggelegt=false;
     /**
      * 
      */
     public Wuerfel() {
-        weggelegt = false;
         augenzahl = (int) (Math.random() * 6) + 1;
+    }
+    
+    public Wuerfel(int i){
+        this.augenzahl = i;
     }
 
 
@@ -49,6 +52,37 @@ public class Wuerfel implements Comparable<Wuerfel>{
             return -1;
         }
         return 0;
+    }
+
+
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + augenzahl;
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Wuerfel other = (Wuerfel) obj;
+        if (augenzahl != other.augenzahl)
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Wuerfel [augenzahl=" + augenzahl + "]";
     }
     
     

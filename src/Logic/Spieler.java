@@ -3,6 +3,7 @@ package Logic;
 import java.util.*;
 
 import Ergebnisse.*;
+import Ergebnisse.Ergebnis.ErgebnisName;
 
 /**
  * 
@@ -17,6 +18,8 @@ public abstract class Spieler {
     	this.name=name;
     	this.wurf=wurf;
     }
+    
+   
 
     
     /**
