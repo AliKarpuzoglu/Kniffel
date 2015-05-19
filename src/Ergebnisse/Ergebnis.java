@@ -59,6 +59,22 @@ public class Ergebnis {
             return 0;
         }
     }
+    
+    public int punkteBerechnen(Wurf wurf) {
+        switch (this.name) {
+        case VIERERPASCH:
+            if(!wurf.checkViererPasch()){
+                return 0;
+            }
+            int temp = 0;
+            for (Wuerfel w : wurf.getAlleWuerfel()) {
+                temp = w.getAugenzahl() + temp;
+            }
+            return temp;
+        default:
+            return 0;
+        }
+    }
 
     public void punkteAnrechnen(Wurf wurf) {
 
