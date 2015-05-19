@@ -61,8 +61,8 @@ public class ErgebnisTabelle {
     /**
      * 
      */
-    public void toString() {
-        // TODO implement here
+    public String toString() {
+        return null;
     }
 
     /**
