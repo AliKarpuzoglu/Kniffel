@@ -39,11 +39,11 @@ public class Wurf {
     public ErgebnisName[] moeglicheErgebnisse(){
         ErgebnisName temp[] = new ErgebnisName[14];
         int zaehler = 0;
-        if(gleicheZahlen()>=3){
+        if(checkDreierPasch()){
             temp[zaehler] = ErgebnisName.DREIERPASCH;
             zaehler++;
         }
-        if(gleicheZahlen()>=4){
+        if(checkViererPasch()){
             temp[zaehler] = ErgebnisName.VIERERPASCH;
             zaehler++;
         }
@@ -52,6 +52,53 @@ public class Wurf {
             zaehler++;
             
         }
+        if(checkKniffel()){
+            temp[zaehler] = ErgebnisName.KNIFFEL;
+            zaehler++;
+        }
+        if(checkEiner()){
+            temp[zaehler] = ErgebnisName.EINER;
+            zaehler++;
+        }
+        if(checkFuenfer()){
+            temp[zaehler] = ErgebnisName.FUENFER;
+            zaehler++;
+        }
+        if(checkFullhouse()){
+            temp[zaehler] = ErgebnisName.FULLHOUSE;
+            zaehler++;
+        }
+        if(checkGrosseStrasse()){
+            temp[zaehler] = ErgebnisName.GROSSESTRASSE;
+            zaehler++;
+        }
+        if(checkKleineStrasse()){
+            temp[zaehler] = ErgebnisName.KLEINESTRASSE;
+            zaehler++;
+        }
+        if(checkQuadratFolge()){
+            temp[zaehler] = ErgebnisName.QUADRATFOLGE;
+            zaehler++;
+        }
+        if(checkVierer()){
+            temp[zaehler] = ErgebnisName.VIERER;
+            zaehler++;
+        }
+        if(checkZweier()){
+            temp[zaehler] = ErgebnisName.ZWEIER;
+            zaehler++;
+        }
+        ErgebnisName rueckgabe[] = new ErgebnisName[zaehler];
+        for(int i = 0; i< zaehler;i++){
+            rueckgabe[i]=temp[i];
+        }
+        
+        if(zaehler==0){
+            rueckgabe = new ErgebnisName[1];
+            rueckgabe[1] = ErgebnisName.NULLEN;
+            
+        }
+        return rueckgabe;
     }
     
     
@@ -110,7 +157,32 @@ public class Wurf {
         }
         return temp;
     }
+    public boolean checkKleineStrasse(){
+        return aufsteigendeZahlen() >= 4;
+    }
+    public boolean checkGrosseStrasse(){
+        return aufsteigendeZahlen() == 5;
+    }
+    public boolean checkFullhouse(){
+        Wuerfel[] temp = this.getAlleWuerfel();
+        
+        return gleicheZahlen() ==3&& ((
+                equals(temp [1]) == 
+                equals(temp [2]) && equals(temp[1]) == equals(temp[3]) &&
+                equals(temp [4]) == equals (temp[5]) || ( equals(temp[1]) ==  
+                equals(temp[2]) &&  equals(temp [1]) ==  equals(temp [3]) && 
+                equals(temp[4])==  equals(temp[5]))));
+    }
     
+    public boolean checkKniffel(){
+        return gleicheZahlen() >= 5;
+    }
+    public boolean checkViererPasch(){
+        return gleicheZahlen() >= 4;
+    }
+    public boolean checkDreierPasch(){
+        return gleicheZahlen() >= 3;
+    }
     public boolean checkSechser(){
         boolean temp = false;
         for(int i = 0; i < this.getAlleWuerfel().length;i++){
@@ -120,4 +192,70 @@ public class Wurf {
         }
         return temp;
     }
+    public boolean checkFuenfer(){
+        boolean temp = false;
+        for(int i = 0; i < this.getAlleWuerfel().length;i++){
+            if(this.getAlleWuerfel()[i].getAugenzahl()==5){
+                temp= true;
+            }
+        }
+        return temp;
+    }
+    public boolean checkVierer(){
+        boolean temp = false;
+        for(int i = 0; i < this.getAlleWuerfel().length;i++){
+            if(this.getAlleWuerfel()[i].getAugenzahl()==4){
+                temp= true;
+            }
+        }
+        return temp;
+    }
+    public boolean checkDreier(){
+        boolean temp = false;
+        for(int i = 0; i < this.getAlleWuerfel().length;i++){
+            if(this.getAlleWuerfel()[i].getAugenzahl()==3){
+                temp= true;
+            }
+        }
+        return temp;
+    }
+    public boolean checkZweier(){
+        boolean temp = false;
+        for(int i = 0; i < this.getAlleWuerfel().length;i++){
+            if(this.getAlleWuerfel()[i].getAugenzahl()==2){
+                temp= true;
+            }
+        }
+        return temp;
+    }
+    public boolean checkEiner(){
+        boolean temp = false;
+        for(int i = 0; i < this.getAlleWuerfel().length;i++){
+            if(this.getAlleWuerfel()[i].getAugenzahl()==1){
+                temp= true;
+            }
+        }
+        return temp;
+    }
+    public boolean checkQuadratFolge(){
+        boolean eins = false;
+        boolean zwei = false;
+        boolean vier = false;
+
+        for (int i = 0; i < this.getAlleWuerfel().length; i++) {
+            Wuerfel temp = this.getAlleWuerfel()[i];
+            if (temp.getAugenzahl() == 1) {
+                eins = true;
+            }
+            if (temp.getAugenzahl() == 2) {
+                zwei = true;
+            }
+            if (temp.getAugenzahl() == 4) {
+                vier = true;
+            }
+
+        }
+        return eins && zwei && vier;
+    }
+    
 }

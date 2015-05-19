@@ -1,9 +1,10 @@
-package Ergebnisse;
+package JUnitTests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import Ergebnisse.Ergebnis;
 import Logic.Wuerfel;
 import Logic.Wurf;
 

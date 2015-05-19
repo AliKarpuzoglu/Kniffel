@@ -2,6 +2,8 @@ package Ergebnisse;
 
 import java.util.*;
 
+import Ergebnisse.Ergebnis.ErgebnisName;
+
 /**TODO : Change "ergebnis" to "ergebnisse"?
  * 
  */
@@ -11,11 +13,19 @@ public class ErgebnisTabelle {
      * 
      */
     public ErgebnisTabelle() {
-        for (int i = 1; i <= 6; i++) {
-            ergebnis[i - 1] = new SummeOben(i);
-        }
-        ergebnis[6] = new Dreierpasch();
-        ergebnis[7] = new Viererpash();
+        ergebnis[0] = new Ergebnis(ErgebnisName.EINER);
+        ergebnis[1] = new Ergebnis(ErgebnisName.ZWEIER);
+        ergebnis[2] = new Ergebnis(ErgebnisName.DREIER);
+        ergebnis[3] = new Ergebnis(ErgebnisName.VIERER);
+        ergebnis[4] = new Ergebnis(ErgebnisName.FUENFER);
+        ergebnis[5] = new Ergebnis(ErgebnisName.SECHSER);
+        ergebnis[6] = new Ergebnis(ErgebnisName.DREIERPASCH);
+        ergebnis[7] = new Ergebnis(ErgebnisName.VIERERPASCH);
+        ergebnis[8] = new Ergebnis(ErgebnisName.QUADRATFOLGE);
+        ergebnis[9] = new Ergebnis(ErgebnisName.FULLHOUSE);
+        ergebnis[10] = new Ergebnis(ErgebnisName.KLEINESTRASSE);
+        ergebnis[11] = new Ergebnis(ErgebnisName.GROSSESTRASSE);
+        ergebnis[12] = new Ergebnis(ErgebnisName.KNIFFEL);
 
     }
 
