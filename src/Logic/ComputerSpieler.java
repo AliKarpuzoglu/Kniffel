@@ -3,7 +3,9 @@ package Logic;
 import java.util.*;
 
 import Ergebnisse.Ergebnis;
+import Ergebnisse.Ergebnis.ErgebnisName;
 import Ergebnisse.ErgebnisTabelle;
+import Logic.Wurf;
 
 public class ComputerSpieler extends Spieler {
 
@@ -13,6 +15,8 @@ public class ComputerSpieler extends Spieler {
         super("Computer Spieler", computerWurf);
 
     }
+    
+    // die ganze klasse muss noch geschrieben werden
 
     /**
      * 1. Finde noch ben�tigte 
@@ -29,6 +33,10 @@ public class ComputerSpieler extends Spieler {
      * 
      */
     public void evaluate() {
+    	Ergebnis ergebnis;
+    	
+    	
+   
         
         ArrayList<Ergebnis> benoetigt = new ArrayList<>();
         ArrayList<Ergebnis> moeglich = new ArrayList<>();

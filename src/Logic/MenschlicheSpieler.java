@@ -4,20 +4,17 @@ import java.util.*;
 
 import Ergebnisse.Ergebnis;
 
-/**
- * 
- */
+
 public class MenschlicheSpieler extends Spieler {
 
-    /**
-     * 
-     */
-    public MenschlicheSpieler() {
-    	public MenschlieSpieler(String name, Wurf menschlicherwurf ){
-    		super(name, menschlicherwurf  );
-    		this.name = name;
-    		this.wurf= menschlicherwurf;
-    	}
+	public String name;
+	public Wurf menschlicherWurf;
+    	
+   public MenschlicheSpieler (String name, Wurf menschlicherWurf){
+
+	   super(name, menschlicherWurf);
+	   this.menschlicherWurf= menschlicherWurf;
+    
     }
 
     /**

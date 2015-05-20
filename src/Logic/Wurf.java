@@ -35,6 +35,12 @@ public class Wurf {
         Arrays.sort(alleWuerfel);
 
     }
+    /**
+     * This one check which option the player have. There are 14 possibility...
+     * @return rueckgabe
+     * die letzte if Abfrage dient dazu alle Werte bzw die Null abzufangen.. 
+     * Ebenfalls wird hier von Enum gebraucht gemacht
+     */
     
     public ErgebnisName[] moeglicheErgebnisse(){
         ErgebnisName temp[] = new ErgebnisName[14];
@@ -101,7 +107,10 @@ public class Wurf {
         return rueckgabe;
     }
     
-    
+    /**
+     * Hier wird ŸberprŸft ob die gleichen Zahlen in einer Folge vorkommen
+     * @return
+     */
     public int gleicheZahlen() {
         int gleicheZahlen = 1;
         Wuerfel[] temp = this.getAlleWuerfel();// CHECK IF THIS IS
@@ -157,6 +166,11 @@ public class Wurf {
         }
         return temp;
     }
+    
+    /**
+     * Berechnung der Einzelnen im Enum stehenden Mšglichkeiten..
+     * @return
+     */
     public boolean checkKleineStrasse(){
         return aufsteigendeZahlen() >= 4;
     }
@@ -183,62 +197,80 @@ public class Wurf {
     public boolean checkDreierPasch(){
         return gleicheZahlen() >= 3;
     }
+    public boolean checkAugen(int zahl){
+    	 boolean temp = false;
+         for(int i = 0; i < this.getAlleWuerfel().length;i++){
+             if(this.getAlleWuerfel()[i].getAugenzahl()==zahl){
+                 temp= true;
+             }
+         }
+         return temp;
+    }
     public boolean checkSechser(){
-        boolean temp = false;
+    /*    boolean temp = false;
         for(int i = 0; i < this.getAlleWuerfel().length;i++){
             if(this.getAlleWuerfel()[i].getAugenzahl()==6){
                 temp= true;
             }
         }
-        return temp;
+        return temp;*/
+    	return checkAugen(6);
     }
     public boolean checkFuenfer(){
-        boolean temp = false;
+       /* boolean temp = false;
         for(int i = 0; i < this.getAlleWuerfel().length;i++){
             if(this.getAlleWuerfel()[i].getAugenzahl()==5){
                 temp= true;
             }
         }
-        return temp;
+        return temp;*/
+    	return checkAugen(5);
     }
     public boolean checkVierer(){
-        boolean temp = false;
+       /* boolean temp = false;
         for(int i = 0; i < this.getAlleWuerfel().length;i++){
             if(this.getAlleWuerfel()[i].getAugenzahl()==4){
                 temp= true;
             }
         }
-        return temp;
+        return temp;*/
+    	return checkAugen(4);
     }
     public boolean checkDreier(){
-        boolean temp = false;
+        /*boolean temp = false;
         for(int i = 0; i < this.getAlleWuerfel().length;i++){
             if(this.getAlleWuerfel()[i].getAugenzahl()==3){
                 temp= true;
             }
         }
-        return temp;
+        return temp;*/
+    	return checkAugen(3);
     }
     public boolean checkZweier(){
-        boolean temp = false;
+        /*boolean temp = false;
         for(int i = 0; i < this.getAlleWuerfel().length;i++){
             if(this.getAlleWuerfel()[i].getAugenzahl()==2){
                 temp= true;
             }
         }
-        return temp;
+        return temp;*/
+    	return checkAugen(2);
     }
     public boolean checkEiner(){
-        boolean temp = false;
+       /* boolean temp = false;
         for(int i = 0; i < this.getAlleWuerfel().length;i++){
             if(this.getAlleWuerfel()[i].getAugenzahl()==1){
                 temp= true;
             }
         }
-        return temp;
+        return temp;*/
+    	return checkAugen(1);
     }
     public boolean checkQuadratFolge(){
-        boolean eins = false;
+       
+    	return checkEiner() && checkZweier() && checkVierer();
+    	
+    	/*boolean eins = false;
         boolean zwei = false;
         boolean vier = false;
 
@@ -256,6 +288,10 @@ public class Wurf {
 
         }
         return eins && zwei && vier;
+        //return checkEiner()&&checkZweier()&&checkDreier();
+        }*/
+    
+
     }
     
-}
+    }

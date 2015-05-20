@@ -83,14 +83,14 @@ public class ErgebnisTabelle {
     }
 
     /**
-     * 
+     * noch nštig?
      */
     public void berechneOben() {
         // TODO implement here
     }
 
     /**
-     * 
+     * noch nštig?
      */
     public void berechneUnten() {
         // TODO implement here

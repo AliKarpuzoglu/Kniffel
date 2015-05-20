@@ -5,7 +5,8 @@ import java.util.*;
 import Logic.*;
 
 /**
- * 
+ * Benutzung von Enum. €nderung im Klassendiagramm muss noch dokumentiert werden.. 
+ * Somit ist es Ÿbersichtlicher und erspart "tausende" von KLassen bitch!
  */
 public class Ergebnis {
 
@@ -19,18 +20,14 @@ public class Ergebnis {
 
     private ErgebnisName name;
 
-    /**
-     * 
-     */
     protected int summe;
 
     protected boolean gestrichen;
 
-    /**
-     * 
-     */
-    public Ergebnis(ErgebnisName name) {
+
+    public Ergebnis(ErgebnisName name, int summe) {
         this.name = name;
+        this.summe=summe;
     }
 
     public int getSumme() {
@@ -40,43 +37,90 @@ public class Ergebnis {
     public boolean isGestrichen() {
         return gestrichen;
     }
+    
+    public int punkteBerechnen(Wurf wurf) {
+        int zusammen=0;
+        for(Wuerfel w: wurf.getAlleWuerfel()){
+            if(w.getAugenzahl()==wert){
+                zusammen = zusammen + w.getAugenzahl();
+            }
+        }
+        return zusammen;
+    }
+        
 
     /**
      * @param wurf
      */
     public int punkteBerechnen(Wurf wurf) {
+        int temp = 0;
+
         switch (this.name) {
         case DREIERPASCH:
             if(!wurf.checkDreierPasch()){
                 return 0;
             }
-            int temp = 0;
             for (Wuerfel w : wurf.getAlleWuerfel()) {
                 temp = w.getAugenzahl() + temp;
             }
+            
             return temp;
-        default:
-            return 0;
-        }
-    }
-    
-    public int punkteBerechnen(Wurf wurf) {
-        switch (this.name) {
         case VIERERPASCH:
             if(!wurf.checkViererPasch()){
                 return 0;
             }
-            int temp = 0;
             for (Wuerfel w : wurf.getAlleWuerfel()) {
                 temp = w.getAugenzahl() + temp;
             }
             return temp;
-        default:
-            return 0;
-        }
+        
+        
+        case KNIFFEL:
+        	if (!wurf.checkKniffel()){
+        		return 0;
+        	}
+        	return 50;
+        	
+        case FULLHOUSE: 
+        	if (!wurf.checkFullhouse()){
+        		return 0;
+        	}
+        	return 25;
+        	
+        case KLEINESTRASSE:
+        	if(!wurf.checkKleineStrasse()){
+        		return 0;
+        	}
+        	return 30;
+        	
+        case GROSSESTRASSE:
+        	if(!wurf.checkGrosseStrasse()){
+        		return 0;
+        	}
+        	return 40;
+        
+        case QUADRATFOLGE:
+        	if(!wurf.checkQuadratFolge()){
+        		return 0;
+        	}
+        	return 15;
+        case EINER:
+        	if(!wurf.checkEiner()){
+        		return 0;
+        	}
+        	
+        	
+        	
+     /*
+      * default:
+            return 0;   		
+      */
+        	
+        
     }
-
+    
     public void punkteAnrechnen(Wurf wurf) {
+    	
 
     }
 

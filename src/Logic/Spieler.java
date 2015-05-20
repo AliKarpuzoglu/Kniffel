@@ -33,7 +33,7 @@ public abstract class Spieler {
      * @param wuerfel
      */
     public void wuerfelWeglegen(Wuerfel wuerfel) {
-        // TODO implement here
+        wuerfel.beiseiteLegen();
     }
 
 }
