@@ -5,8 +5,8 @@ import java.util.*;
 import Logic.*;
 
 /**
- * Benutzung von Enum. €nderung im Klassendiagramm muss noch dokumentiert werden.. 
- * Somit ist es Ÿbersichtlicher und erspart "tausende" von KLassen bitch!
+ * Benutzung von Enum. ï¿½nderung im Klassendiagramm muss noch dokumentiert werden.. 
+ * Somit ist es ï¿½bersichtlicher und erspart "tausende" von KLassen bitch!
  */
 public class Ergebnis {
 
@@ -38,15 +38,6 @@ public class Ergebnis {
         return gestrichen;
     }
     
-    public int punkteBerechnen(Wurf wurf) {
-        int zusammen=0;
-        for(Wuerfel w: wurf.getAlleWuerfel()){
-            if(w.getAugenzahl()==wert){
-                zusammen = zusammen + w.getAugenzahl();
-            }
-        }
-        return zusammen;
-    }
         
 
     /**
