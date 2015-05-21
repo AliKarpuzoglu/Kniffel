@@ -1,150 +1,44 @@
 package GUI;
 
-import Logic.Spieler;
-import Logic.Wurf;
+import logic.Spieler;
+import logic.Wurf;
 
 /**
  * 
  */
 public class GUI {
 
-	public GUI() {
+    public void printReihenfolge(Spieler[] spieler) {
+        System.out.println("Die Reihenfolge der Spieler ist:");
+        for(int i = 0; i< spieler.length; i++){
+            System.out.println((i+1)+": "+spieler[i].toString());
+        }
+    }
+    public void printmSpielerNamen(){
+        System.out.printf("Bitte geben sie den Namen des nÃ¤chsten Spielers ein");
+    }
+    public void printComputerSpielerDialog(int i){
+        System.out.printf("Wie viele Computerspieler sollen teilnehmen?(0-%d)/n",i);
+    }
+    public void printSpielerdialog(){
+        System.out.println("Es dÃ¼rfen bis zu 6 Spieler teilnehmen");
+        System.out.println("Bitte geben sie die Anzahl der menschlichen Spieler an(1-6)");
+    }
+    public void printWelcome(){
+        System.out.println("Willkommen zu Kniffel");
+        System.out.println("Die Gruppe um Jonas JÃ¤kel wÃ¼nscht ihnen ein erfreuliches Spiel");
+    }
+    public void printWurf(Wurf wurf) {
+        System.out.println(wurf.toString());
 
-		System.out
-				.println(" _______________________________________________________________________________________________");
-		System.out
-				.println("|                                                                                               |");
-		System.out
-				.println("|                                           KNIFFEL                                             |");
-		System.out
-				.println("|_______________________________________________________________________________________________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|   Spieler   |      1      |      2     |      3      |     4      |      5      |      6      |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|   Einer     |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|   Zweier    |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|   Dreier    |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|   Vierer    |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|   Fünfer    |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|   Sechser   |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|_______________________________________________________________________________________________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("| Summe oben  |             |            |             |            |             |             |");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|   Bonus     |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|_______________________________________________________________________________________________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("| Dreierpasch |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("| Viererpasch |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("| Quadratfolge|             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("| Full House  |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|Kleine Straße|             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|Große Straße |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|   Kniffel   |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|   Chance    |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-		System.out
-				.println("|_______________________________________________________________________________________________|");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("| Summe unten |             |            |             |            |             |             |");
-		System.out
-				.println("|             |             |            |             |            |             |             |");
-		System.out
-				.println("|   Gesamt    |             |            |             |            |             |             |");
-		System.out
-				.println("|_____________|_____________|____________|_____________|____________|_____________|_____________|");
-	}
+    }
 
-	public void printWurf(Wurf wurf) {
-
-	}
-
-	/**
-	 * @param spieler
-	 */
-	public void printErgebnisspalte(Spieler spieler) {
-		// TODO implement here
-	}
+    /**
+     * @param spieler
+     */
+    public void printErgebnisspalte(Spieler spieler) {
+        // TODO implement here
+    }
+   
 
 }

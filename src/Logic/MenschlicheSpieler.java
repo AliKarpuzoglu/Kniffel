@@ -1,19 +1,20 @@
-package Logic;
+package logic;
 
 import java.util.*;
 
-import Ergebnisse.Ergebnis;
+import ergebnisse.Ergebnis;
+
 
 
 public class MenschlicheSpieler extends Spieler {
 
-	public String name;
-	public Wurf menschlicherWurf;
+	
+	
     	
-   public MenschlicheSpieler (String name, Wurf menschlicherWurf){
+   public MenschlicheSpieler (String name){
 
-	   super(name, menschlicherWurf);
-	   this.menschlicherWurf= menschlicherWurf;
+	   super(name, new Wurf());
+	   
     
     }
 

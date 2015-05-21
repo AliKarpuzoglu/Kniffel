@@ -1,18 +1,20 @@
-package Logic;
+package logic;
 
 import java.util.*;
 
-import Ergebnisse.Ergebnis;
-import Ergebnisse.Ergebnis.ErgebnisName;
-import Ergebnisse.ErgebnisTabelle;
-import Logic.Wurf;
+import logic.Wurf;
+
+import ergebnisse.Ergebnis;
+import ergebnisse.ErgebnisTabelle;
+import ergebnisse.Ergebnis.ErgebnisName;
+
 
 public class ComputerSpieler extends Spieler {
 
 //    private Wurf computerWurf;
 
-    public ComputerSpieler(String name, Wurf computerWurf) {
-        super("Computer Spieler", computerWurf);
+    public ComputerSpieler(String name) {
+        super("Computer Spieler", new Wurf());
 
     }
     

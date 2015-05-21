@@ -1,9 +1,10 @@
-package Logic;
+package logic;
 
 import java.util.*;
 
-import Ergebnisse.*;
-import Ergebnisse.Ergebnis.ErgebnisName;
+import ergebnisse.*;
+import ergebnisse.Ergebnis.ErgebnisName;
+
 
 /**
  * 
@@ -12,7 +13,7 @@ public abstract class Spieler {
     
 	public String name;
 	public Wurf wurf;
-	ErgebnisTabelle ergebnisTabelle;
+	ErgebnisTabelle ergebnisTabelle = new ErgebnisTabelle();
 
     public Spieler(String name, Wurf wurf) {
     	this.name=name;
@@ -35,5 +36,14 @@ public abstract class Spieler {
     public void wuerfelWeglegen(Wuerfel wuerfel) {
         wuerfel.beiseiteLegen();
     }
+
+
+
+
+    @Override
+    public String toString() {
+        return "Spieler:" + name;
+    }
+    
 
 }

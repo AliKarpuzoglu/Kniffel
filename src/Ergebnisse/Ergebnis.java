@@ -1,8 +1,9 @@
-package Ergebnisse;
+package ergebnisse;
 
 import java.util.*;
 
-import Logic.*;
+import logic.*;
+
 
 /**
  * Benutzung von Enum. �nderung im Klassendiagramm muss noch dokumentiert werden.. 
@@ -25,9 +26,8 @@ public class Ergebnis {
     protected boolean gestrichen;
 
 
-    public Ergebnis(ErgebnisName name, int summe) {
+    public Ergebnis(ErgebnisName name) {
         this.name = name;
-        this.summe=summe;
     }
 
     public int getSumme() {
@@ -99,7 +99,8 @@ public class Ergebnis {
         	if(!wurf.checkEiner()){
         		return 0;
         	}
-        	
+        default: return 0;
+                }
         	
         	
      /*
