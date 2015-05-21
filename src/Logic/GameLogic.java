@@ -6,7 +6,7 @@ public class SpielLogik {
     static int numberPlayers=0;
     static int humanPlayers=0;
     static Player[] players;
-    
+
     public static void main(String[] args) {
         System.out.println("-----------------------------------------");
        System.out.println("|Choose the amount of players (2-6) : \t|"   ); 

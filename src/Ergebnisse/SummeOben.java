@@ -54,7 +54,7 @@ public class SummeOben extends Ergebnis {
     }
 
 
-  
+
 
 
     
