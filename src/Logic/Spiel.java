@@ -60,6 +60,8 @@ public class Spiel {
             wuerfelReihenfolgeAus();
             
             g.printReihenfolge(spieler);
+            flag = false;
+            
             
         }
     }
