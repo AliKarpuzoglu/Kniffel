@@ -190,7 +190,7 @@ public class Wurf {
     }
     
     public boolean checkKniffel(){
-        return gleicheZahlen() >= 5;
+        return gleicheZahlen() == 5;
     }
     public boolean checkViererPasch(){
         return gleicheZahlen() >= 4;

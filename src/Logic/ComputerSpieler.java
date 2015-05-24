@@ -42,14 +42,14 @@ public class ComputerSpieler extends Spieler {
         
         ArrayList<Ergebnis> benoetigt = new ArrayList<>();
         ArrayList<Ergebnis> moeglich = new ArrayList<>();
+        ErgebnisName[] moeglich = wurf.get
         
         for (Ergebnis e : ergebnisTabelle.getErgebnis()) {
             if(e.getSumme() == 0 && !e.isGestrichen()) {
                 benoetigt.add(e);
             }
-            if(e.ueberpruefen(wurf)){
-                moeglich.add(e);
-            }
+
+
         }
         if(Ergebnis.aufsteigendeZahlen(wurf)>=Ergebnis.gleicheZahlen(wurf)){
            
