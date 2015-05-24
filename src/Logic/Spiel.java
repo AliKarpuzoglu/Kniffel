@@ -1,6 +1,7 @@
 package logic;
 
-import GUI.*;
+import gui.*;
+
 import java.util.*;
 
 /**
