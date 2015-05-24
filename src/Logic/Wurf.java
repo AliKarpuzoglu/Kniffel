@@ -1,9 +1,10 @@
-package Logic;
+package logic;
 
 import java.util.*;
 
-import Ergebnisse.Ergebnis;
-import Ergebnisse.Ergebnis.ErgebnisName;
+import ergebnisse.Ergebnis;
+import ergebnisse.Ergebnis.ErgebnisName;
+
 
 /**
  * 
@@ -108,7 +109,7 @@ public class Wurf {
     }
     
     /**
-     * Hier wird ŸberprŸft ob die gleichen Zahlen in einer Folge vorkommen
+     * Hier wird ï¿½berprï¿½ft ob die gleichen Zahlen in einer Folge vorkommen
      * @return
      */
     public int gleicheZahlen() {
@@ -168,7 +169,7 @@ public class Wurf {
     }
     
     /**
-     * Berechnung der Einzelnen im Enum stehenden Mšglichkeiten..
+     * Berechnung der Einzelnen im Enum stehenden Mï¿½glichkeiten..
      * @return
      */
     public boolean checkKleineStrasse(){

@@ -1,8 +1,9 @@
-package Ergebnisse;
+package ergebnisse;
 
 import java.util.*;
 
-import Ergebnisse.Ergebnis.ErgebnisName;
+import ergebnisse.Ergebnis.ErgebnisName;
+
 
 /**TODO : Change "ergebnis" to "ergebnisse"?
  * 
@@ -32,7 +33,7 @@ public class ErgebnisTabelle {
     /**
      * 
      */
-    private Ergebnis[] ergebnis;
+    private Ergebnis[] ergebnis = new Ergebnis[13];
 
     /**
      * 
@@ -83,14 +84,14 @@ public class ErgebnisTabelle {
     }
 
     /**
-     * noch nštig?
+     * noch nï¿½tig?
      */
     public void berechneOben() {
         // TODO implement here
     }
 
     /**
-     * noch nštig?
+     * noch nï¿½tig?
      */
     public void berechneUnten() {
         // TODO implement here

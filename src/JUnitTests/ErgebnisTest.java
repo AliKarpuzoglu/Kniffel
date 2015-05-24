@@ -1,12 +1,13 @@
-package JUnitTests;
+package jUnitTests;
 
 import static org.junit.Assert.*;
+import logic.Wuerfel;
+import logic.Wurf;
 
 import org.junit.Test;
 
-import Ergebnisse.Ergebnis;
-import Logic.Wuerfel;
-import Logic.Wurf;
+import ergebnisse.Ergebnis;
+
 
 public class ErgebnisTest {
 
