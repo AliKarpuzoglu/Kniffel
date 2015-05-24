@@ -44,6 +44,8 @@ public abstract class Spieler {
     public String toString() {
         return "Spieler:" + name;
     }
+
+
     
 
 }

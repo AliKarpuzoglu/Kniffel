@@ -1,9 +1,9 @@
 package gui;
 
-import logic;
-
 import java.util.Scanner;
 
+import logic.Spieler;
+import logic.Wurf;
 
 public class GUI {
 	String[] spieler = new String[6];
@@ -72,9 +72,9 @@ public class GUI {
 	 */
 	public void printErgebnisspalte(Spieler spieler) {
 
-		for (int u = 0; u < spieler.lenght(); u++) {
-			System.out.println("| " + spieler[u] + " | " + EINER.getSumme
-					+ " | " + ZWEIER.getSumme + " | " + DREIER.getSumme + " | "
+		for (int u = 0;; u++) {
+			System.out.println("| " + spieler + " | " + EINER.getSumme + " | "
+					+ ZWEIER.getSumme + " | " + DREIER.getSumme + " | "
 					+ VIERER.getSumme + " | " + FÜNFER.getSumme + " | "
 					+ SECHSER.getSumme + " | " + summeOben() + " | "
 					+ BONUS.getSumme() + " | " + DREIERPASCH.getSumme + " | "
