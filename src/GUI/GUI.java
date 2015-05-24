@@ -7,7 +7,8 @@ import java.util.Scanner;
 import logic.ComputerSpieler;
 
 public class GUI {
-	Scanner scanner = new Scanner(System.in);
+	String[] spieler = new String[6];
+	int i = 0, r = 0;
 
 	public void printReihenfolge(Spieler[] spieler) {
 		System.out.println("Die Reihenfolge der Spieler ist:");
@@ -17,48 +18,49 @@ public class GUI {
 	}
 
 	public void printSpielerNamen() {
-		String[] spieler = new String[6];
-		int i = 0;
 
-		while (true) {
-			System.out
-					.printf("Bitte geben sie den Namen des naechsten Spielers ein. Oder 'ende' , wenn sich alle Spieler eingetragen haben.");
-			spieler[i] = scanner.next();
-			i++;
-			if (spieler.equals("ende"))
-				break;
-		}
-		for (int h = 0; h < spieler.length; h++) {
-			System.out.println("" + spieler[h]);
-			if (i <= 6) {
-				spieler[i] = new String("Computer Spieler");
-
-			}
-
-			for (int g = 0; g <= spieler.length; g++) {
-				System.out.println("Die Spieler sind: \n" + spieler[g] + ",");
-			}
-
-			scanner.close();
+		for (int z = 0; z < spieler.length; z++) {
+			System.out.println("" + spieler[z]);
 		}
 
 	}
 
 	public void printComputerSpielerDialog(int i) {
-		System.out.printf(
-				"Wie viele Computerspieler sollen teilnehmen?(0-%d)/n", i);
+		Scanner computer = new Scanner(System.in);
+		System.out.printf("Wie viele Computerspieler sollen teilnehmen?");
+		int anzahlComp = computer.nextInt();
+		for (int tre = 0; tre <= anzahlComp; tre++) {
+			spieler[i] = new String("Computer Spieler");
+			System.out.println("" + spieler[i]);
+		}
+		computer.close();
+
 	}
 
 	public void printSpielerdialog() {
-		System.out.println("Es dürfen bis zu 6 Spieler teilnehmen");
+
+		Scanner scanner = new Scanner(System.in);
+		Scanner anzahl = new Scanner(System.in);
+		System.out.println("Es duerfen bis zu 6 Spieler teilnehmen");
 		System.out
 				.println("Bitte geben sie die Anzahl der menschlichen Spieler an(1-6)");
+		r = anzahl.nextInt();
+
+		while (i <= r) {
+			System.out
+					.printf("Bitte geben sie den Namen des naechsten Spielers ein.");
+			spieler[i] = scanner.next();
+			i++;
+		}
+		scanner.close();
+		anzahl.close();
+
 	}
 
 	public void printWelcome() {
 		System.out.println("Willkommen zu Kniffel");
 		System.out
-				.println("Die Gruppe um Jonas Jäkel wünscht ihnen ein erfreuliches Spiel");
+				.println("Die Gruppe um Jonas Jaeckel wuenscht ihnen ein erfreuliches Spiel");
 	}
 
 	public void printWurf(Wurf wurf) {
