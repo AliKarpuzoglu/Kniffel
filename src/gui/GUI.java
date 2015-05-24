@@ -5,6 +5,7 @@ import Logic;
 import java.util.Scanner;
 
 import logic.ComputerSpieler;
+import logic.Wurf;
 
 public class GUI {
 	String[] spieler = new String[6];

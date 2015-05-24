@@ -12,9 +12,7 @@ import ergebnisse.Ergebnis.ErgebnisName;
 public class Wurf {
     private Wuerfel[] alleWuerfel = new Wuerfel[5];
 
-    /**
-     * 
-     */
+
     public Wurf() {
        for(int i=0;i<5;i++){
            alleWuerfel[i]= new Wuerfel();

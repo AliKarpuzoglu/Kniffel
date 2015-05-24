@@ -1,4 +1,4 @@
-package Ergebnisse;
+package ergebnisse;
 
 import Logic.*;
 
