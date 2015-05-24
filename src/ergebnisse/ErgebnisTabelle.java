@@ -1,11 +1,6 @@
 package ergebnisse;
 
-import java.util.*;
-
-import ergebnisse.Ergebnis.ErgebnisName;
-
-
-/**TODO : Change "ergebnis" to "ergebnisse"?
+/**
  * 
  */
 public class ErgebnisTabelle {
@@ -14,24 +9,25 @@ public class ErgebnisTabelle {
      * 
      */
     public ErgebnisTabelle() {
-        ergebnis[0] = new Ergebnis(ErgebnisName.EINER);
-        ergebnis[1] = new Ergebnis(ErgebnisName.ZWEIER);
-        ergebnis[2] = new Ergebnis(ErgebnisName.DREIER);
-        ergebnis[3] = new Ergebnis(ErgebnisName.VIERER);
-        ergebnis[4] = new Ergebnis(ErgebnisName.FUENFER);
-        ergebnis[5] = new Ergebnis(ErgebnisName.SECHSER);
-        ergebnis[6] = new Ergebnis(ErgebnisName.DREIERPASCH);
-        ergebnis[7] = new Ergebnis(ErgebnisName.VIERERPASCH);
-        ergebnis[8] = new Ergebnis(ErgebnisName.QUADRATFOLGE);
-        ergebnis[9] = new Ergebnis(ErgebnisName.FULLHOUSE);
-        ergebnis[10] = new Ergebnis(ErgebnisName.KLEINESTRASSE);
-        ergebnis[11] = new Ergebnis(ErgebnisName.GROSSESTRASSE);
-        ergebnis[12] = new Ergebnis(ErgebnisName.KNIFFEL);
+        for (int i = 1; i <= 6; i++) {
+            ergebnisse[i - 1] = new SummeOben(i);
+        }
+        ergebnisse[6] = new Dreierpasch();
+        ergebnisse[7] = new Viererpasch();
+        ergebnisse[8] = new Quadratfolge();
+        ergebnisse[9] = new Fullhouse();
+        ergebnisse[10] = new KleineStrasse();
+        ergebnisse[11] = new GrosseStrasse();
+        ergebnisse[12] = new Kniffel();
+        ergebnisse[13] = new Chance();
+            
 
     }
 
- 
-    private Ergebnis[] ergebnis = new Ergebnis[13];
+    /**
+     * 
+     */
+    private Ergebnis[] ergebnisse = new Ergebnis[14];
 
     /**
      * 
@@ -54,49 +50,73 @@ public class ErgebnisTabelle {
     private int summeGesamt;
 
     /**
-     * 
+     * toString()
      */
     public void tabelleAnzeigen() {
         // TODO implement here
     }
-
+    
     /**
-     * 
-     */
-    public void gesamtSumme() {
-        // TODO implement here
-    }
-
-    /**
+     * @return 
      * 
      */
     public String toString() {
         return null;
+        // TODO implement here
+    }
+
+
+    /**
+     * 
+     */
+    public int getGesamtSumme() {
+//        int temp = 0;
+//        for(Ergebnis e: ergebnisse){
+//            temp+=e.getSumme();
+//        }
+//        if(getSummeOben()>=63){
+//            temp+=BONUS;
+//        }
+//        return temp;
+        int temp=getSummeOben()+getSummeUnten();
+        return getSummeOben()>=63? temp : temp+BONUS;
+    }
+
+ 
+    /**
+     * 
+     */
+    public void ergebnisEintragen(Ergebnis ergebnis) {
+        for(Ergebnis e: ergebnisse){
+            if(e.getClass().equals(ergebnis.getClass())){
+                e=ergebnis;
+            }
+        }
     }
 
     /**
      * 
      */
-    public void ergebnisEintragen(Ergebnis ergebnis) {
-        // TODO implement here
+    public int getSummeOben() {
+        int temp=0;
+        for(int i=0;i<6;i++){
+            temp+=ergebnisse[i].getSumme();
+        }
+        return temp;
     }
 
     /**
-     * noch n�tig?
+     * 
      */
-    public void berechneOben() {
-        // TODO implement here
-    }
-
-    /**
-     * noch n�tig?
-     */
-    public void berechneUnten() {
-        // TODO implement here
-    }
+    public int getSummeUnten() {
+        int temp=0;
+        for(int i=6;i<ergebnisse.length;i++){
+            temp+=ergebnisse[i].getSumme();
+        }
+        return temp;    }
     
     public Ergebnis[] getErgebnis(){
-        return ergebnis;
+        return ergebnisse;
     }
 
 }

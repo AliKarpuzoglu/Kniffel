@@ -2,23 +2,17 @@ package logic;
 
 import java.util.*;
 
-import logic.Wurf;
-
 import ergebnisse.Ergebnis;
 import ergebnisse.ErgebnisTabelle;
-import ergebnisse.Ergebnis.ErgebnisName;
-
 
 public class ComputerSpieler extends Spieler {
 
 //    private Wurf computerWurf;
 
-    public ComputerSpieler(String name) {
-        super("Computer Spieler", new Wurf());
+    public ComputerSpieler(String name, Wurf computerWurf) {
+        super("Computer Spieler", computerWurf);
 
     }
-    
-    // die ganze klasse muss noch geschrieben werden
 
     /**
      * 1. Finde noch ben�tigte 
@@ -35,21 +29,17 @@ public class ComputerSpieler extends Spieler {
      * 
      */
     public void evaluate() {
-    	Ergebnis ergebnis;
-    	
-    	
-   
         
         ArrayList<Ergebnis> benoetigt = new ArrayList<>();
         ArrayList<Ergebnis> moeglich = new ArrayList<>();
-        ErgebnisName[] moeglich = wurf.get
         
         for (Ergebnis e : ergebnisTabelle.getErgebnis()) {
             if(e.getSumme() == 0 && !e.isGestrichen()) {
                 benoetigt.add(e);
             }
-
-
+            if(e.ueberpruefen(wurf)){
+                moeglich.add(e);
+            }
         }
         if(Ergebnis.aufsteigendeZahlen(wurf)>=Ergebnis.gleicheZahlen(wurf)){
            

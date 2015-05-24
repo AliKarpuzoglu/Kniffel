@@ -49,7 +49,7 @@ public class Spiel {
             this.spieler = new Spieler[mSpieler+cSpieler];
             
             for(int x = 0; x < mSpieler; x++){
-                g.printSpielerNamen();
+                g.printmSpielerNamen();
                 String name = in.next();
                 this.spieler[x] = new MenschlicheSpieler(name);
             }
