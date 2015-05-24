@@ -1,11 +1,11 @@
-package Ergebnisse;
+package ergebnisse;
 
 import Logic.*;
 
 /**
- * Benutzung von Enum. €nderung im Klassendiagramm muss noch dokumentiert
+ * Benutzung von Enum. Aenderung im Klassendiagramm muss noch dokumentiert
  * werden..
- * Somit ist es Ÿbersichtlicher und erspart "tausende" von KLassen bitch!
+ * Somit ist es Uebersichtlicher und erspart "tausende" von Klassen bitch!
  */
    public enum Ergebnis {
         DREIERPASCH, FULLHOUSE, GROSSESTRASSE, KLEINESTRASSE,
@@ -31,7 +31,7 @@ import Logic.*;
         return gestrichen;
     }
     
-    public int getSummeOben(){
+    public static int getSummeOben(){
         return EINER.summe+ZWEIER.summe+DREIER.summe+VIERER.summe+FUENFER.summe+SECHSER.summe;
     }
 
@@ -152,6 +152,10 @@ import Logic.*;
         this.summe=this.punkteBerechnen(wurf);
 
     }
-
+    public static void main(String[] args) {
+        EINER.summe = 5;
+        ZWEIER.summe= 6;
+       System.out.println(getSummeOben());
+    }
 
 }

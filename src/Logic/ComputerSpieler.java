@@ -1,20 +1,18 @@
-package logic;
+package Logic;
 
-import java.util.*;
+import java.util.ArrayList;
 
-import logic.Wurf;
-
-import ergebnisse.Ergebnis;
-import ergebnisse.ErgebnisTabelle;
-import ergebnisse.Ergebnis.ErgebnisName;
+import ergebnisse.*;
+import ergebnisse.Ergebnis.*;
 
 
 public class ComputerSpieler extends Spieler {
 
 //    private Wurf computerWurf;
-
+    static int computerZahl=1;
     public ComputerSpieler(String name) {
-        super("Computer Spieler", new Wurf());
+        super("Computer Spieler"+computerZahl++, new Wurf());
+        
 
     }
     
@@ -41,8 +39,7 @@ public class ComputerSpieler extends Spieler {
    
         
         ArrayList<Ergebnis> benoetigt = new ArrayList<>();
-        ArrayList<Ergebnis> moeglich = new ArrayList<>();
-        ErgebnisName[] moeglich = wurf.get
+        ErgebnisName[] moeglich = wurf.moeglicheErgebnisse();
         
         for (Ergebnis e : ergebnisTabelle.getErgebnis()) {
             if(e.getSumme() == 0 && !e.isGestrichen()) {
@@ -60,12 +57,14 @@ public class ComputerSpieler extends Spieler {
     public void kiErgebnisEintragen(Ergebnis e){
         
     }
+    
     /**
      * Last Step: In the end, choose the one with most value
      * 
      * @param wurf
      * @return
      */
+    
     public Ergebnis optimiertesErgebnisAuswaehlen(Wurf wurf) {
         int max = 0;
         Ergebnis beste = null;;
