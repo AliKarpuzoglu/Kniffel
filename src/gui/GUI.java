@@ -72,23 +72,20 @@ public class GUI {
 	 * @param spieler
 	 */
 	public void printErgebnisspalte(Spieler spieler) {
-		System.out
-				.println(" _________________________________________________________________________________________________________________"
-						+ "_____________________________________________");
-		System.out
-				.println("|          |   |   |   |   |   |   |       |       |        |        |         |            |               |              |         |"
-						+ "        |       |        |");
-		System.out
-				.println("|          | 1 | 2 | 3 | 4 | 5 | 6 | Summe | Bonus | Dreier | Vierer | Quadrat |"
-						+ " Full House | Kleine Straﬂe | Groﬂe Straﬂe | Kniffel | Chance | Summe | Gesamt |");
-		System.out
-				.println("|__________|___|___|___|___|___|___|_______|_______|________|________|_________|____________|_______________|______________|_________|"
-						+ "________|_______|________|");
 
-		System.out
-				.println("| Spieler1 |   |   |   |   |   |   |       |       |  "
-						+ "	    |        |         |            |               |              |         |        |       |        |");
-
+		for (int u = 0; u < spieler.lenght(); u++) {
+			System.out.println("| " + spieler[u] + " | " + EINER.getSumme
+					+ " | " + ZWEIER.getSumme + " | " + DREIER.getSumme + " | "
+					+ VIERER.getSumme + " | " + F‹NFER.getSumme + " | "
+					+ SECHSER.getSumme + " | " + summeOben() + " | "
+					+ BONUS.getSumme() + " | " + DREIERPASCH.getSumme + " | "
+					+ VIERERPASCH.getSumme + " | " + QUADRATFOLGE.getSummer
+					+ " | " + DREIER.getSumme + " | " + VIERER.getSumme + ""
+					+ FULLHOUSE.getSummme + " | " + KLEINESTRASSE.getSumme
+					+ " | " + GROSSESTRASSE.getSumme + " | " + VIERER.getSumme
+					+ " | " + KNIFFEL.getSumme + " | " + CHANCE.getSumme
+					+ " | " + summeUnten() + " | " + getGesamtSumme());
+		}
 	}
 
 }
