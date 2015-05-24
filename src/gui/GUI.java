@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import Logic;
 
@@ -72,7 +72,23 @@ public class GUI {
 	 * @param spieler
 	 */
 	public void printErgebnisspalte(Spieler spieler) {
-		// TODO implement here
+		System.out
+				.println(" _________________________________________________________________________________________________________________"
+						+ "_____________________________________________");
+		System.out
+				.println("|          |   |   |   |   |   |   |       |       |        |        |         |            |               |              |         |"
+						+ "        |       |        |");
+		System.out
+				.println("|          | 1 | 2 | 3 | 4 | 5 | 6 | Summe | Bonus | Dreier | Vierer | Quadrat |"
+						+ " Full House | Kleine Straﬂe | Groﬂe Straﬂe | Kniffel | Chance | Summe | Gesamt |");
+		System.out
+				.println("|__________|___|___|___|___|___|___|_______|_______|________|________|_________|____________|_______________|______________|_________|"
+						+ "________|_______|________|");
+
+		System.out
+				.println("| Spieler1 |   |   |   |   |   |   |       |       |  "
+						+ "	    |        |         |            |               |              |         |        |       |        |");
+
 	}
 
 }

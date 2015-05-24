@@ -30,9 +30,7 @@ public class ErgebnisTabelle {
 
     }
 
-    /**
-     * 
-     */
+ 
     private Ergebnis[] ergebnis = new Ergebnis[13];
 
     /**
