@@ -1,7 +1,5 @@
 package Ergebnisse;
 
-import java.util.*;
-
 import Logic.*;
 
 /**
@@ -9,25 +7,19 @@ import Logic.*;
  * werden..
  * Somit ist es Ÿbersichtlicher und erspart "tausende" von KLassen bitch!
  */
-public class Ergebnis {
-
-    public enum ErgebnisName {
+   public enum Ergebnis {
         DREIERPASCH, FULLHOUSE, GROSSESTRASSE, KLEINESTRASSE,
         KNIFFEL, QUADRATFOLGE, VIERERPASCH, EINER, ZWEIER,
         DREIER, VIERER, FUENFER, SECHSER, NULLEN, BONUS;
 
 
-    }
-
-    private ErgebnisName name;
 
     protected int summe;
 
     protected boolean gestrichen;
 
 
-    public Ergebnis(ErgebnisName name) {
-        this.name = name;
+    private Ergebnis() {
         this.gestrichen = false;
     }
 
@@ -38,8 +30,12 @@ public class Ergebnis {
     public boolean isGestrichen() {
         return gestrichen;
     }
+    
+    public int getSummeOben(){
+        return EINER.summe+ZWEIER.summe+DREIER.summe+VIERER.summe+FUENFER.summe+SECHSER.summe;
+    }
 
-    public int punkteBerechnen(Wurf wurf, int wert) {
+    private int punkteBerechnen(Wurf wurf, int wert) {
         int zusammen = 0;
         for (Wuerfel w : wurf.getAlleWuerfel()) {
             if (w.getAugenzahl() == wert) {
@@ -56,7 +52,7 @@ public class Ergebnis {
     public int punkteBerechnen(Wurf wurf) {
         int temp = 0;
 
-        switch (this.name) {
+        switch (this) {
             case DREIERPASCH:
                 if (!wurf.checkDreierPasch()) {
                     return 0;
@@ -110,6 +106,39 @@ public class Ergebnis {
                     return 0;
                 }
                 return punkteBerechnen(wurf,1);
+            case ZWEIER:
+                if(!wurf.checkZweier()){
+                    return 0;
+                }
+                return punkteBerechnen(wurf, 2);
+               
+            case DREIER:
+                if(!wurf.checkDreier()){
+                    return 0;
+                }
+                return punkteBerechnen(wurf, 3);
+            case VIERER:
+                if(!wurf.checkVierer()){
+                    return 0;
+                }
+                return punkteBerechnen(wurf, 4);
+            case FUENFER:
+                if(!wurf.checkFuenfer()){
+                    return 0;
+                }
+                return punkteBerechnen(wurf, 5);
+            case SECHSER:
+                if(!wurf.checkFuenfer()){
+                    return punkteBerechnen(wurf,6);
+                }
+            case BONUS:
+                if(getSummeOben()>=63){
+                    return 35;
+                }
+                return 0;
+                
+               
+                        
 
 
             default:
@@ -120,7 +149,7 @@ public class Ergebnis {
     }
 
     public void punkteAnrechnen(Wurf wurf) {
-
+        this.summe=this.punkteBerechnen(wurf);
 
     }
 
