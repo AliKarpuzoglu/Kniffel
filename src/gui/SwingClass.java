@@ -1,4 +1,3 @@
-
 package gui;
 
 import javax.swing.*;
@@ -39,13 +38,8 @@ public class SwingClass {
 
 	public void printWelcome() {
 
-		JFrame willkommen = new JFrame("Willkommen zu Kniffel!");
-
-		willkommen.setSize(500, 500);
-		willkommen
-				.add(new JLabel(
-						"Die Gruppe um Jonas Jaeckel wuenscht ihnen ein erfreuliches Spiel"));
-		willkommen.setVisible(true);
+		GameListener welcome = new GameListener();
+		welcome.setVisible(true);
 
 	}
 
@@ -58,4 +52,3 @@ public class SwingClass {
 	}
 
 }
-
