@@ -4,7 +4,7 @@ import java.util.*;
 
 import ergebnisse.Ergebnis;
 import ergebnisse.Ergebnis.*;
-    
+
 public class ComputerSpieler extends Spieler {
 
     // private Wurf computerWurf;
@@ -27,29 +27,32 @@ public class ComputerSpieler extends Spieler {
         ArrayList<Ergebnis> moeglich = new ArrayList<>();
 
         for (Ergebnis e : ergebnisTabelle.getErgebnis()) {
-           
+
             if (e.ueberpruefen(wurf)) {
                 moeglich.add(e);
             }
         }
         // wenn nix m�glich ist, reroll die Hand
-        // TODO: �berpr�fen wann beobachtet wird, dass 5 mal gew�rfelt wurde
+        // TODO: �berpr�fen wann beobachtet wird, dass 5 mal gew�rfelt
+        // wurde
         if (moeglich.size() == 0) {
-            if (Spiel.getInstance().runde == 5) {
+            if (runde == 5) {
                 ergebnisAuswaehlenHelper();
                 return;
             }
-            wurf.wuerfeln();
-            ergebnisAuswaehlen();
+            if (runde < 5) {
+                wurf.wuerfeln();
+                runde++;
+                ergebnisAuswaehlen();
+            }
         }
         ergebnisAuswaehlenHelper();
-
+        runde=1;
     }
 
     private void kiErgebnisEintragen(Ergebnis e) {
-        
         e.punkteAnrechnen(wurf);
-        
+
     }
 
     /**
@@ -79,7 +82,7 @@ public class ComputerSpieler extends Spieler {
             }
             ;
         }
-        
+
         kiErgebnisEintragen(beste);
         // this.ergebnisTabelle.ergebnisEintragen(beste);
     }

@@ -9,7 +9,7 @@ import ergebnisse.*;
  * 
  */
 public abstract class Spieler {
-    
+    public int runde = 1;
     public String name;
     public Wurf wurf;
     protected ErgebnisTabelle ergebnisTabelle = new ErgebnisTabelle();

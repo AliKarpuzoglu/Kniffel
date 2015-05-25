@@ -18,7 +18,6 @@ public class Spiel {
      */
     private Spieler[] spieler;
     private GUI g = new GUI();
-    public int runde = 1;
 
     private static Spiel instance;
 
