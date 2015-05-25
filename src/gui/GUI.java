@@ -43,7 +43,7 @@ public class GUI {
      */
     public void printErgebnisspalte(Spieler[] spieler) {
 
-        System.out.format("|%20s|%3s|%3s|%3s|%3s|%3s|%3s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|\n",
+        System.out.format("|%20s|%4s|%4s|%4s|%4s|%4s|%4s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|\n",
                 "Spieler","1","2","3","4","5","6",
                 "Summe","Bonus","Dreier","Vierer",
                 "Quadrat","FullHouse", "Kleine",
@@ -51,7 +51,7 @@ public class GUI {
                 "Chance","Summe","Gesamt");
         for (int i = 0; i < spieler.length; i++)
             System.out
-                    .format("|%20s|%3s|%3s|%3s|%3s|%3s|%3s|%10d|%10d|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10d|%10d|\n",
+                    .format("|%20s|%4s|%4s|%4s|%4s|%4s|%4s|%10d|%10d|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10d|%10d|\n",
                             spieler[i].toString(), 
                             spieler[i].getErgebnisTabelle().getErgebnis()[0].toString(),
                             spieler[i].getErgebnisTabelle().getErgebnis()[1].toString(), 

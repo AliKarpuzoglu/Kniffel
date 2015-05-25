@@ -32,8 +32,8 @@ public class ComputerSpieler extends Spieler {
                 moeglich.add(e);
             }
         }
-        // wenn nix möglich ist, reroll die Hand
-        // TODO: überprüfen wann beobachtet wird, dass 5 mal gewürfelt wurde
+        // wenn nix mï¿½glich ist, reroll die Hand
+        // TODO: ï¿½berprï¿½fen wann beobachtet wird, dass 5 mal gewï¿½rfelt wurde
         if (moeglich.size() == 0) {
             if (Spiel.getInstance().runde == 5) {
                 ergebnisAuswaehlenHelper();
@@ -59,7 +59,7 @@ public class ComputerSpieler extends Spieler {
      * @return
      */
     private void ergebnisAuswaehlenHelper() {
-        int max = 0;
+        int max = -1;
         Ergebnis beste = null;
         for (Ergebnis e : ergebnisTabelle.getErgebnis()) {
             if (e.ueberpruefen(wurf)) {
