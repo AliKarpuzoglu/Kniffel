@@ -78,8 +78,8 @@ public abstract class Ergebnis {
                     gleicheZahlen = momentan;
                 }
             }
-            return gleicheZahlen;
         }
+        return gleicheZahlen;
 
     }
 
