@@ -51,9 +51,10 @@ public class ComputerSpieler extends Spieler {
     }
     
     
-    public void kiErgebnisEintragen(Ergebnis e){
+    private void kiErgebnisEintragen(Ergebnis e){
         e.punkteAnrechnen(wurf);
     }
+    
     
     /**
      * Last Step: In the end, choose the one with most value
@@ -61,7 +62,7 @@ public class ComputerSpieler extends Spieler {
      * @param wurf
      * @return
      */
-    public void optimiertesErgebnisAuswaehlen(Wurf wurf) {
+    private void optimiertesErgebnisAuswaehlen(Wurf wurf) {
         int max = 0;
         Ergebnis beste = null;;
         for (Ergebnis e : ergebnisTabelle.getErgebnis()) {

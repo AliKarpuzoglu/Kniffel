@@ -6,6 +6,7 @@ package ergebnisse;
 public class ErgebnisTabelle {
 
     /**
+     * TODO: output bonus
      * 
      */
     public ErgebnisTabelle() {
@@ -20,7 +21,6 @@ public class ErgebnisTabelle {
         ergebnisse[11] = new GrosseStrasse();
         ergebnisse[12] = new Kniffel();
         ergebnisse[13] = new Chance();
-            
 
     }
 
@@ -55,9 +55,12 @@ public class ErgebnisTabelle {
     public void tabelleAnzeigen() {
         // TODO implement here
     }
-    
+
     /**
-     * @return 
+     * TODO: gebe die tabelle aus: beachten!!!!! Bonus, summeoben, summeunten,
+     * summegesamt
+     * 
+     * @return
      * 
      */
     public String toString() {
@@ -65,31 +68,13 @@ public class ErgebnisTabelle {
         // TODO implement here
     }
 
-
-    /**
-     * 
-     */
-    public int getGesamtSumme() {
-//        int temp = 0;
-//        for(Ergebnis e: ergebnisse){
-//            temp+=e.getSumme();
-//        }
-//        if(getSummeOben()>=63){
-//            temp+=BONUS;
-//        }
-//        return temp;
-        int temp=getSummeOben()+getSummeUnten();
-        return getSummeOben()>=63? temp : temp+BONUS;
-    }
-
- 
     /**
      * 
      */
     public void ergebnisEintragen(Ergebnis ergebnis) {
-        for(Ergebnis e: ergebnisse){
-            if(e.getClass().equals(ergebnis.getClass())){
-                e=ergebnis;
+        for (Ergebnis e : ergebnisse) {
+            if (e.getClass().equals(ergebnis.getClass())) {
+                e = ergebnis;
             }
         }
     }
@@ -98,9 +83,9 @@ public class ErgebnisTabelle {
      * 
      */
     public int getSummeOben() {
-        int temp=0;
-        for(int i=0;i<6;i++){
-            temp+=ergebnisse[i].getSumme();
+        int temp = 0;
+        for (int i = 0; i < 6; i++) {
+            temp += ergebnisse[i].getSumme();
         }
         return temp;
     }
@@ -109,13 +94,26 @@ public class ErgebnisTabelle {
      * 
      */
     public int getSummeUnten() {
-        int temp=0;
-        for(int i=6;i<ergebnisse.length;i++){
-            temp+=ergebnisse[i].getSumme();
+        int temp = 0;
+        for (int i = 6; i < ergebnisse.length; i++) {
+            temp += ergebnisse[i].getSumme();
         }
-        return temp;    }
+        return temp;
+    }
     
-    public Ergebnis[] getErgebnis(){
+    public int getBonus(){
+        return getSummeOben()>=63 ? 0:25;
+    }
+
+    /**
+     * 
+     */
+    public int getGesamtSumme() {
+        int temp = getSummeOben() + getSummeUnten();
+        return getSummeOben() >= 63 ? temp : temp + BONUS;
+    }
+
+    public Ergebnis[] getErgebnis() {
         return ergebnisse;
     }
 
