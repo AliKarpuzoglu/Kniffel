@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import logic.MenschlicheSpieler;
+import logic.Spieler;
+
 public class GameListener extends JFrame implements ActionListener {
 	JButton button1;
 	JButton button2;
@@ -80,6 +83,7 @@ public class GameListener extends JFrame implements ActionListener {
 		} else if (bt.getSource() == this.button2) {
 			System.exit(0);
 		} else if (bt.getSource() == this.eingabe) {
+
 			System.exit(0);
 
 		}
