@@ -22,9 +22,9 @@ public class MenschlicheSpieler extends Spieler {
      * @param wurf 
      * @return
      */
-    public Ergebnis ergebnisAuswaehlen() {
+    public void ergebnisAuswaehlen() {
         // TODO implement here
-        return null;
+
     }
 
 }

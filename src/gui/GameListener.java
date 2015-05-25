@@ -9,6 +9,7 @@ import javax.swing.*;
 public class GameListener extends JFrame implements ActionListener {
 	JButton button1;
 	JButton button2;
+	JButton eingabe;
 	JLabel label;
 	JPanel panel;
 
@@ -21,9 +22,11 @@ public class GameListener extends JFrame implements ActionListener {
 
 		button1 = new JButton("Spielen");
 		button2 = new JButton("Beenden");
+		eingabe = new JButton("OK");
 
 		button1.addActionListener(this);
 		button2.addActionListener(this);
+		eingabe.addActionListener(this);
 
 		panel.add(new JLabel("Willkommen bei Kniffel!"));
 		panel.add(button1);
@@ -41,7 +44,7 @@ public class GameListener extends JFrame implements ActionListener {
 
 			JFrame spielerAnzahl = new JFrame();
 			spielerAnzahl.setTitle("Spieleranzahl");
-			spielerAnzahl.setSize(600, 100);
+			spielerAnzahl.setSize(550, 100);
 
 			JLabel spieler = new JLabel(
 					"Wieviele menschliche Spieler möchten mitspielen?");
@@ -68,12 +71,17 @@ public class GameListener extends JFrame implements ActionListener {
 			spielerPanel.add(auswahl4);
 			spielerPanel.add(auswahl5);
 			spielerPanel.add(auswahl6);
+			spielerPanel.add(eingabe);
+			spielerPanel.add(button2);
 
 			spielerAnzahl.add(spielerPanel);
 			spielerAnzahl.setVisible(true);
 
 		} else if (bt.getSource() == this.button2) {
 			System.exit(0);
+		} else if (bt.getSource() == this.eingabe) {
+			System.exit(0);
+
 		}
 
 	}

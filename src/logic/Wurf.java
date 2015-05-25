@@ -46,8 +46,8 @@ public class Wurf {
     @Override
     public String toString(){
         String temp = "";
-        for(Wuerfel w: alleWuerfel){
-            temp+=w.getAugenzahl();
+        for(int i = 0; i<alleWuerfel.length;i++){
+            temp= temp + "Wuerfel "+ (i+1)+" : " + alleWuerfel[i].toString() + " | ";
         }
         return temp;
     }
