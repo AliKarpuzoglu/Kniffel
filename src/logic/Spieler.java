@@ -36,13 +36,18 @@ public abstract class Spieler {
     public void wuerfelWeglegen(Wuerfel wuerfel) {
         wuerfel.beiseiteLegen();
     }
+    
+    public Wurf getWurf(){
+        return this.wurf;
+    }
 
 
+    public abstract void ergebnisAuswaehlen();
 
 
     @Override
     public String toString() {
-        return "Spieler:" + name;
+        return   name;
     }
     
     public ErgebnisTabelle getErgebnisTabelle(){

@@ -47,7 +47,7 @@ public class ErgebnisTabelle {
 				+ " | " + ergebnisse[5] + " | " + getSummeOben() + " | "
 				+ getBonus() + " | " + ergebnisse[6] + " | " + ergebnisse[7]
 				+ " | " + ergebnisse[8] + " | " + ergebnisse[9] + " | "
-				+ ergebnisse[10] + "" + ergebnisse[11] + " | " + ergebnisse[12]
+				+ ergebnisse[10] + " | " + ergebnisse[11] + " | " + ergebnisse[12]
 				+ " | " + ergebnisse[13] + " | " + getSummeUnten() + " | "
 				+ getGesamtSumme();
 		return ausgabe;
@@ -89,7 +89,7 @@ public class ErgebnisTabelle {
 	}
 
 	public int getBonus() {
-		return getSummeOben() >= 63 ? 0 : BONUS;
+		return getSummeOben() >= 63 ? BONUS : 0;
 	}
 
 	/**
@@ -97,18 +97,18 @@ public class ErgebnisTabelle {
      */
 	public int getGesamtSumme() {
 		int temp = getSummeOben() + getSummeUnten();
-		return getSummeOben() >= 63 ? temp : temp + BONUS;
+		return getSummeOben() >= 63 ? temp + BONUS : temp;
 	}
 
 	public Ergebnis[] getErgebnis() {
 		return ergebnisse;
 	}
-
+/*
 	public static void main(String[] args) {
 		ErgebnisTabelle e = new ErgebnisTabelle();
 		for (int i = 0; i < e.ergebnisse.length; i++) {
 			System.out.println(e.ergebnisse[i]);
 		}
 	}
-
+*/
 }
