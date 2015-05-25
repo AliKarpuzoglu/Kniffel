@@ -8,9 +8,9 @@ import ergebnisse.ErgebnisTabelle;
 public class ComputerSpieler extends Spieler {
 
 //    private Wurf computerWurf;
-
+    public static int playerCounter=1;
     public ComputerSpieler(String name, Wurf computerWurf) {
-        super("Computer Spieler", computerWurf);
+        super("Computer Spieler"+playerCounter++, computerWurf);
 
     }
 
@@ -41,22 +41,27 @@ public class ComputerSpieler extends Spieler {
                 moeglich.add(e);
             }
         }
-        if(Ergebnis.aufsteigendeZahlen(wurf)>=Ergebnis.gleicheZahlen(wurf)){
-           
+        //wenn nix möglich ist, reroll die Hand
+        // TODO: überprüfen wann beobachtet wird, dass 5 mal gewürfelt wurde
+        if(moeglich.size()==0){
         }
+        if
+
+
     }
     
     
     public void kiErgebnisEintragen(Ergebnis e){
-        
+        e.punkteAnrechnen(wurf);
     }
+    
     /**
      * Last Step: In the end, choose the one with most value
      * 
      * @param wurf
      * @return
      */
-    public Ergebnis optimiertesErgebnisAuswaehlen(Wurf wurf) {
+    public void optimiertesErgebnisAuswaehlen(Wurf wurf) {
         int max = 0;
         Ergebnis beste = null;;
         for (Ergebnis e : ergebnisTabelle.getErgebnis()) {
@@ -68,9 +73,15 @@ public class ComputerSpieler extends Spieler {
             }
         }
         if(beste==null){
-            //streiche ein ergebnis
+            //streiche ein ergebnis, fang von oben an und streiche das erste
+            for(Ergebnis e: ergebnisTabelle.getErgebnis()){
+                if(!e.isGestrichen()){
+                    e.streiche();
+                    return;
+                }
+            };
         }
-        return beste;
+        kiErgebnisEintragen( beste);
 //        this.ergebnisTabelle.ergebnisEintragen(beste);
     }
 
