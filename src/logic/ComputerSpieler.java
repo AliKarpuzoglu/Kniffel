@@ -41,13 +41,14 @@ public class ComputerSpieler extends Spieler {
                 return;
             }
             if (runde < 5) {
+                wurf.wuerfelWeglegen(wurf.getAlleWuerfel()[runde]);
                 wurf.wuerfeln();
                 runde++;
                 ergebnisAuswaehlen();
             }
         }
         ergebnisAuswaehlenHelper();
-        runde=1;
+        runde = 1;
     }
 
     private void kiErgebnisEintragen(Ergebnis e) {
@@ -81,9 +82,10 @@ public class ComputerSpieler extends Spieler {
                 }
             }
             ;
-        }
+        } else {
 
-        kiErgebnisEintragen(beste);
+            kiErgebnisEintragen(beste);
+        }
         // this.ergebnisTabelle.ergebnisEintragen(beste);
     }
 

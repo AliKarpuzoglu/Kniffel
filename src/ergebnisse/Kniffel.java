@@ -27,7 +27,6 @@ public class Kniffel extends Ergebnis {
         } else {
             return 0;
         }    }
-
-  
+ 
 
 }
