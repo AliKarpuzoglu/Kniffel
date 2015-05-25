@@ -11,7 +11,7 @@ public class ErgebnisTabelle {
 	 */
 	public ErgebnisTabelle() {
 		for (int i = 0; i < 6; i++) {
-			ergebnisse[i] = new SummeOben(i);
+			ergebnisse[i] = new SummeOben(i+1);
 		}
 		ergebnisse[6] = new Dreierpasch();
 		ergebnisse[7] = new Viererpasch();

@@ -46,17 +46,16 @@ public abstract class Ergebnis {
         int gleicheZahlen = 1;
         Wuerfel[] temp = wurf.getAlleWuerfel();// CHECK IF THIS IS
                                                // OKAYY!!!!!!!!!!!!!!!!!!!
-        for (int i = 1; i < temp.length; i++) {
-            int momentan = 1;
-            while (i < temp.length
-                    && temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()) {
-                momentan++;
-                i++;
-            }
-            if (gleicheZahlen < momentan) {
-                gleicheZahlen = momentan;
-            }
+        int momentan = 1;
+        int i = 1;
+        while (i < temp.length && temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()) {
+            momentan++;
+            i++;
         }
+        if (gleicheZahlen < momentan) {
+            gleicheZahlen = momentan;
+        }
+
         return gleicheZahlen;
 
     }
@@ -65,22 +64,22 @@ public abstract class Ergebnis {
         int gleicheZahlen = 1;
         Wuerfel[] temp = wurf.getAlleWuerfel();// CHECK IF THIS IS
                                                // OKAYY!!!!!!!!!!!!!!!!!!!
-        //for (int i = 1; i < temp.length; i++) {
+        // for (int i = 1; i < temp.length; i++) {
         int i = 1;
-            int momentan = 1;
-            while (i < temp.length) {
-                if (temp[i - 1].getAugenzahl() + 1 == temp[i].getAugenzahl()) {
-                    momentan++;
-                    
-                } else if (temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()) {
-                    
-                }
-                if (gleicheZahlen < momentan) {
-                    gleicheZahlen = momentan;
-                }
-                i++;
+        int momentan = 1;
+        while (i < temp.length) {
+            if (temp[i - 1].getAugenzahl() + 1 == temp[i].getAugenzahl()) {
+                momentan++;
+
+            } else if (temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()) {
+
             }
-        //}
+            if (gleicheZahlen < momentan) {
+                gleicheZahlen = momentan;
+            }
+            i++;
+        }
+        // }
         return gleicheZahlen;
 
     }

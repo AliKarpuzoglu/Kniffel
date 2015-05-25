@@ -18,6 +18,7 @@ public class Spiel {
      */
     private Spieler[] spieler;
     private GUI g = new GUI();
+    private int runde = 1;
 
     private static Spiel instance;
 
@@ -117,8 +118,11 @@ public class Spiel {
                 spieler[y].getWurf().wuerfeln();
                 g.printAmZugDialog(spieler,y);               
                 spieler[y].ergebnisAuswaehlen();
+               
             }
+            runde ++;
         }
+        System.out.println("Runde: "+ runde);
     }
 
     public Spieler[] getSpieler() {

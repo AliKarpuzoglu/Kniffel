@@ -17,10 +17,10 @@ public class ComputerSpieler extends Spieler {
 
     /**
      * 1. Finde noch ben�tigte 2. Finde bisher m�gliche 3. Schaue nach
-     * Stra�e/Pasch 4. Schaue nach Quadratfolge 5. Schaue nach Punkten
-     * m�glich oben-momentane, ob man noch gut bei 63 landen kann 6. W�hle
-     * das Ergebnis mit meisten Punkten (statt Kniffel zuerst die oben) 7.
-     * Streiche eventuell ein ergebnis (Quadratfolge/Einer/Zweier...)
+     * Stra�e/Pasch 4. Schaue nach Quadratfolge 5. Schaue nach Punkten m�glich
+     * oben-momentane, ob man noch gut bei 63 landen kann 6. W�hle das Ergebnis
+     * mit meisten Punkten (statt Kniffel zuerst die oben) 7. Streiche eventuell
+     * ein ergebnis (Quadratfolge/Einer/Zweier...)
      * 
      */
     public void ergebnisAuswaehlen() {
@@ -47,7 +47,7 @@ public class ComputerSpieler extends Spieler {
             }
         }
         ergebnisAuswaehlenHelper();
-        runde=1;
+        runde = 1;
     }
 
     private void kiErgebnisEintragen(Ergebnis e) {
@@ -80,11 +80,12 @@ public class ComputerSpieler extends Spieler {
                     return;
                 }
             }
-            ;
-        }
 
-        kiErgebnisEintragen(beste);
-        // this.ergebnisTabelle.ergebnisEintragen(beste);
+        } else {
+
+            kiErgebnisEintragen(beste);
+            // this.ergebnisTabelle.ergebnisEintragen(beste);
+        }
     }
 
 }
