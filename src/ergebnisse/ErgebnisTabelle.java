@@ -57,13 +57,19 @@ public class ErgebnisTabelle {
      * 
      */
 
-	public void ergebnisEintragen(Ergebnis ergebnis) {
-		for (Ergebnis e : ergebnisse) {
-			if (e.getClass().equals(ergebnis.getClass())) {
-				e = ergebnis;
-			}
-		}
-	}
+//	public void ergebnisEintragen(Ergebnis ergebnis) {
+//		for (Ergebnis e : ergebnisse) {
+//			if (e.getClass().equals(ergebnis.getClass())) {
+//			    if(e.getClass()==SummeOben.class){
+//			        if(((SummeOben)e).wert==((SummeOben)ergebnis).wert){
+//			            e=ergebnis;
+//			        }
+//			        
+//			    }
+//				e = ergebnis;
+//			}
+//		}
+//	}
 
 
 	/**

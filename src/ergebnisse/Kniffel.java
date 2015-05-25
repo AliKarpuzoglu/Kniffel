@@ -17,10 +17,6 @@ public class Kniffel extends Ergebnis {
 
     @Override
     public boolean ueberpruefen(Wurf wurf) {
-        System.out.println("Kniffel"+((gleicheZahlen(wurf) == 5) &&(!gestrichen)&&(summe==0)));
-        System.out.println(gleicheZahlen(wurf) == 5);
-        System.out.println(!gestrichen);
-        System.out.println(summe==0);
         return (gleicheZahlen(wurf) == 5) &&(!gestrichen)&&(summe==0);
         
     }
