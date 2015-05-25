@@ -12,7 +12,7 @@ public abstract class Spieler {
     
     public String name;
     public Wurf wurf;
-    private ErgebnisTabelle ergebnisTabelle = new ErgebnisTabelle();
+    protected ErgebnisTabelle ergebnisTabelle = new ErgebnisTabelle();
     
 
     public Spieler(String name, Wurf wurf) {

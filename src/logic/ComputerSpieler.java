@@ -3,7 +3,7 @@ package logic;
 import java.util.*;
 
 import ergebnisse.Ergebnis;
-import ergebnisse.ErgebnisTabelle;
+import ergebnisse.Ergebnis.*;
 
 public class ComputerSpieler extends Spieler {
 
@@ -35,7 +35,7 @@ public class ComputerSpieler extends Spieler {
         // wenn nix möglich ist, reroll die Hand
         // TODO: überprüfen wann beobachtet wird, dass 5 mal gewürfelt wurde
         if (moeglich.size() == 0) {
-            if (Spiel.runde == 5) {
+            if (Spiel.getInstance().runde == 5) {
                 ergebnisAuswaehlenHelper();
                 return;
             }
@@ -47,7 +47,9 @@ public class ComputerSpieler extends Spieler {
     }
 
     private void kiErgebnisEintragen(Ergebnis e) {
+        
         e.punkteAnrechnen(wurf);
+        
     }
 
     /**
