@@ -13,6 +13,7 @@ public abstract class Spieler {
     public String name;
     public Wurf wurf;
     ErgebnisTabelle ergebnisTabelle = new ErgebnisTabelle();
+    
 
     public Spieler(String name, Wurf wurf) {
         this.name=name;

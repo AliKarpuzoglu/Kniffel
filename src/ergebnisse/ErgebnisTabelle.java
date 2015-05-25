@@ -10,8 +10,8 @@ public class ErgebnisTabelle {
      * 
      */
     public ErgebnisTabelle() {
-        for (int i = 1; i <= 6; i++) {
-            ergebnisse[i - 1] = new SummeOben(i);
+        for (int i = 0; i < 6; i++) {
+            ergebnisse[i] = new SummeOben(i);
         }
         ergebnisse[6] = new Dreierpasch();
         ergebnisse[7] = new Viererpasch();
@@ -34,20 +34,7 @@ public class ErgebnisTabelle {
      */
     private final int BONUS = 35;
 
-    /**
-     * 
-     */
-    private int summeOben;
 
-    /**
-     * 
-     */
-    private int summeUnten;
-
-    /**
-     * 
-     */
-    private int summeGesamt;
 
     /**
      * toString()
@@ -64,8 +51,7 @@ public class ErgebnisTabelle {
      * 
      */
     public String toString() {
-        return null;
-        // TODO implement here
+        return "null";
     }
 
     /**
@@ -102,7 +88,7 @@ public class ErgebnisTabelle {
     }
     
     public int getBonus(){
-        return getSummeOben()>=63 ? 0:25;
+        return getSummeOben()>=63 ? 0:BONUS;
     }
 
     /**
@@ -116,5 +102,12 @@ public class ErgebnisTabelle {
     public Ergebnis[] getErgebnis() {
         return ergebnisse;
     }
+    public static void main(String[] args) {
+        ErgebnisTabelle e = new ErgebnisTabelle();
+        for(int i = 0;i<e.ergebnisse.length;i++){
+            System.out.println(e.ergebnisse[i]);
+        }
+    }
+    
 
 }
