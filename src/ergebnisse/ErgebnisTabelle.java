@@ -35,13 +35,6 @@ public class ErgebnisTabelle {
 	private final int BONUS = 35;
 
 	/**
-	 * toString()
-	 */
-	public void tabelleAnzeigen() {
-
-	}
-
-	/**
 	 * TODO: gebe die tabelle aus: beachten!!!!! Bonus, summeoben, summeunten,
 	 * summegesamt
 	 * 
