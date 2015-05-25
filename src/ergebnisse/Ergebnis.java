@@ -46,6 +46,7 @@ public abstract class Ergebnis {
         int gleicheZahlen = 1;
         Wuerfel[] temp = wurf.getAlleWuerfel();// CHECK IF THIS IS
                                                // OKAYY!!!!!!!!!!!!!!!!!!!
+
         int momentan = 1;
         int i = 1;
         while (i < temp.length && temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()) {
@@ -55,6 +56,7 @@ public abstract class Ergebnis {
         if (gleicheZahlen < momentan) {
             gleicheZahlen = momentan;
         }
+
 
         return gleicheZahlen;
 
