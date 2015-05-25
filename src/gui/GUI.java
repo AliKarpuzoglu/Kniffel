@@ -71,18 +71,13 @@ public class GUI {
 	 * @param spieler
 	 */
 	public void printErgebnisspalte(Spieler spieler) {
+
+		ErgebnisTabelle spielerTabelle = new ErgebnisTabelle();
 		System.out
 				.println("|   Spieler    | 1 | 2 | 3 | 4 | 5 | 6 |Summe|Bonus|Dreier|Vierer|Quadrat|FullHouse|KleineStrasse|"
 						+ "|GrosseStrasse|Kniffel|Chance|Summe|Gesamt");
 
-		System.out.println("| " + spieler + " | " + ergebnisse[0] + " | "
-				+ ergebnisse[1] + " | " + ergebnisse[2] + " | " + ergebnisse[3]
-				+ " | " + ergebnisse[4] + " | " + ergebnisse[5] + " | "
-				+ getSummeOben() + " | " + getBonus() + " | " + ergebnisse[6]
-				+ " | " + ergebnisse[7] + " | " + ergebnisse[8] + " | "
-				+ ergebnisse[9] + " | " + ergebnisse[10] + "" + ergebnisse[11]
-				+ " | " + ergebnisse[12] + " | " + ergebnisse[13] + " | "
-				+ getSummeUnten() + " | " + getGesamtSumme());
+		System.out.println("| " + spieler.toString() + " " + spielerTabelle.toString());
 
 	}
 }
