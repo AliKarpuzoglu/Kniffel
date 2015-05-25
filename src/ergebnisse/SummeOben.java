@@ -36,6 +36,9 @@ public class SummeOben extends Ergebnis {
      */
     @Override
     public boolean ueberpruefen(Wurf wurf) {
+        if(gestrichen){
+            return false;
+        }
         for(Wuerfel w : wurf.getAlleWuerfel()){
             if(w.getAugenzahl()==wert){
                 return true;

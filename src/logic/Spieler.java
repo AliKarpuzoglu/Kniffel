@@ -12,7 +12,7 @@ public abstract class Spieler {
     
     public String name;
     public Wurf wurf;
-    ErgebnisTabelle ergebnisTabelle = new ErgebnisTabelle();
+    private ErgebnisTabelle ergebnisTabelle = new ErgebnisTabelle();
     
 
     public Spieler(String name, Wurf wurf) {
@@ -45,5 +45,7 @@ public abstract class Spieler {
         return "Spieler:" + name;
     }
     
-
+    public ErgebnisTabelle getErgebnisTabelle(){
+        return ergebnisTabelle;
+    }
 }

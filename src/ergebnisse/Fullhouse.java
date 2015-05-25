@@ -19,13 +19,11 @@ public class Fullhouse extends Ergebnis {
     @Override
     public boolean ueberpruefen(Wurf wurf) {
         Wuerfel[] temp = wurf.getAlleWuerfel();
-        return gleicheZahlen(wurf) ==3&& (( 
-                temp[0].equals(temp[1]) && 
-                temp[0].equals(temp[2]) &&
-                temp [3].equals(temp[4]) || 
-                temp[0].equals(temp[1])) &&  
-                temp[2].equals(temp[3])&&
-                temp[2].equals(temp[4]));
+        return gleicheZahlen(wurf) ==3&&!gestrichen
+                && 
+                ((temp[0].equals(temp[1]) &&(temp[0].equals(temp[2])) && (temp [3].equals(temp[4]))) 
+                        || 
+                ((temp[0].equals(temp[1])) &&(temp[2].equals(temp[3])) && (temp[2].equals(temp[4]))));
     }
 
     @Override

@@ -56,6 +56,7 @@ public class ErgebnisTabelle {
 	/**
      * 
      */
+
 	public void ergebnisEintragen(Ergebnis ergebnis) {
 		for (Ergebnis e : ergebnisse) {
 			if (e.getClass().equals(ergebnis.getClass())) {
@@ -63,6 +64,7 @@ public class ErgebnisTabelle {
 			}
 		}
 	}
+
 
 	/**
      * 

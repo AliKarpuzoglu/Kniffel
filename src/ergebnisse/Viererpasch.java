@@ -18,7 +18,7 @@ public class Viererpasch extends Ergebnis {
 
     @Override
     public boolean ueberpruefen(Wurf wurf) {
-        return super.gleicheZahlen(wurf) >= 4;
+        return super.gleicheZahlen(wurf) >= 4&&!gestrichen;
     }
 
     @Override
