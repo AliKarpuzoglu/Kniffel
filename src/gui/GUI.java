@@ -2,7 +2,7 @@ package gui;
 
 import java.util.Scanner;
 
-import ergebnisse.ErgebnisTabelle;
+import ergebnisse.*;
 import logic.ComputerSpieler;
 import logic.MenschlicheSpieler;
 import logic.Spiel;
@@ -10,6 +10,7 @@ import logic.Spieler;
 import logic.Wurf;
 
 public class GUI {
+    
     Spieler[] spieler = new Spieler[6];
     int i = 0, r = 0;
 
@@ -79,13 +80,10 @@ public class GUI {
         System.out
                 .println("|   Spieler    | 1 | 2 | 3 | 4 | 5 | 6 |Summe|Bonus|Dreier|Vierer|Quadrat|FullHouse|KleineStrasse|"
                         + "|GrosseStrasse|Kniffel|Chance|Summe|Gesamt");
-        for (Spieler s : Spiel.getSpieler())
+        for (Spieler s : Spiel.getInstance().getSpieler())
             System.out.println("| " + s.toString() + " "
                     + s.getErgebnisTabelle().toString());
 
     }
-    public static void main(String[] args) {
-        GUI g = new GUI();
-        g.printErgebnisspalte();
-    }
+    
 }

@@ -12,17 +12,25 @@ public class Spiel {
     /**
      * 
      */
-    public Spiel() {
-    }
-
+   
     /**
      * 
      */
-    private static Spieler[] spieler;
+    private Spieler[] spieler;
     private GUI g = new GUI();
-    public static int runde = 1;
+    public int runde = 1;
 
+    private static Spiel instance;
+    // Verhindere die Erzeugung des Objektes über andere Methoden
+    private Spiel () {}
 
+    public static Spiel getInstance () {
+      if (Spiel.instance == null) {
+        Spiel.instance = new Spiel ();
+      }
+      return Spiel.instance;
+    }
+  
 
     /**
      * 
@@ -91,13 +99,9 @@ public class Spiel {
        g.printWelcome();
        erstelleSpieler();
     }
-    
-    public static void main(String[] a){
-        Spiel s = new Spiel();
-        s.spielen();
-    }
+   
 
-    public static Spieler[] getSpieler() {
+    public Spieler[] getSpieler() {
         return spieler;
     }
 
