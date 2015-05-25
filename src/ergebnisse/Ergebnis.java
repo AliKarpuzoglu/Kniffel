@@ -7,22 +7,10 @@ import logic.Wurf;
  * 
  */
 public abstract class Ergebnis {
-
-    /**
-     * 
-     */
+    
     protected String name;
-
-    /**
-     * 
-     */
     protected int summe;
-
-    /**
-     * 
-     */
     protected boolean oben;
-
     protected boolean gestrichen;
 
     public int getSumme() {
@@ -35,6 +23,9 @@ public abstract class Ergebnis {
 
     public boolean isGestrichen() {
         return gestrichen;
+    }
+    public void streiche(){
+        this.gestrichen=true;
     }
 
     /**
@@ -88,5 +79,7 @@ public abstract class Ergebnis {
         return gleicheZahlen;
 
     }
+
+
 
 }

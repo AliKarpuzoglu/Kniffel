@@ -75,7 +75,7 @@ public class ComputerSpieler extends Spieler {
         if(beste==null){
             //streiche ein ergebnis, fang von oben an und streiche das erste
             for(Ergebnis e: ergebnisTabelle.getErgebnis()){
-                if(!e.isGestrichen()){
+                if(!e.isGestrichen()&&e.getSumme()==0){
                     e.streiche();
                     return;
                 }
