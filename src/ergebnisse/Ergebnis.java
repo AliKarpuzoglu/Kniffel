@@ -8,7 +8,6 @@ import logic.Wurf;
  */
 public abstract class Ergebnis {
     
-    protected String name;
     protected int summe = 0;
     protected boolean oben;
     protected boolean gestrichen;
@@ -67,9 +66,12 @@ public abstract class Ergebnis {
                                                // OKAYY!!!!!!!!!!!!!!!!!!!
         for (int i = 1; i < temp.length; i++) {
             int momentan = 1;
-            while (i < temp.length
-                    && temp[i - 1].getAugenzahl() + 1 == temp[i].getAugenzahl()) {
+            while (i < temp.length) {
+                if(temp[i - 1].getAugenzahl() + 1 == temp[i].getAugenzahl())
                 momentan++;
+                i++;
+            }
+            if(temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()){
                 i++;
             }
             if (gleicheZahlen < momentan) {
@@ -89,6 +91,5 @@ public abstract class Ergebnis {
     }
 
     
-
 
 }

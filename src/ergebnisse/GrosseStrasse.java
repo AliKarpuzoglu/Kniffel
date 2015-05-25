@@ -18,7 +18,7 @@ public class GrosseStrasse extends Ergebnis {
 
     @Override
     public boolean ueberpruefen(Wurf wurf) {
-        return aufsteigendeZahlen(wurf) == 5 &&!gestrichen;
+        return aufsteigendeZahlen(wurf) == 5 &&!gestrichen&&summe==0;
     }
 
     @Override

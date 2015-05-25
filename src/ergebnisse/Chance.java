@@ -7,7 +7,7 @@ public class Chance extends Ergebnis {
 
     @Override
     public boolean ueberpruefen(Wurf wurf) {
-        return !gestrichen;
+        return !gestrichen&&summe==0;
     }
 
     @Override
