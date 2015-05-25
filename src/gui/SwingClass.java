@@ -1,21 +1,24 @@
 package gui;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 import logic.Spieler;
 import logic.Wurf;
 
 public class SwingClass {
+	JFrame spielerNamen = new JFrame("Spieler");
+	JPanel panel = new JPanel();
+	JButton spielenButton = new JButton("Spielen");
+	JButton abbruch = new JButton("Abbrechen");
+
 	public void printReihenfolge(Spieler[] spieler) {
 
-		JFrame spielerNamen = new JFrame("Spieler");
-
-		spielerNamen.setSize(400, 200);
-
 		for (int i = 0; i < spieler.length; i++) {
-			spielerNamen.add(new JLabel(" " + spieler[i]));
+			panel.add(new JLabel(" " + spieler[i]));
 		}
+		panel.add(spielenButton);
+		panel.add(abbruch);
+		spielerNamen.pack();
 
 		spielerNamen.setVisible(true);
 
@@ -34,6 +37,14 @@ public class SwingClass {
 	}
 
 	public void printWelcome() {
+
+		JFrame willkommen = new JFrame("Willkommen zu Kniffel!");
+
+		willkommen.setSize(500, 500);
+		willkommen
+				.add(new JLabel(
+						"Die Gruppe um Jonas Jaeckel wuenscht ihnen ein erfreuliches Spiel"));
+		willkommen.setVisible(true);
 
 	}
 
