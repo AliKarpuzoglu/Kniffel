@@ -42,15 +42,24 @@ public class Spiel {
             Scanner in = new Scanner(System.in);
 
             g.printSpielerdialog();
-            int mSpieler = in.nextInt();
-
+            
+            int mSpieler;
+            try{
+            mSpieler = in.nextInt();
+            }catch(Exception e){
+                mSpieler = 0;
+            }
             if (mSpieler > 6) {
                 break;
             }
 
             g.printComputerSpielerDialog(6 - mSpieler);
-            int cSpieler = in.nextInt();
-
+            int cSpieler;
+            try{
+            cSpieler = in.nextInt();
+            }catch(Exception e){
+                cSpieler = 0;
+            }
             if ((mSpieler + cSpieler) > 6) {
                 break;
             }
