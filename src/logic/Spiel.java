@@ -18,7 +18,7 @@ public class Spiel {
     /**
      * 
      */
-    private Spieler[] spieler;
+    private static Spieler[] spieler;
     private GUI g = new GUI();
     public static int runde = 1;
 
@@ -46,21 +46,21 @@ public class Spiel {
                 break;
             }
             
-            this.spieler = new Spieler[mSpieler+cSpieler];
+            this.setSpieler(new Spieler[mSpieler+cSpieler]);
             
             for(int x = 0; x < mSpieler; x++){
                 g.printmSpielerNamen();
                 String name = in.next();
-                this.spieler[x] = new MenschlicheSpieler(name);
+                this.getSpieler()[x] = new MenschlicheSpieler(name);
             }
             
             for(int y = mSpieler; y < cSpieler; y++){
-                this.spieler[y] = new ComputerSpieler("Computer"+(y-mSpieler+1));
+                this.getSpieler()[y] = new ComputerSpieler("Computer"+(y-mSpieler+1));
             }
             
             wuerfelReihenfolgeAus();
             
-            g.printReihenfolge(spieler);
+            g.printReihenfolge(getSpieler());
             flag = false;
             
             
@@ -71,14 +71,14 @@ public class Spiel {
      * 
      */
     public void wuerfelReihenfolgeAus() {
-        int n = this.spieler.length;
-        for (int i = 0; i < this.spieler.length; i++) {
+        int n = this.getSpieler().length;
+        for (int i = 0; i < this.getSpieler().length; i++) {
             // Get a random index of the array past i.
             int random = i + (int) (Math.random() * (n - i));
             // Swap the random element with the present element.
-            Spieler randomElement = this.spieler[random];
-            this.spieler[random] = this.spieler[i];
-            this.spieler[i] = randomElement;
+            Spieler randomElement = this.getSpieler()[random];
+            this.getSpieler()[random] = this.getSpieler()[i];
+            this.getSpieler()[i] = randomElement;
         }
         
             
@@ -96,5 +96,10 @@ public class Spiel {
         Spiel s = new Spiel();
         s.spielen();
     }
+
+    public static Spieler[] getSpieler() {
+        return spieler;
+    }
+
 
 }
