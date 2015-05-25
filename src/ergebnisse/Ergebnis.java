@@ -9,7 +9,7 @@ import logic.Wurf;
 public abstract class Ergebnis {
     
     protected String name;
-    protected int summe;
+    protected int summe=0;
     protected boolean oben;
     protected boolean gestrichen;
 
@@ -79,7 +79,6 @@ public abstract class Ergebnis {
         return gleicheZahlen;
 
     }
-
 
 
 }
