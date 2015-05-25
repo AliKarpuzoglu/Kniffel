@@ -1,7 +1,7 @@
 package gui;
 
 import java.util.Scanner;
-
+import ergebnisse.ErgebnisTabelle;
 import logic.Spieler;
 import logic.Wurf;
 
@@ -71,20 +71,18 @@ public class GUI {
 	 * @param spieler
 	 */
 	public void printErgebnisspalte(Spieler spieler) {
+		System.out
+				.println("|   Spieler    | 1 | 2 | 3 | 4 | 5 | 6 |Summe|Bonus|Dreier|Vierer|Quadrat|FullHouse|KleineStrasse|"
+						+ "|GrosseStrasse|Kniffel|Chance|Summe|Gesamt");
 
-		for (int u = 0;; u++) {
-			System.out.println("| " + spieler + " | " + EINER.getSumme + " | "
-					+ ZWEIER.getSumme + " | " + DREIER.getSumme + " | "
-					+ VIERER.getSumme + " | " + FÜNFER.getSumme + " | "
-					+ SECHSER.getSumme + " | " + summeOben() + " | "
-					+ BONUS.getSumme() + " | " + DREIERPASCH.getSumme + " | "
-					+ VIERERPASCH.getSumme + " | " + QUADRATFOLGE.getSummer
-					+ " | " + DREIER.getSumme + " | " + VIERER.getSumme + ""
-					+ FULLHOUSE.getSummme + " | " + KLEINESTRASSE.getSumme
-					+ " | " + GROSSESTRASSE.getSumme + " | " + VIERER.getSumme
-					+ " | " + KNIFFEL.getSumme + " | " + CHANCE.getSumme
-					+ " | " + summeUnten() + " | " + getGesamtSumme());
-		}
+		System.out.println("| " + spieler + " | " + ergebnisse[0] + " | "
+				+ ergebnisse[1] + " | " + ergebnisse[2] + " | " + ergebnisse[3]
+				+ " | " + ergebnisse[4] + " | " + ergebnisse[5] + " | "
+				+ getSummeOben() + " | " + getBonus() + " | " + ergebnisse[6]
+				+ " | " + ergebnisse[7] + " | " + ergebnisse[8] + " | "
+				+ ergebnisse[9] + " | " + ergebnisse[10] + "" + ergebnisse[11]
+				+ " | " + ergebnisse[12] + " | " + ergebnisse[13] + " | "
+				+ getSummeUnten() + " | " + getGesamtSumme());
+
 	}
-
 }
