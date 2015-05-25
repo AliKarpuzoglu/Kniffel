@@ -113,7 +113,7 @@ public class Spiel {
     public void spielen() {
         g.printWelcome();
         erstelleSpieler();
-        for(int i = 0; i <13; i++){
+        for(int i = 0; i <14; i++){
             for(int y = 0; y < spieler.length; y++){
                 spieler[y].getWurf().wuerfeln();
                 g.printAmZugDialog(spieler,y);               
@@ -122,7 +122,8 @@ public class Spiel {
             }
             runde ++;
         }
-        System.out.println("Runde: "+ runde);
+        g.printErgebnisspalte(spieler);
+        System.out.println("Runde: "+ (runde-1));
     }
 
     public Spieler[] getSpieler() {
