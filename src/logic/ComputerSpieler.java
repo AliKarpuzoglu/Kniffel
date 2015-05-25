@@ -4,7 +4,7 @@ import java.util.*;
 
 import ergebnisse.Ergebnis;
 import ergebnisse.Ergebnis.*;
-
+    
 public class ComputerSpieler extends Spieler {
 
     // private Wurf computerWurf;
@@ -79,6 +79,7 @@ public class ComputerSpieler extends Spieler {
             }
             ;
         }
+        
         kiErgebnisEintragen(beste);
         // this.ergebnisTabelle.ergebnisEintragen(beste);
     }

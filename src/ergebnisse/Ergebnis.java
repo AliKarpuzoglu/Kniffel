@@ -7,7 +7,7 @@ import logic.Wurf;
  * 
  */
 public abstract class Ergebnis {
-    
+
     protected int summe = 0;
     protected boolean oben;
     protected boolean gestrichen;
@@ -23,8 +23,9 @@ public abstract class Ergebnis {
     public boolean isGestrichen() {
         return gestrichen;
     }
-    public void streiche(){
-        this.gestrichen=true;
+
+    public void streiche() {
+        this.gestrichen = true;
     }
 
     /**
@@ -67,29 +68,27 @@ public abstract class Ergebnis {
         for (int i = 1; i < temp.length; i++) {
             int momentan = 1;
             while (i < temp.length) {
-                if(temp[i - 1].getAugenzahl() + 1 == temp[i].getAugenzahl())
-                momentan++;
-                i++;
+                if (temp[i - 1].getAugenzahl() + 1 == temp[i].getAugenzahl()) {
+                    momentan++;
+                    i++;
+                } else if (temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()) {
+                    i++;
+                }
+                if (gleicheZahlen < momentan) {
+                    gleicheZahlen = momentan;
+                }
             }
-            if(temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()){
-                i++;
-            }
-            if (gleicheZahlen < momentan) {
-                gleicheZahlen = momentan;
-            }
+            return gleicheZahlen;
         }
-        return gleicheZahlen;
 
     }
 
     @Override
     public String toString() {
-        if(isGestrichen()){
+        if (isGestrichen()) {
             return "null";
         }
-        return ""+ summe;
+        return "" + summe;
     }
-
-    
 
 }
