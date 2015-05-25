@@ -17,7 +17,7 @@ public class Kniffel extends Ergebnis {
 
     @Override
     public boolean ueberpruefen(Wurf wurf) {
-        return gleicheZahlen(wurf) == 5 &&!gestrichen;
+        return gleicheZahlen(wurf) == 5 &&!gestrichen&&summe==0;
     }
 
     @Override

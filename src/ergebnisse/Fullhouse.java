@@ -23,7 +23,7 @@ public class Fullhouse extends Ergebnis {
                 && 
                 ((temp[0].equals(temp[1]) &&(temp[0].equals(temp[2])) && (temp [3].equals(temp[4]))) 
                         || 
-                ((temp[0].equals(temp[1])) &&(temp[2].equals(temp[3])) && (temp[2].equals(temp[4]))));
+                ((temp[0].equals(temp[1])) &&(temp[2].equals(temp[3])) && (temp[2].equals(temp[4]))))&&summe==0;
     }
 
     @Override

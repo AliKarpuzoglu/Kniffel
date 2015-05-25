@@ -8,8 +8,6 @@ import logic.Wurf;
  */
 public abstract class Ergebnis {
     
-    protected String name;
-
     protected int summe = 0;
     protected boolean oben;
     protected boolean gestrichen;

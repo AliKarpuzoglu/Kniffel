@@ -18,7 +18,7 @@ public class Quadratfolge extends Ergebnis {
         Ergebnis einser = new SummeOben(1);
         Ergebnis zweier = new SummeOben(2);
         Ergebnis vierer = new SummeOben(4);
-        return einser.ueberpruefen(wurf)&&zweier.ueberpruefen(wurf)&&vierer.ueberpruefen(wurf)&!gestrichen;
+        return einser.ueberpruefen(wurf)&&zweier.ueberpruefen(wurf)&&vierer.ueberpruefen(wurf)&!gestrichen&&summe==0;
     }
 
     @Override

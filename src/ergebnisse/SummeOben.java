@@ -36,7 +36,7 @@ public class SummeOben extends Ergebnis {
      */
     @Override
     public boolean ueberpruefen(Wurf wurf) {
-        if(gestrichen){
+        if(gestrichen||summe!=0){
             return false;
         }
         for(Wuerfel w : wurf.getAlleWuerfel()){
