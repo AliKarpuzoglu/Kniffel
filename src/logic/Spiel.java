@@ -20,7 +20,7 @@ public class Spiel {
      */
     private Spieler[] spieler;
     private GUI g = new GUI();
-
+    public static int runde = 1;
 
 
 

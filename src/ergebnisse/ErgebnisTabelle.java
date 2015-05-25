@@ -51,7 +51,7 @@ public class ErgebnisTabelle {
      * 
      */
     public String toString() {
-        return "null";
+       return null;
     }
 
     /**
