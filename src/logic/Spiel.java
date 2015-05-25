@@ -106,8 +106,8 @@ public class Spiel {
         erstelleSpieler();
         for(int i = 0; i <13; i++){
             for(int y = 0; y < spieler.length; y++){
-                g.printAmZugDialog(spieler,y);
-                
+                spieler[y].getWurf().wuerfeln();
+                g.printAmZugDialog(spieler,y);               
                 spieler[y].ergebnisAuswaehlen();
             }
         }
