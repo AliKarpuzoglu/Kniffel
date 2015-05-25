@@ -82,7 +82,7 @@ public class Wuerfel implements Comparable<Wuerfel>{
 
     @Override
     public String toString() {
-        return "Wuerfel [augenzahl=" + augenzahl + "]";
+        return ""+ this.augenzahl;
     }
     
     
