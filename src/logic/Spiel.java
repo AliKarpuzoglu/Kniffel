@@ -113,11 +113,11 @@ public class Spiel {
     public void spielen() {
         g.printWelcome();
         erstelleSpieler();
-        for(int i = 0; i <14; i++){
+        for(int i = 0; i <13; i++){
             for(int y = 0; y < spieler.length; y++){
                 spieler[y].getWurf().wuerfeln();
                 g.printAmZugDialog(spieler,y);               
-                spieler[y].ergebnisAuswaehlen();
+                spieler[y].ergebnisAuswaehlenHelper1();
                
             }
             rundeSpiel ++;

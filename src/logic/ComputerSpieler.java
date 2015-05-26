@@ -15,6 +15,16 @@ public class ComputerSpieler extends Spieler {
 
     }
 
+    
+    public void ergebnisAuswaehlen(){
+        runde=1;
+        for (Wuerfel w : wurf.getAlleWuerfel()) {
+            w.wiederReinholen();
+        }
+        ergebnisAuswaehlenHelper1();
+      
+        runde=1;
+    }
     /**
      * 1. Finde noch benï¿½tigte 2. Finde bisher mï¿½gliche 3. Schaue nach
      * Straï¿½e/Pasch 4. Schaue nach Quadratfolge 5. Schaue nach Punkten
@@ -23,16 +33,25 @@ public class ComputerSpieler extends Spieler {
      * Streiche eventuell ein ergebnis (Quadratfolge/Einer/Zweier...)
      * 
      */
-    public void ergebnisAuswaehlen() {
+    public void ergebnisAuswaehlenHelper1() {
+        if(alleWuerfelBeiseite()){
+            ergebnisAuswaehlenHelper();
+//            for (Wuerfel w : wurf.getAlleWuerfel()) {
+//                w.wiederReinholen();
+//            }
+//            runde = 1;
 
+            return;
+
+        }
         if (runde == 5) {
             ergebnisAuswaehlenHelper();
-            // ende:
-            for (Wuerfel w : wurf.getAlleWuerfel()) {
-                w.wiederReinholen();
-            }
-            // wurf.wuerfeln();
-            runde = 1;
+//            // ende:
+//            for (Wuerfel w : wurf.getAlleWuerfel()) {
+//                w.wiederReinholen();
+//            }
+//            // wurf.wuerfeln();
+//            runde = 1;
 
             return;
         }
@@ -65,13 +84,13 @@ public class ComputerSpieler extends Spieler {
                 wurf.wuerfeln();
                 System.out.println(wurf);
                 runde++;
-                ergebnisAuswaehlen();
+                ergebnisAuswaehlenHelper1();
                 return;
             }
         }
 
         // wenn das mit den meisten Punkten eine Summe Oben ist:
-        if (maxMoeglich(moeglich) != null) {
+//        if (maxMoeglich(moeglich) != null) {
             if (maxMoeglich(moeglich).isOben()) {
 
                 if (runde < 5) {
@@ -86,15 +105,30 @@ public class ComputerSpieler extends Spieler {
                     wurf.wuerfeln();
                     System.out.println(wurf);
                     runde++;
-                    ergebnisAuswaehlen();
+                    ergebnisAuswaehlenHelper1();
                     return;
 
                 }
             }
-        }
+//        }
         
-        if (Ergebnis.gleicheZahlen(wurf) > 2) {
+        if (Ergebnis.gleicheZahlen(wurf) >= 4) {
+            ergebnisAuswaehlenHelper();
+        }
+
+        if (Ergebnis.gleicheZahlen(wurf) >= 2) {
             int maxGleich = meisteWuerfel(wurf);
+            for(int i = 0;i<6;i++){
+                if(maxGleich == ((SummeOben) ergebnisTabelle.getErgebnis()[i]).getWert()&&!ergebnisTabelle.getErgebnis()[i].ueberpruefen(wurf)){
+                    wurf.wuerfelWeglegen(wurf.getAlleWuerfel()[runde]);
+                    wurf.wuerfeln();
+                    System.out.println(wurf);
+                    runde++;
+                    ergebnisAuswaehlenHelper1();
+                    return;
+                    
+                }
+            }
             if (runde < 5) {
                 // lege alle anderen würfel weg
                 for (Wuerfel w : wurf.getAlleWuerfel()) {
@@ -106,12 +140,12 @@ public class ComputerSpieler extends Spieler {
                 wurf.wuerfeln();
                 System.out.println(wurf);
                 runde++;
-                ergebnisAuswaehlen();
+                ergebnisAuswaehlenHelper1();
                 return;
 
             }
         }
-
+     
     }
 
     /**
@@ -139,6 +173,10 @@ public class ComputerSpieler extends Spieler {
         return popular;
     }
 
+    private boolean alleWuerfelBeiseite(){
+        Wuerfel[] temp = wurf.getAlleWuerfel();
+        return temp[0].isWeggelegt()&& temp[1].isWeggelegt()&&temp[2].isWeggelegt()&&temp[3].isWeggelegt()&&temp[4].isWeggelegt();
+    }
     /**
      * 
      * @param moeglich
