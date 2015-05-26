@@ -19,4 +19,5 @@ public class Chance extends Ergebnis {
         return temp;
     }
 
+   
 }

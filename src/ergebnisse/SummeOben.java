@@ -46,7 +46,9 @@ public class SummeOben extends Ergebnis {
         }
         return false;
     }
-
+    public int getWert(){
+        return wert;
+    }
 
   
 
