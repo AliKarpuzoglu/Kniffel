@@ -11,7 +11,7 @@ public class ComputerSpieler extends Spieler {
     public static int playerCounter = 1;
 
     public ComputerSpieler() {
-        super("Computer Spieler" + playerCounter++, new Wurf());
+        super("Computer Spieler " + playerCounter++, new Wurf());
 
     }
 
@@ -24,16 +24,19 @@ public class ComputerSpieler extends Spieler {
      * 
      */
     public void ergebnisAuswaehlen() {
+
         if (runde == 5) {
             ergebnisAuswaehlenHelper();
             // ende:
             for (Wuerfel w : wurf.getAlleWuerfel()) {
                 w.wiederReinholen();
             }
+            // wurf.wuerfeln();
             runde = 1;
 
             return;
         }
+
         ArrayList<Ergebnis> moeglich = new ArrayList<>();
 
         for (Ergebnis e : ergebnisTabelle.getErgebnis()) {
@@ -42,9 +45,21 @@ public class ComputerSpieler extends Spieler {
                 moeglich.add(e);
             }
         }
+        
+        if (Ergebnis.aufsteigendeZahlen(wurf) > 4
+                && ergebnisTabelle.getErgebnis()[11].ueberpruefen(wurf)) {
+            ergebnisAuswaehlenHelper();
+        }
+
+        if (Ergebnis.aufsteigendeZahlen(wurf) > 3
+                && ergebnisTabelle.getErgebnis()[10].ueberpruefen(wurf)) {
+            ergebnisAuswaehlenHelper();
+        }
+
         // wenn nix mï¿½glich ist, reroll die Hand
 
         if (moeglich.size() == 0) {
+
             if (runde < 5) {
                 wurf.wuerfelWeglegen(wurf.getAlleWuerfel()[runde - 1]);
                 wurf.wuerfeln();
@@ -54,17 +69,30 @@ public class ComputerSpieler extends Spieler {
                 return;
             }
         }
-        // {
-        if (Ergebnis.aufsteigendeZahlen(wurf) > 3) {
-            if (runde < 5) {
-                wurf.wuerfelWeglegen(wurf.getAlleWuerfel()[runde - 1]);
-                wurf.wuerfeln();
-                System.out.println(wurf);
-                runde++;
-                ergebnisAuswaehlen();
-                return;
+
+        // wenn das mit den meisten Punkten eine Summe Oben ist:
+        if (maxMoeglich(moeglich) != null) {
+            if (maxMoeglich(moeglich).isOben()) {
+
+                if (runde < 5) {
+                    // lege alle anderen würfel weg
+                    for (Wuerfel w : wurf.getAlleWuerfel()) {
+                        if (w.getAugenzahl() == ((SummeOben) maxMoeglich(moeglich))
+                                .getWert()) {
+                            w.beiseiteLegen();
+                        }
+
+                    }
+                    wurf.wuerfeln();
+                    System.out.println(wurf);
+                    runde++;
+                    ergebnisAuswaehlen();
+                    return;
+
+                }
             }
         }
+        
         if (Ergebnis.gleicheZahlen(wurf) > 2) {
             int maxGleich = meisteWuerfel(wurf);
             if (runde < 5) {
@@ -84,34 +112,6 @@ public class ComputerSpieler extends Spieler {
             }
         }
 
-
-        // wenn das mit den meisten Punkten eine Summe Oben ist:
-        if (maxMoeglich(moeglich).isOben()) {
-
-            if (runde < 5) {
-                // lege alle anderen würfel weg
-                for (Wuerfel w : wurf.getAlleWuerfel()) {
-                    if (w.getAugenzahl() == ((SummeOben) maxMoeglich(moeglich))
-                            .getWert()) {
-                        w.beiseiteLegen();
-                    }
-
-                }
-                wurf.wuerfeln();
-                System.out.println(wurf);
-                runde++;
-                ergebnisAuswaehlen();
-                return;
-
-            }
-            ergebnisAuswaehlenHelper();
-
-            // ende:
-            for (Wuerfel w : wurf.getAlleWuerfel()) {
-                w.wiederReinholen();
-            }
-            runde = 1;
-        }
     }
 
     /**
@@ -170,6 +170,8 @@ public class ComputerSpieler extends Spieler {
     }
 
     private void kiErgebnisEintragen(Ergebnis e) {
+        runde = 1;
+
         if (e == null) {
             kiStreicheErgebnis();
             return;
@@ -196,24 +198,25 @@ public class ComputerSpieler extends Spieler {
     private void ergebnisAuswaehlenHelper() {
         int max = -1;
         Ergebnis beste = null;
-        Ergebnis chance = null;
+//        Ergebnis chance = null;
         for (Ergebnis e : ergebnisTabelle.getErgebnis()) {
             if (e.ueberpruefen(wurf)) {
-                if (e.punkteBerechnen(wurf) >= max && !(e instanceof Chance)) {
+                if (e.punkteBerechnen(wurf) >= max) {// && !(e instanceof
+                                                     // Chance)) {
                     max = e.punkteBerechnen(wurf);
                     beste = e;
                 }
-                if (e instanceof Chance) {
-                    chance = e;
-                }
+//                if (e instanceof Chance) {
+//                    chance = e;
+//                }
             }
         }
         // chance als letztes auswählen
-        if (beste == null && chance != null) {
-            if (chance.ueberpruefen(wurf)) {
-                beste = chance;
-            }
-        }
+        // if (beste == null && chance != null) {
+        // if (chance.ueberpruefen(wurf)) {
+        // beste = chance;
+        // }
+        // }
         kiErgebnisEintragen(beste);
         // this.ergebnisTabelle.ergebnisEintragen(beste);
 
