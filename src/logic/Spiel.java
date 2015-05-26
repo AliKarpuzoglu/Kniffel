@@ -117,7 +117,7 @@ public class Spiel {
             for(int y = 0; y < spieler.length; y++){
                 spieler[y].getWurf().wuerfeln();
                 g.printAmZugDialog(spieler,y);               
-                spieler[y].ergebnisAuswaehlenHelper1();
+                spieler[y].ergebnisAuswaehlen();
                
             }
             rundeSpiel ++;

@@ -45,7 +45,7 @@ public abstract class Spieler {
     }
 
 
-    public abstract void ergebnisAuswaehlenHelper1();
+    public abstract void ergebnisAuswaehlen();
 
 
     @Override

@@ -90,7 +90,7 @@ public class ComputerSpieler extends Spieler {
         }
 
         // wenn das mit den meisten Punkten eine Summe Oben ist:
-//        if (maxMoeglich(moeglich) != null) {
+       if (maxMoeglich(moeglich) != null) {
             if (maxMoeglich(moeglich).isOben()) {
 
                 if (runde < 5) {
@@ -110,7 +110,7 @@ public class ComputerSpieler extends Spieler {
 
                 }
             }
-//        }
+        }
         
         if (Ergebnis.gleicheZahlen(wurf) >= 4) {
             ergebnisAuswaehlenHelper();
