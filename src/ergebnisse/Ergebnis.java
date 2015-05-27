@@ -7,7 +7,7 @@ import logic.Wurf;
  * 
  */
 public abstract class Ergebnis {
-    
+
     protected int summe = 0;
     protected boolean oben;
     protected boolean gestrichen;
@@ -23,8 +23,9 @@ public abstract class Ergebnis {
     public boolean isGestrichen() {
         return gestrichen;
     }
-    public void streiche(){
-        this.gestrichen=true;
+
+    public void streiche() {
+        this.gestrichen = true;
     }
 
     /**
@@ -45,17 +46,18 @@ public abstract class Ergebnis {
         int gleicheZahlen = 1;
         Wuerfel[] temp = wurf.getAlleWuerfel();// CHECK IF THIS IS
                                                // OKAYY!!!!!!!!!!!!!!!!!!!
-        for (int i = 1; i < temp.length; i++) {
-            int momentan = 1;
-            while (i < temp.length
-                    && temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()) {
-                momentan++;
-                i++;
-            }
-            if (gleicheZahlen < momentan) {
-                gleicheZahlen = momentan;
-            }
+
+        int momentan = 0;
+        int i = 0;
+        while (i < temp.length && temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()) {
+            momentan++;
+            i++;
         }
+        if (gleicheZahlen < momentan) {
+            gleicheZahlen = momentan;
+        }
+
+
         return gleicheZahlen;
 
     }
@@ -64,29 +66,32 @@ public abstract class Ergebnis {
         int gleicheZahlen = 1;
         Wuerfel[] temp = wurf.getAlleWuerfel();// CHECK IF THIS IS
                                                // OKAYY!!!!!!!!!!!!!!!!!!!
-        for (int i = 1; i < temp.length; i++) {
-            int momentan = 1;
-            while (i < temp.length
-                    && temp[i - 1].getAugenzahl() + 1 == temp[i].getAugenzahl()) {
+        // for (int i = 1; i < temp.length; i++) {
+        int i = 1;
+        int momentan = 1;
+        while (i < temp.length) {
+            if (temp[i - 1].getAugenzahl() + 1 == temp[i].getAugenzahl()) {
                 momentan++;
-                i++;
+
+            } else if (temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()) {
+
             }
             if (gleicheZahlen < momentan) {
                 gleicheZahlen = momentan;
             }
+            i++;
         }
+        // }
         return gleicheZahlen;
 
     }
 
     @Override
     public String toString() {
-        if(isGestrichen()){
+        if (isGestrichen()) {
             return "null";
         }
-        return ""+ summe;
+        return "" + summe;
     }
-
-    
 
 }

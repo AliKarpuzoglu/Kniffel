@@ -6,7 +6,7 @@ import logic.*;
  * 
  */
 public class SummeOben extends Ergebnis {
-    private int wert;
+    protected int wert;
     
     /**
      * 
@@ -46,7 +46,9 @@ public class SummeOben extends Ergebnis {
         }
         return false;
     }
-
+    public int getWert(){
+        return wert;
+    }
 
   
 

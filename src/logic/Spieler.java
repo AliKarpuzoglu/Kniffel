@@ -9,7 +9,7 @@ import ergebnisse.*;
  * 
  */
 public abstract class Spieler {
-    
+    public int runde = 1;
     public String name;
     public Wurf wurf;
     protected ErgebnisTabelle ergebnisTabelle = new ErgebnisTabelle();
@@ -35,6 +35,9 @@ public abstract class Spieler {
      */
     public void wuerfelWeglegen(Wuerfel wuerfel) {
         wuerfel.beiseiteLegen();
+    }
+    public void wuerfelReinnehmen(Wuerfel wuerfel){
+        wuerfel.wiederReinholen();
     }
     
     public Wurf getWurf(){

@@ -11,7 +11,7 @@ public class ErgebnisTabelle {
 	 */
 	public ErgebnisTabelle() {
 		for (int i = 0; i < 6; i++) {
-			ergebnisse[i] = new SummeOben(i);
+			ergebnisse[i] = new SummeOben(i+1);
 		}
 		ergebnisse[6] = new Dreierpasch();
 		ergebnisse[7] = new Viererpasch();
@@ -57,13 +57,19 @@ public class ErgebnisTabelle {
      * 
      */
 
-	public void ergebnisEintragen(Ergebnis ergebnis) {
-		for (Ergebnis e : ergebnisse) {
-			if (e.getClass().equals(ergebnis.getClass())) {
-				e = ergebnis;
-			}
-		}
-	}
+//	public void ergebnisEintragen(Ergebnis ergebnis) {
+//		for (Ergebnis e : ergebnisse) {
+//			if (e.getClass().equals(ergebnis.getClass())) {
+//			    if(e.getClass()==SummeOben.class){
+//			        if(((SummeOben)e).wert==((SummeOben)ergebnis).wert){
+//			            e=ergebnis;
+//			        }
+//			        
+//			    }
+//				e = ergebnis;
+//			}
+//		}
+//	}
 
 
 	/**

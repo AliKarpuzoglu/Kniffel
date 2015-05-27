@@ -7,7 +7,7 @@ import logic.Wurf;
 import org.junit.Test;
 
 public class ErgebnisTest {
-
+ 
     @Test
     public void testErgebnis() {
         fail("Not yet implemented");

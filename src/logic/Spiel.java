@@ -18,7 +18,7 @@ public class Spiel {
      */
     private Spieler[] spieler;
     private GUI g = new GUI();
-    public int runde = 1;
+    private int rundeSpiel = 1;
 
     private static Spiel instance;
 
@@ -42,15 +42,24 @@ public class Spiel {
             Scanner in = new Scanner(System.in);
 
             g.printSpielerdialog();
-            int mSpieler = in.nextInt();
-
+            
+            int mSpieler;
+            try{
+            mSpieler = in.nextInt();
+            }catch(Exception e){
+                mSpieler = 0;
+            }
             if (mSpieler > 6) {
                 break;
             }
 
             g.printComputerSpielerDialog(6 - mSpieler);
-            int cSpieler = in.nextInt();
-
+            int cSpieler;
+            try{
+            cSpieler = in.nextInt();
+            }catch(Exception e){
+                cSpieler = 0;
+            }
             if ((mSpieler + cSpieler) > 6) {
                 break;
             }
@@ -106,11 +115,16 @@ public class Spiel {
         erstelleSpieler();
         for(int i = 0; i <13; i++){
             for(int y = 0; y < spieler.length; y++){
-                g.printAmZugDialog(spieler,y);
-                
+                spieler[y].getWurf().wuerfeln();
+                g.printAmZugDialog(spieler,y);               
                 spieler[y].ergebnisAuswaehlen();
+               
             }
+            rundeSpiel ++;
+            
         }
+        g.printErgebnisspalte(spieler);
+        System.out.println("Runde: "+ (rundeSpiel-1));
     }
 
     public Spieler[] getSpieler() {

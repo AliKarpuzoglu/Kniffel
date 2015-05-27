@@ -43,6 +43,9 @@ public class Wuerfel implements Comparable<Wuerfel>{
     }
 
 
+    public void wiederReinholen(){
+        weggelegt=false;
+    }
 
     @Override
     public int compareTo(Wuerfel o) {

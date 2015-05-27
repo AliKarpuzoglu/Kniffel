@@ -43,6 +43,7 @@ public class Wurf {
     public Wuerfel[] getAlleWuerfel() {
         return alleWuerfel;
     }
+    
     @Override
     public String toString(){
         String temp = "";

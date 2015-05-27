@@ -1,33 +1,31 @@
 package ergebnisse;
 
-import java.util.*;
-
 import logic.Wurf;
 
 /**
  * 
  */
-public class Kniffel extends Ergebnis {
+public class KleineStrasse extends Ergebnis {
 
     /**
      * 
      */
-    public Kniffel() {
+    public KleineStrasse() {
     }
 
     @Override
     public boolean ueberpruefen(Wurf wurf) {
-        return (gleicheZahlen(wurf) == 5) &&(!gestrichen)&&(summe==0);
-        
+        return (aufsteigendeZahlen(wurf) >= 4) && (!gestrichen) && (summe==0);
+
     }
 
     @Override
     public int punkteBerechnen(Wurf wurf) {
         if (ueberpruefen(wurf)) {
-            return 50;
+            return 30;
         } else {
             return 0;
-        }    }
- 
+        }
+    }
 
 }
