@@ -47,8 +47,8 @@ public abstract class Ergebnis {
         Wuerfel[] temp = wurf.getAlleWuerfel();// CHECK IF THIS IS
                                                // OKAYY!!!!!!!!!!!!!!!!!!!
 
-        int momentan = 1;
-        int i = 1;
+        int momentan = 0;
+        int i = 0;
         while (i < temp.length && temp[i - 1].getAugenzahl() == temp[i].getAugenzahl()) {
             momentan++;
             i++;
