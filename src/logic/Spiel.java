@@ -113,18 +113,24 @@ public class Spiel {
     public void spielen() {
         g.printWelcome();
         erstelleSpieler();
-        for(int i = 0; i <13; i++){
+        for(int i = 0; i <14; i++){
+            System.out.println("Runde: "+ (rundeSpiel));
+
             for(int y = 0; y < spieler.length; y++){
                 spieler[y].getWurf().wuerfeln();
-                g.printAmZugDialog(spieler,y);               
+                spieler[y].runde=1;
+//                if(y==2){
+//                g.printAmZugDialog(spieler,y);
+                g.printAmZugDialog(spieler, y);
+//                }
+                
                 spieler[y].ergebnisAuswaehlen();
                
             }
             rundeSpiel ++;
-            
+
         }
         g.printErgebnisspalte(spieler);
-        System.out.println("Runde: "+ (rundeSpiel-1));
     }
 
     public Spieler[] getSpieler() {
