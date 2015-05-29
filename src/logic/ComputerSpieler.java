@@ -21,8 +21,6 @@ public class ComputerSpieler extends Spieler {
             w.wiederReinholen();
         }
         ergebnisAuswaehlenHelper1();
-
-        runde = 1;
     }
 
     /**
@@ -39,7 +37,6 @@ public class ComputerSpieler extends Spieler {
             for (Wuerfel w : wurf.getAlleWuerfel()) {
                 w.wiederReinholen();
             }
-            // runde = 1;
 
             return;
 
@@ -58,13 +55,17 @@ public class ComputerSpieler extends Spieler {
 
         ArrayList<Ergebnis> moeglich = new ArrayList<>();
 
-        for (Ergebnis e : ergebnisTabelle.getErgebnis()) {
-
-            if (e.ueberpruefen(wurf)) {
-                moeglich.add(e);
+      
+        //fullhouse
+        if(ergebnisTabelle.getErgebnis()[9].ueberpruefen(wurf)){
+            kiErgebnisEintragen(ergebnisTabelle.getErgebnis()[9]);
+            for (Wuerfel w : wurf.getAlleWuerfel()) {
+                w.wiederReinholen();
             }
+            return;
         }
-
+        
+        //große straße
         if (Ergebnis.aufsteigendeZahlen(wurf) > 4
                 && ergebnisTabelle.getErgebnis()[11].ueberpruefen(wurf)) {
             kiErgebnisEintragen(ergebnisTabelle.getErgebnis()[11]);
@@ -73,7 +74,7 @@ public class ComputerSpieler extends Spieler {
             }
             return;
         }
-
+         //kleine Straße
         if (Ergebnis.aufsteigendeZahlen(wurf) > 3
                 && ergebnisTabelle.getErgebnis()[10].ueberpruefen(wurf)) {
             kiErgebnisEintragen(ergebnisTabelle.getErgebnis()[10]);
@@ -82,7 +83,12 @@ public class ComputerSpieler extends Spieler {
             }
             return;
         }
+        for (Ergebnis e : ergebnisTabelle.getErgebnis()) {
 
+            if (e.ueberpruefen(wurf)) {
+                moeglich.add(e);
+            }
+        }
         // wenn das mit den meisten Punkten eine Summe Oben ist:
         if (maxMoeglich(moeglich) != null) {
             if (maxMoeglich(moeglich).isOben()) {
