@@ -13,7 +13,7 @@ public class MenschlicheSpieler extends Spieler {
     	
    public MenschlicheSpieler (String name){
 
-	   super(name, new Wurf());
+	   super(name);
 	   
     
     }
