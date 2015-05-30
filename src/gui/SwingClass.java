@@ -1,22 +1,26 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.event.WindowAdapter;
 
 import javax.swing.*;
 
+import ergebnisse.Chance;
+import ergebnisse.KleineStrasse;
 import logic.Spieler;
 import logic.Wurf;
 
 public class SwingClass {
-	JFrame spielerNamen = new JFrame("Spieler");
+	GrundFrame spielerNamen = new GrundFrame();
 	JPanel panel = new JPanel();
 	JLabel label = new JLabel();
 	JButton spielenButton = new JButton("Spielen");
 	JButton abbruch = new JButton("Beenden");
 
 	// Für Computer Spieler
-	JFrame compFrame;
+	GrundFrame compFrame;
 	JPanel compPanel;
 	JLabel compLabel;
 	JButton Spielen = new JButton("Spielen!");
@@ -27,7 +31,7 @@ public class SwingClass {
 	JButton auswahl5;
 
 	// Für Menschliche Spieler Eingabe
-	JFrame nameFrame;
+	GrundFrame nameFrame;
 	JPanel namePanel;
 	JLabel nameLabel;
 	JButton ok;
@@ -40,7 +44,7 @@ public class SwingClass {
 	JButton auswahlS4;
 	JButton auswahlS5;
 	JButton auswahlS6;
-	JFrame spielerFrame;
+	GrundFrame spielerFrame;
 	JPanel spielerPanel;
 	JLabel labelS;
 
@@ -67,11 +71,12 @@ public class SwingClass {
 	}
 
 	public void printSpielerNamen() {
+		GrundFrame gf = new GrundFrame();
 
 	}
 
 	public void printComputerSpielerDialog() {
-		compFrame = new JFrame("Computer Spieler");
+		compFrame = new GrundFrame();
 		compPanel = new JPanel();
 		compLabel = new JLabel();
 
@@ -112,7 +117,7 @@ public class SwingClass {
 			};
 		});
 		compFrame.pack();
-		compFrame.setVisible(true);
+		compFrame.showIt("Computer Spieler", 600, 400);
 
 	}
 
@@ -120,7 +125,7 @@ public class SwingClass {
 
 		namePanel = new JPanel();
 		nameLabel = new JLabel();
-		nameFrame = new JFrame("Name");
+		nameFrame = new GrundFrame();
 
 		namePanel.add(new JLabel("Wählen Sie einen Spielernamen: "));
 		tfName = new JTextField("", 15);
@@ -145,13 +150,13 @@ public class SwingClass {
 		});
 		nameFrame.pack();
 
-		nameFrame.setVisible(true);
+		nameFrame.showIt("Name", 600, 400);
 
 	}
 
 	public void printWelcome() {
 
-		JFrame willkommen = new JFrame("Willkommen zu Kniffel!");
+		GrundFrame willkommen = new GrundFrame();
 		JPanel jP = new JPanel();
 		JButton jB = new JButton("Spielen!");
 
@@ -159,6 +164,7 @@ public class SwingClass {
 				"Die Gruppe um Jonas Jaeckel wuenscht ihnen ein erfreuliches Spiel!"));
 		jP.add(jB);
 		jP.add(abbruch);
+		abbruch.addActionListener((e) -> System.exit(0));
 		willkommen.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(java.awt.event.WindowEvent e) {
@@ -168,11 +174,67 @@ public class SwingClass {
 
 		willkommen.add(jP);
 		willkommen.pack();
-		willkommen.setVisible(true);
+		willkommen.showIt("Willkommen zu Kniffel!", 600, 400);
 
 	}
 
 	public void printWurf(Wurf wurf) {
+
+		GrundFrame grundF = new GrundFrame();
+		JPanel colP = new javax.swing.JPanel();
+		JPanel colP2 = new javax.swing.JPanel();
+
+		JLabel compLabel = new JLabel("Wähle dein Ergebnis:");
+		JButton einer = new JButton("10");
+		JButton zweier = new JButton("20");
+		JButton dreier = new JButton("30");
+		JButton vierer = new JButton("40");
+		JButton fünfer = new JButton("40");
+		JButton sechser = new JButton("50");
+		JButton drpasch = new JButton("60");
+		JButton vipasch = new JButton("70");
+		JButton qfolge = new JButton("30");
+		JButton fullhouse = new JButton("35");
+		JButton klstrasse = new JButton("50");
+		JButton grstrasse = new JButton("45");
+		JButton kniffel = new JButton("70");
+		JButton chance = new JButton("30");
+
+		colP2.add(compLabel, "North");
+		colP.add(new JLabel("Einer"));
+		colP2.add(einer);
+		colP.add(new JLabel("Zweier"));
+		colP2.add(zweier);
+		colP.add(new JLabel("Dreier"));
+		colP2.add(dreier);
+		colP.add(new JLabel("Vierer"));
+		colP2.add(vierer);
+		colP.add(new JLabel("Fünfer"));
+		colP2.add(fünfer);
+		colP.add(new JLabel("Sechser"));
+		colP2.add(sechser);
+		colP.add(new JLabel("Dreierpasch"));
+		colP2.add(drpasch);
+		colP.add(new JLabel("Viererpasch"));
+		colP2.add(vipasch);
+		colP.add(new JLabel("Quadratfolge"));
+		colP2.add(qfolge);
+		colP.add(new JLabel("Full House"));
+		colP2.add(fullhouse);
+		colP.add(new JLabel("Kleine Straße"));
+		colP2.add(klstrasse);
+		colP.add(new JLabel("Große Straße"));
+		colP2.add(grstrasse);
+		colP.add(new JLabel("Kniffel"));
+		colP2.add(kniffel);
+		colP.add(new JLabel("Chance"));
+		colP2.add(chance);
+		grundF.getContentPane().add(compLabel, "North");
+		grundF.getContentPane().add(colP, "Center");
+		grundF.getContentPane().add(colP2, "South");
+		grundF.setSize(900, 150);
+
+		grundF.showIt("Buttons", 600, 400);
 
 	}
 
@@ -181,7 +243,7 @@ public class SwingClass {
 	}
 
 	public void printMSpielerAuswahl() {
-		spielerFrame = new JFrame("Spieleranzahl");
+		spielerFrame = new GrundFrame();
 		spielerPanel = new JPanel();
 		labelS = new JLabel();
 
@@ -216,9 +278,48 @@ public class SwingClass {
 		spielerPanel.add(auswahlS6);
 		spielerPanel.add(abbruch);
 
-		spielerPanel.add(label);
+		spielerPanel.add(labelS);
 		spielerFrame.add(spielerPanel);
 		spielerFrame.pack();
+
+		spielerFrame.showIt("Spieleranzahl", 600, 400);
+	}
+
+	public void printErgebnistabelle() {
+		GrundFrame gF = new GrundFrame();
+		String[][] inhalt = { { "Einser", "0", "1", "2", "3", "4", "5" },
+				{ "Zweier", "0", "2", "3", "4", "5", "6" },
+				{ "Dreier", "0", "1", "2", "3", "4", "5" },
+				{ "Vierer", "0", "1", "2", "3", "4", "5" },
+				{ "Fünfer", "0", "1", "2", "3", "4", "5" },
+				{ "Sechser", "0", "1", "2", "3", "4", "5" },
+				{ "Dreierpasch", "0", "1", "2", "3", "4", "5" },
+				{ "Viererpasch", "0", "1", "2", "3", "4", "5" },
+				{ "Quadratfolge", "0", "1", "2", "3", "4", "5" },
+				{ "Full House", "0", "1", "2", "3", "4", "5" },
+				{ "Kleine Straße", "0", "1", "2", "3", "4", "5" },
+				{ "Große Straße", "0", "1", "2", "3", "4", "5" },
+				{ "Kniffel", "0", "1", "2", "3", "4", "5" },
+				{ "Chance", "0", "1", "2", "3", "4", "5" }, };
+		String[] spaltenNamen = { "Ergebnisse", "Spieler 1", "Spieler 2",
+				"Spieler 3", "Spieler 4", "Spieler 5", "Spieler 6" };
+		JTable jTab = new JTable(inhalt, spaltenNamen);
+		JScrollPane sp = new JScrollPane(jTab);
+		sp.setBackground(Color.yellow);
+
+		jTab.setAutoResizeMode(0);
+		jTab.setIntercellSpacing(new Dimension(8, 2));
+		jTab.setGridColor(Color.black);
+
+		gF.getContentPane().add(sp);
+		gF.setSize(550, 325);
+
+		gF.showIt("Ergebnistabelle", 600, 400);
+
+	}
+
+	public static void main(String[] args) {
+		// printMSpielerAuswahl();
 
 	}
 }
