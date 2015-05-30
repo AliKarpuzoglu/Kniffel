@@ -13,11 +13,15 @@ import logic.Spieler;
 import logic.Wurf;
 
 public class SwingClass {
+
 	GrundFrame spielerNamen = new GrundFrame();
 	JPanel panel = new JPanel();
 	JLabel label = new JLabel();
 	JButton spielenButton = new JButton("Spielen");
 	JButton abbruch = new JButton("Beenden");
+
+	String[] spieler = new String[6];
+	int i = 0;
 
 	// Für Computer Spieler
 	GrundFrame compFrame;
@@ -70,11 +74,6 @@ public class SwingClass {
 
 	}
 
-	public void printSpielerNamen() {
-		GrundFrame gf = new GrundFrame();
-
-	}
-
 	public void printComputerSpielerDialog() {
 		compFrame = new GrundFrame();
 		compPanel = new JPanel();
@@ -124,32 +123,23 @@ public class SwingClass {
 	public void printSpielerdialog() {
 
 		namePanel = new JPanel();
-		nameLabel = new JLabel();
+		nameLabel = new JLabel("Waehlen Sie einen Spielernamen: ");
 		nameFrame = new GrundFrame();
 
-		namePanel.add(new JLabel("Wählen Sie einen Spielernamen: "));
+		namePanel.add(nameLabel);
 		tfName = new JTextField("", 15);
 		tfName.setForeground(Color.BLUE);
 		tfName.setBackground(Color.CYAN);
 		namePanel.add(tfName);
 
 		ok = new JButton("OK");
-		abbruch.addActionListener((e) -> System.exit(0));
-		ok.addActionListener((e) -> namePanel.add(new JLabel(""
-				+ tfName.getText())));
+		ok.addActionListener((e) -> spieler[i] = tfName.getText());
 
 		namePanel.add(ok);
-		namePanel.add(abbruch);
-		namePanel.add(nameLabel);
+		
+		
 		nameFrame.add(namePanel);
-		nameFrame.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(java.awt.event.WindowEvent e) {
-				System.exit(0);
-			};
-		});
 		nameFrame.pack();
-
 		nameFrame.showIt("Name", 600, 400);
 
 	}
@@ -163,6 +153,8 @@ public class SwingClass {
 		jP.add(new JLabel(
 				"Die Gruppe um Jonas Jaeckel wuenscht ihnen ein erfreuliches Spiel!"));
 		jP.add(jB);
+		jB.addActionListener((e) -> printMSpielerAuswahl());
+		jB.addActionListener((e) -> willkommen.setVisible(false));
 		jP.add(abbruch);
 		abbruch.addActionListener((e) -> System.exit(0));
 		willkommen.addWindowListener(new WindowAdapter() {
@@ -178,27 +170,27 @@ public class SwingClass {
 
 	}
 
-	public void printWurf(Wurf wurf) {
+	public void printWurf() {
 
 		GrundFrame grundF = new GrundFrame();
 		JPanel colP = new javax.swing.JPanel();
 		JPanel colP2 = new javax.swing.JPanel();
 
-		JLabel compLabel = new JLabel("Wähle dein Ergebnis:");
-		JButton einer = new JButton("10");
-		JButton zweier = new JButton("20");
-		JButton dreier = new JButton("30");
-		JButton vierer = new JButton("40");
-		JButton fünfer = new JButton("40");
-		JButton sechser = new JButton("50");
-		JButton drpasch = new JButton("60");
-		JButton vipasch = new JButton("70");
-		JButton qfolge = new JButton("30");
-		JButton fullhouse = new JButton("35");
-		JButton klstrasse = new JButton("50");
-		JButton grstrasse = new JButton("45");
-		JButton kniffel = new JButton("70");
-		JButton chance = new JButton("30");
+		JLabel compLabel = new JLabel("Waehle dein Ergebnis:");
+		JButton einer = new JButton("");
+		JButton zweier = new JButton("");
+		JButton dreier = new JButton("");
+		JButton vierer = new JButton("");
+		JButton fuenfer = new JButton("");
+		JButton sechser = new JButton("");
+		JButton drpasch = new JButton("");
+		JButton vipasch = new JButton("");
+		JButton qfolge = new JButton("");
+		JButton fullhouse = new JButton("");
+		JButton klstrasse = new JButton("");
+		JButton grstrasse = new JButton("");
+		JButton kniffel = new JButton("");
+		JButton chance = new JButton("");
 
 		colP2.add(compLabel, "North");
 		colP.add(new JLabel("Einer"));
@@ -209,8 +201,8 @@ public class SwingClass {
 		colP2.add(dreier);
 		colP.add(new JLabel("Vierer"));
 		colP2.add(vierer);
-		colP.add(new JLabel("Fünfer"));
-		colP2.add(fünfer);
+		colP.add(new JLabel("Fuenfer"));
+		colP2.add(fuenfer);
 		colP.add(new JLabel("Sechser"));
 		colP2.add(sechser);
 		colP.add(new JLabel("Dreierpasch"));
@@ -221,9 +213,9 @@ public class SwingClass {
 		colP2.add(qfolge);
 		colP.add(new JLabel("Full House"));
 		colP2.add(fullhouse);
-		colP.add(new JLabel("Kleine Straße"));
+		colP.add(new JLabel("Kleine Strasse"));
 		colP2.add(klstrasse);
-		colP.add(new JLabel("Große Straße"));
+		colP.add(new JLabel("Grosse Strasse"));
 		colP2.add(grstrasse);
 		colP.add(new JLabel("Kniffel"));
 		colP2.add(kniffel);
@@ -235,10 +227,6 @@ public class SwingClass {
 		grundF.setSize(900, 150);
 
 		grundF.showIt("Buttons", 600, 400);
-
-	}
-
-	public void printErgebnisspalte(Spieler spieler) {
 
 	}
 
@@ -254,12 +242,24 @@ public class SwingClass {
 		auswahlS5 = new JButton("5");
 		auswahlS6 = new JButton("6");
 
-		auswahlS1.addActionListener((e) -> labelS.setText(("1 Spieler")));
-		auswahlS2.addActionListener((e) -> labelS.setText(("2 Spieler")));
-		auswahlS3.addActionListener((e) -> labelS.setText(("3 Spieler")));
-		auswahlS4.addActionListener((e) -> labelS.setText(("4 Spieler")));
-		auswahlS5.addActionListener((e) -> labelS.setText(("5 Spieler")));
-		auswahlS6.addActionListener((e) -> labelS.setText(("6 Spieler")));
+		auswahlS1.addActionListener((e) -> i = 1);
+		auswahlS1.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS1.addActionListener((e) -> printSpielerdialog());
+		auswahlS2.addActionListener((e) -> i = 2);
+		auswahlS2.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS2.addActionListener((e) -> printSpielerdialog());
+		auswahlS3.addActionListener((e) -> i = 3);
+		auswahlS3.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS3.addActionListener((e) -> printSpielerdialog());
+		auswahlS4.addActionListener((e) -> i = 4);
+		auswahlS4.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS4.addActionListener((e) -> printSpielerdialog());
+		auswahlS5.addActionListener((e) -> i = 5);
+		auswahlS5.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS5.addActionListener((e) -> printSpielerdialog());
+		auswahlS6.addActionListener((e) -> i = 6);
+		auswahlS6.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS6.addActionListener((e) -> printSpielerdialog());
 		abbruch.addActionListener((e) -> System.exit(0));
 		spielerFrame.addWindowListener(new WindowAdapter() {
 			@Override
@@ -269,7 +269,7 @@ public class SwingClass {
 		});
 
 		spielerPanel.add(new JLabel(
-				"Wieviele menschliche Spieler möchten mitspielen?"));
+				"Wieviele menschliche Spieler moechten mitspielen?"));
 		spielerPanel.add(auswahlS1);
 		spielerPanel.add(auswahlS2);
 		spielerPanel.add(auswahlS3);
@@ -287,20 +287,20 @@ public class SwingClass {
 
 	public void printErgebnistabelle() {
 		GrundFrame gF = new GrundFrame();
-		String[][] inhalt = { { "Einser", "0", "1", "2", "3", "4", "5" },
-				{ "Zweier", "0", "2", "3", "4", "5", "6" },
-				{ "Dreier", "0", "1", "2", "3", "4", "5" },
-				{ "Vierer", "0", "1", "2", "3", "4", "5" },
-				{ "Fünfer", "0", "1", "2", "3", "4", "5" },
-				{ "Sechser", "0", "1", "2", "3", "4", "5" },
-				{ "Dreierpasch", "0", "1", "2", "3", "4", "5" },
-				{ "Viererpasch", "0", "1", "2", "3", "4", "5" },
-				{ "Quadratfolge", "0", "1", "2", "3", "4", "5" },
-				{ "Full House", "0", "1", "2", "3", "4", "5" },
-				{ "Kleine Straße", "0", "1", "2", "3", "4", "5" },
-				{ "Große Straße", "0", "1", "2", "3", "4", "5" },
-				{ "Kniffel", "0", "1", "2", "3", "4", "5" },
-				{ "Chance", "0", "1", "2", "3", "4", "5" }, };
+		String[][] inhalt = { { "Einser", "", "", "", "", "", "" },
+				{ "Zweier", "", "", "", "", "", "" },
+				{ "Dreier", "", "", "", "", "", "" },
+				{ "Vierer", "", "", "", "", "", "" },
+				{ "Fuenfer", "", "", "", "", "", "" },
+				{ "Sechser", "", "", "", "", "", "" },
+				{ "Dreierpasch", "", "", "", "", "", "" },
+				{ "Viererpasch", "", "", "", "", "", "" },
+				{ "Quadratfolge", "", "", "", "", "", "" },
+				{ "Full House", "", "", "", "", "", "" },
+				{ "Kleine Strasse", "", "", "", "", "", "" },
+				{ "Grosse Strasse", "", "", "", "", "", "" },
+				{ "Kniffel", "", "", "", "", "", "" },
+				{ "Chance", "", "", "", "", "", "" }, };
 		String[] spaltenNamen = { "Ergebnisse", "Spieler 1", "Spieler 2",
 				"Spieler 3", "Spieler 4", "Spieler 5", "Spieler 6" };
 		JTable jTab = new JTable(inhalt, spaltenNamen);
@@ -315,11 +315,27 @@ public class SwingClass {
 		gF.setSize(550, 325);
 
 		gF.showIt("Ergebnistabelle", 600, 400);
+	}
+
+	public void printWurfAufforderung() {
+		GrundFrame wuerfeln = new GrundFrame();
+		JPanel jP = new JPanel();
+		JButton jB = new JButton("Wuerfeln");
+
+		jP.add(new JLabel("Spieler 1 ist am Zug"));
+		jP.add(jB, "Center");
+
+		wuerfeln.add(jP);
+		wuerfeln.setSize(400, 200);
+		wuerfeln.showIt("Wuerfeln!", 600, 400);
 
 	}
 
 	public static void main(String[] args) {
-		// printMSpielerAuswahl();
+
+		SwingClass wK = new SwingClass();
+		wK.printWelcome();
 
 	}
+
 }
