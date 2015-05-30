@@ -9,19 +9,12 @@ import java.util.*;
  */
 public class Spiel {
 
-    /**
-     * 
-     */
-
-    /**
-     * 
-     */
     private Spieler[] spieler = new Spieler[6];
     private int pointer;
     
     private int rundeSpiel = 1;
 
-    private static Spiel instance;
+    private static Spiel instance = new Spiel();
 
     // Verhindere die Erzeugung des Objektes �ber andere Methoden
     private Spiel() {
@@ -82,6 +75,14 @@ public class Spiel {
 
     public Spieler[] getSpieler() {
         return spieler;
+    }
+
+    public static Spiel getInstance() {
+        return instance;
+    }
+
+    public static void setInstance(Spiel instance) {
+        Spiel.instance = instance;
     }
 
 }
