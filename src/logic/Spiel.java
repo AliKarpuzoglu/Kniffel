@@ -26,6 +26,14 @@ public class Spiel {
     // Verhindere die Erzeugung des Objektes �ber andere Methoden
     private Spiel() {
     }
+    
+    public String[] moeglicheErgebnisse(){
+        return null;
+    }
+    
+    public String[] wuerfeln(){
+        return null;
+    }
 
    public void erstelleSpieler(String[] namen){
        pointer = namen.length;
@@ -46,10 +54,10 @@ public class Spiel {
            this.spieler = temp;
        }
    }
-   public boolean wuerfelWeglegen( Wurf x , int[] i){
+   public boolean wuerfelWeglegen(int[] i){
        return false;
    }
-   public boolean ergebnisAnrechnen(Spieler x, int i){
+   public boolean ergebnisAnrechnen(Ergebnisse x){
        return false;
    }
 

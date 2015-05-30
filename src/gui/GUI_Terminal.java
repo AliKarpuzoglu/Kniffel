@@ -8,7 +8,7 @@ import logic.Spiel;
 import logic.Spieler;
 import logic.Wurf;
 
-public class GUI_Terminal implements GUI{
+public class GUI_Terminal{
     
     public Spieler[] erstelleSpieler(){
         Spieler[] spieler = null;
@@ -139,7 +139,7 @@ public class GUI_Terminal implements GUI{
 
     }
 
-    @Override
+    
     public void wuerfelAuswaehlen(Spieler spieler) {
         // TODO Auto-generated method stub
         
