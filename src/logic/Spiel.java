@@ -16,8 +16,9 @@ public class Spiel {
     /**
      * 
      */
-    private Spieler[] spieler;
-    private GUI g = new GUI();
+    private Spieler[] spieler = new Spieler[6];
+    private int pointer;
+    
     private int rundeSpiel = 1;
 
     private static Spiel instance;
@@ -26,65 +27,31 @@ public class Spiel {
     private Spiel() {
     }
 
-    public static Spiel getInstance() {
-        if (Spiel.instance == null) {
-            Spiel.instance = new Spiel();
-        }
-        return Spiel.instance;
-    }
-
-    /**
-     * 
-     */
-    public void erstelleSpieler() {
-        boolean flag = true;
-        while (flag) {
-            Scanner in = new Scanner(System.in);
-
-            g.printSpielerdialog();
-            
-            int mSpieler;
-            try{
-            mSpieler = in.nextInt();
-            }catch(Exception e){
-                mSpieler = 0;
-            }
-            if (mSpieler > 6) {
-                break;
-            }
-
-            g.printComputerSpielerDialog(6 - mSpieler);
-            int cSpieler;
-            try{
-            cSpieler = in.nextInt();
-            }catch(Exception e){
-                cSpieler = 0;
-            }
-            if ((mSpieler + cSpieler) > 6) {
-                break;
-            }
-
-            this.spieler = new Spieler[mSpieler + cSpieler];
-
-            for (int x = 0; x < mSpieler; x++) {
-                g.printmSpielerNamen();
-                String name = in.next();
-                this.spieler[x] = new MenschlicheSpieler(name);
-            }
-
-            for (int y = mSpieler; y < cSpieler+mSpieler; y++) {
-                this.spieler[y] = new ComputerSpieler();
-            }
-
-            wuerfelReihenfolgeAus();
-
-            g.printReihenfolge(spieler);
-            
-            flag = false;
-
-        }
-
-    }
+   public void erstelleSpieler(String[] namen){
+       pointer = namen.length;
+       for(int i = 0; i < namen.length; i++){
+           spieler[i] = new MenschlicheSpieler(namen[i]);
+       }
+   }
+   public void erstelleCmSpieler(int i){
+       for(int n = pointer; n < i+pointer;n++){
+           spieler[n] = new ComputerSpieler();
+       }
+       pointer =+ i;
+       if(pointer<6){
+           Spieler[] temp = new Spieler[pointer];
+           for(int m = 0; m< temp.length; m++){
+               temp[m] = spieler[m];
+           }
+           this.spieler = temp;
+       }
+   }
+   public boolean wuerfelWeglegen( Wurf x , int[] i){
+       return false;
+   }
+   public boolean ergebnisAnrechnen(Spieler x, int i){
+       return false;
+   }
 
     /**
      * 
@@ -102,36 +69,8 @@ public class Spiel {
 
     }
 
-    public static void main(String[] a) {
-        Spiel s = new Spiel();
-        s.spielen();
-    }
-
-    /**
-     * 
-     */
-    public void spielen() {
-        g.printWelcome();
-        erstelleSpieler();
-        for(int i = 0; i <14; i++){
-            System.out.println("Runde: "+ (rundeSpiel));
-
-            for(int y = 0; y < spieler.length; y++){
-                spieler[y].getWurf().wuerfeln();
-                spieler[y].runde=1;
-//                if(y==2){
-//                g.printAmZugDialog(spieler,y);
-                g.printAmZugDialog(spieler, y);
-//                }
-                
-                spieler[y].ergebnisAuswaehlen();
-               
-            }
-            rundeSpiel ++;
-
-        }
-        g.printErgebnisspalte(spieler);
-    }
+    
+   
 
     public Spieler[] getSpieler() {
         return spieler;
