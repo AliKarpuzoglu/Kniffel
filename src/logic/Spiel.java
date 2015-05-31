@@ -89,24 +89,23 @@ public class Spiel {
     }
     
     public int[] weglegbareWuerfel(){
-        int[] ret = new int[5];
-        int counter = 0;
+        ArrayList<Integer> ret= new ArrayList<>();
         Wuerfel[] temp = spieler[pointer].getWurf().getAlleWuerfel();
         for(int n = 0; n < temp.length; n++){
             if(!temp[n].isWeggelegt()){
-                ret[counter] = temp[n].getAugenzahl();
-                counter++;
+                ret.add(n+1);
+               
             }
             
         }
-        if(counter == 0){
+        if(ret.isEmpty()){
             return null;
         }
-        int[] ret2 = new int[counter];
-        for(int i = 0; i<ret2.length;i++){
-            ret2[i] = ret[i];
+        int[] retint = new int[ret.size()];
+        for(int i =0;i<retint.length;i++){
+            retint[i] = ret.get(i);
         }
-        return ret2;
+        return retint;
     }
     
     public String platzAuswuerfeln(){
