@@ -2,6 +2,8 @@ package gui;
 
 import java.util.Scanner;
 
+import javax.swing.JTable.PrintMode;
+
 import logic.ComputerSpieler;
 import logic.MenschlicheSpieler;
 import logic.Spiel;
@@ -10,55 +12,43 @@ import logic.Wurf;
 
 public class GUI_Terminal{
     
-    public Spieler[] erstelleSpieler(){
-        Spieler[] spieler = null;
-        boolean flag = true;
-        while (flag) {
-            Scanner in = new Scanner(System.in);
-
-            printSpielerdialog();
-            
-            int mSpieler;
-            try{
-            mSpieler = in.nextInt();
-            }catch(Exception e){
-                mSpieler = 0;
-            }
-            if (mSpieler > 6) {
-                break;
-            }
-
-            printComputerSpielerDialog(6 - mSpieler);
-            int cSpieler;
-            try{
-            cSpieler = in.nextInt();
-            }catch(Exception e){
-                cSpieler = 0;
-            }
-            if ((mSpieler + cSpieler) > 6) {
-                break;
-            }
-
-            spieler = new Spieler[mSpieler + cSpieler];
-
-            for (int x = 0; x < mSpieler; x++) {
-                printmSpielerNamen();
-                String name = in.next();
-                spieler[x] = new MenschlicheSpieler(name);
-            }
-
-            for (int y = mSpieler; y < cSpieler+mSpieler; y++) {
-                spieler[y] = new ComputerSpieler();
-            }
-
-            
-
-            //printReihenfolge(spieler);
-            
-            flag = false;
-
+    private Scanner in = new Scanner(System.in);
+    
+    private Spiel spiel= Spiel.getInstance();
+    
+    public static void main(String[] a){
+        GUI_Terminal gui = new GUI_Terminal();
+        gui.printWelcome();
+        //erstelle menschliche Spieler
+        int mSpieler = gui.printSpielerdialog();
+        String[] namen = gui.printmSpielerNamen(mSpieler);
+        if(!gui.spiel.erstelleSpieler(namen)){
+            gui.somethingWentTerriblyWrong();
+        };
+        //erstelle Computerspieler
+        int anzahlc = gui.printComputerSpielerDialog(6-namen.length);
+        if(!gui.spiel.erstelleCmSpieler(anzahlc)){
+            gui.somethingWentTerriblyWrong();
         }
-        return spieler;
+        //Reihenfolge auswuerfeln
+        for(int i = 0; i < namen.length;i++){
+            gui.wuerfeln(namen[i]);
+            System.out.printf("Du bist der %d -te Spieler \n",gui.spiel.platzAuswuerfeln());
+        }
+        //Spielzuege
+        while(gui.spiel.getRunde()<15){
+            
+        }
+        
+        //schließe den Scanner
+        gui.in.close();
+    }
+    public void wuerfeln(String i){
+        System.out.println(i+": Bitte gib etwas ein und druecke Eingabe um deinen Platz auszuwürfeln");
+        in.next();
+    }
+    public void somethingWentTerriblyWrong(){
+        System.out.println("Something went terribly wrong, pls restart the game");
     }
 
     public void printReihenfolge(Spieler[] spieler) {
@@ -68,17 +58,52 @@ public class GUI_Terminal{
         }
     }
 
-    public void printmSpielerNamen() {
-        System.out.printf("Bitte geben sie den Namen des nächsten Spielers ein");
+    public String[] printmSpielerNamen(int i) {
+        String[] namen = new String[i];
+        for(int o = 0; o<i; o++){
+            System.out.printf("Bitte geben sie den Namen des nächsten Spielers ein");
+            String temp = in.next();
+            namen[o] = temp;
+        }
+        
+        return namen;
     }
 
-    public void printComputerSpielerDialog(int i) {
-        System.out.printf("Wie viele Computerspieler sollen teilnehmen?(0-%d)\n", i);
+    public int printComputerSpielerDialog(int i) {
+        
+        int ret = 0;
+        while(ret == 0){
+            System.out.printf("Wie viele Computerspieler sollen teilnehmen?(0-%d)\n", i);
+            try{
+                ret = in.nextInt();
+            }catch(Exception e){}
+        
+            if(ret>i){
+                ret =  0;
+            }
+        }
+        return ret;
     }
 
-    public void printSpielerdialog() {
+    public int printSpielerdialog() {
         System.out.println("Es dürfen bis zu 6 Spieler teilnehmen");
         System.out.println("Bitte geben sie die Anzahl der menschlichen Spieler an(1-6)");
+        int temp = 0;
+        int input = 0;
+        while(temp == 0){     
+            try{
+                input = in.nextInt();
+            }catch(Exception e){
+                break;
+            }
+            if(input>6){
+                break;
+            }else{
+                temp = input;
+            }
+            
+        }
+        return input;
     }
 
     public void printWelcome() {
@@ -140,10 +165,7 @@ public class GUI_Terminal{
     }
 
     
-    public void wuerfelAuswaehlen(Spieler spieler) {
-        // TODO Auto-generated method stub
-        
-    }
+    
 
    
 
