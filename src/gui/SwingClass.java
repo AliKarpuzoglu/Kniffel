@@ -1,7 +1,9 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -180,11 +182,20 @@ public class SwingClass {
 
 	public void printStart() {
 
+		ColorPanel cop = new ColorPanel(Color.gray);
+		ColorPanel cop2 = new ColorPanel(Color.gray);
+		ColorPanel cop3 = new ColorPanel(Color.gray);
+		ColorPanel cop4 = new ColorPanel(Color.gray);
+		cop.setSize(200, 100);
 		GrundFrame willkommen = new GrundFrame();
+		willkommen.setLayout(new BorderLayout(5, 5));
 		JPanel jP = new JPanel();
 		JButton spielen = new JButton("Spielen!");
+		JLabel will = new JLabel(
+				"              Willkommen zu Kniffel!          ");
+		will.setFont(new Font("Cambria", Font.PLAIN, 20));
 
-		jP.add(new JLabel("Willkommen zu Kniffel!"));
+		jP.add(will);
 		jP.add(spielen);
 		spielen.addActionListener((e) -> printAnzahlSpielerAuswahl());
 		spielen.addActionListener(new ActionListener() {
@@ -202,7 +213,11 @@ public class SwingClass {
 		jP.add(abbruch);
 		abbruch.addActionListener((e) -> System.exit(0));
 
-		willkommen.add(jP);
+		willkommen.getContentPane().add(cop, "North");
+		willkommen.getContentPane().add(cop2, "East");
+		willkommen.getContentPane().add(cop3, "West");
+		willkommen.getContentPane().add(cop4, "South");
+		willkommen.getContentPane().add(jP, "Center");
 		willkommen.setSize(400, 300);
 		// willkommen.pack();
 		willkommen.showIt("Willkommen zu Kniffel!", 600, 400);
@@ -332,8 +347,16 @@ public class SwingClass {
 	}
 
 	public void printreihenfolgeWuerfeln() {
+		ColorPanel cop = new ColorPanel(Color.gray);
+		ColorPanel cop2 = new ColorPanel(Color.gray);
+		ColorPanel cop3 = new ColorPanel(Color.gray);
+		ColorPanel cop4 = new ColorPanel(Color.gray);
 
 		GrundFrame wurfFrame = new GrundFrame();
+		wurfFrame.getContentPane().add(cop, "South");
+		wurfFrame.getContentPane().add(cop2, "East");
+		wurfFrame.getContentPane().add(cop3, "West");
+		wurfFrame.getContentPane().add(cop4, "North");
 		JFrame platzWahl = new JFrame();
 		JLabel platz = new JLabel("Sie sind auf Platz 1!");
 		JPanel platzPanel = new JPanel();
@@ -349,7 +372,9 @@ public class SwingClass {
 		platzWahl.setSize(300, 90);
 		JPanel panel = new JPanel();
 		JButton wuerfeln = new JButton("Wuerfeln");
-		panel.add(new JLabel("Wuerfeln Sie Ihre Position aus!"));
+		JLabel posi = new JLabel("       Wuerfeln Sie Ihre Position aus!");
+		posi.setFont(new Font("Cambria", Font.PLAIN, 20));
+		panel.add(posi);
 		panel.add(wuerfeln);
 		wuerfeln.addActionListener((e) -> platzWahl.setVisible(true));
 
@@ -446,17 +471,28 @@ public class SwingClass {
 	}
 
 	public void printWurfAufforderung() {
+		ColorPanel cop = new ColorPanel(Color.gray);
+		ColorPanel cop2 = new ColorPanel(Color.gray);
+		ColorPanel cop3 = new ColorPanel(Color.gray);
+		ColorPanel cop4 = new ColorPanel(Color.gray);
 		GrundFrame wuerfeln = new GrundFrame();
 		JPanel jP = new JPanel();
+
 		JButton jB = new JButton("Wuerfeln");
 
 		jB.addActionListener((e) -> wuerfeln.setVisible(false));
 		jB.addActionListener((e) -> printWurf());
 
-		jP.add(new JLabel("Spieler 1 ist am Zug"));
+		JLabel zug = new JLabel("   Spieler 1 ist am Zug");
+		zug.setFont(new Font("Cambria", Font.PLAIN, 20));
+		jP.add(zug);
 		jP.add(jB, "Center");
 
 		wuerfeln.add(jP);
+		wuerfeln.getContentPane().add(cop, "West");
+		wuerfeln.getContentPane().add(cop2, "East");
+		wuerfeln.getContentPane().add(cop3, "North");
+		wuerfeln.getContentPane().add(cop4, "South");
 		wuerfeln.setSize(400, 300);
 		wuerfeln.showIt("Wuerfeln!", 600, 400);
 
@@ -465,12 +501,12 @@ public class SwingClass {
 	public void printEndergebnis() {
 		JFrame end = new JFrame();
 		ColorPanel col = new ColorPanel(Color.LIGHT_GRAY);
-		JButton ende = new JButton("Beenden");
+		JButton ende = new JButton("Spiel Beenden");
 		JLabel gewinner = new JLabel("Der Gewinner ist:");
 		gewinner.setFont(new Font("Cambria", Font.PLAIN, 20));
 		col.add(gewinner);
 		col.add(new JLabel("Spieler 1 mit 100 Punkten!"));
-		col.add(ende);
+		col.add(ende, "South");
 		ende.addActionListener((e) -> System.exit(0));
 		end.getContentPane().add(col, "Center");
 		end.setSize(300, 300);
