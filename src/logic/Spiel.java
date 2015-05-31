@@ -10,6 +10,8 @@ import java.util.*;
 public class Spiel {
     private Spieler[] wuerfelReihenfolge;
     private int wuerfeltReihenfolge = 0;
+    
+    
     private Spieler[] spieler = new Spieler[6];
     private int pointer = 0;
 
@@ -25,6 +27,10 @@ public class Spiel {
         return null;
     }
 
+    /**
+     * wuerfelt fuer den aktuellen menschl Spieler und gibt ein String-Array mit den Ergebnissen zurueck
+     * @return Stringdarstellung des Ergebnisses
+     */
     public String[] wuerfeln() {
         return null;
     }
@@ -108,6 +114,35 @@ public class Spiel {
     }
     public int getRunde(){
         return this.rundeSpiel;
+    }
+    /**
+     * fuehrt einen Computerzug des akutellen C-Spielers aus
+     * @return gibt zurueck ob das eine valide Option war
+     */
+    public boolean computerSpielerZug(){
+        if(spieler[this.pointer] instanceof ComputerSpieler){
+            spieler[this.pointer].ergebnisAuswaehlen();
+            return true;
+        }
+        return false;
+    }
+    /**
+     * Gibt an ob ein Mensch am Zug ist, ansonsten beendet diese Funktion den Zug des akutellen Computerspielers
+     * @return Ist ein Mensch am Zug
+     */
+    public boolean menschAmZug(){
+        if(this.spieler[this.pointer] instanceof MenschlicheSpieler){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    /**
+     * Gibt den Namen des aktuellen Spielers zurück
+     * @return Namen des aktiven Spielers
+     */
+    public String amZug(){
+        return this.spieler[this.pointer].toString();
     }
 
     public static Spiel getInstance() {

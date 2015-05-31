@@ -24,7 +24,7 @@ public class GUI_Terminal{
         String[] namen = gui.printmSpielerNamen(mSpieler);
         if(!gui.spiel.erstelleSpieler(namen)){
             gui.somethingWentTerriblyWrong();
-        };
+        }
         //erstelle Computerspieler
         int anzahlc = gui.printComputerSpielerDialog(6-namen.length);
         if(!gui.spiel.erstelleCmSpieler(anzahlc)){
@@ -33,15 +33,60 @@ public class GUI_Terminal{
         //Reihenfolge auswuerfeln
         for(int i = 0; i < namen.length;i++){
             gui.wuerfeln(namen[i]);
-            System.out.printf("Du bist der %d -te Spieler \n",gui.spiel.platzAuswuerfeln());
+            String platz = gui.spiel.platzAuswuerfeln();
+            System.out.printf("Du bist der %s -te Spieler \n",platz);
         }
         //Spielzuege
         while(gui.spiel.getRunde()<15){
-            
+            gui.amZug();
+            gui.printErgebnisspalte(gui.spiel.getSpieler());
+            //menschlicher Spielzug
+            if(gui.spiel.menschAmZug()){
+                //initialwuerfeln
+                gui.wuerfeln();
+                boolean zug = true;
+                while(zug){
+                    gui.moeglicheErgebnisse();
+                    zug = gui.auswaehlenDialog();
+                }
+                
+            }else{
+                //Computerzug
+                    if(!gui.spiel.computerSpielerZug()){
+                        gui.somethingWentTerriblyWrong();
+                    }
+            }
         }
         
+        gui.endergebnis();
         //schließe den Scanner
         gui.in.close();
+    }
+    public void endergebnis(){
+        System.out.println("Das Endergebnis: ");
+        printErgebnisspalte(spiel.getSpieler());
+    } 
+    public boolean auswaehlenDialog() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+    public void moeglicheErgebnisse() {
+        System.out.println("Moegliche Ergebnisse:");
+        header();
+        System.out.format("|%20s|%4s|%4s|%4s|%4s|%4s|%4s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|\n",spiel.moeglicheErgebnisse());
+        
+    }
+    public void wuerfeln(){
+        System.out.println("Druecken sie Eingabe um zu wuerfeln");
+        in.nextLine();
+        String[] wuerfel = spiel.wuerfeln();
+        for(int i = 0; i< wuerfel.length;i++){
+            System.out.printf("Wuerfel %d: %s\n",i,wuerfel[1]);
+        }
+    }
+    
+    public void amZug(){
+        System.out.printf("Am Zug ist: %s", spiel.amZug());
     }
     public void wuerfeln(String i){
         System.out.println(i+": Bitte gib etwas ein und druecke Eingabe um deinen Platz auszuwürfeln");
@@ -51,17 +96,11 @@ public class GUI_Terminal{
         System.out.println("Something went terribly wrong, pls restart the game");
     }
 
-    public void printReihenfolge(Spieler[] spieler) {
-        System.out.println("Die Reihenfolge der Spieler ist:");
-        for (int i = 0; i < spieler.length; i++) {
-            System.out.println((i + 1) + ": " + spieler[i].toString());
-        }
-    }
 
     public String[] printmSpielerNamen(int i) {
         String[] namen = new String[i];
         for(int o = 0; o<i; o++){
-            System.out.printf("Bitte geben sie den Namen des nächsten Spielers ein");
+            System.out.printf("Bitte geben sie den Namen des naechsten Spielers ein \n");
             String temp = in.next();
             namen[o] = temp;
         }
@@ -108,12 +147,20 @@ public class GUI_Terminal{
 
     public void printWelcome() {
         System.out.println("Willkommen zu Kniffel");
-        System.out.println("Die Gruppe um Jonas Jäkel wünscht ihnen ein erfreuliches Spiel");
+        System.out.println("Die Gruppe um Jonas Jaekel wünscht ihnen ein erfreuliches Spiel");
     }
 
     public void printWurf(Wurf wurf) {
         System.out.println(wurf.toString());
 
+    }
+    public void header(){
+        System.out.format("|%20s|%4s|%4s|%4s|%4s|%4s|%4s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|\n",
+                "Spieler","1","2","3","4","5","6",
+                "Summe","Bonus","Dreier","Vierer",
+                "Quadrat","FullHouse", "Kleine",
+                "Grosse","Kniffel",
+                "Chance","Summe","Gesamt");
     }
 
     /**
@@ -122,13 +169,7 @@ public class GUI_Terminal{
      * @param spieler
      */
     public void printErgebnisspalte(Spieler[] spieler) {
-
-        System.out.format("|%20s|%4s|%4s|%4s|%4s|%4s|%4s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|\n",
-                "Spieler","1","2","3","4","5","6",
-                "Summe","Bonus","Dreier","Vierer",
-                "Quadrat","FullHouse", "Kleine",
-                "Grosse","Kniffel",
-                "Chance","Summe","Gesamt");
+        header();     
         for (int i = 0; i < spieler.length; i++)
             System.out
                     .format("|%20s|%4s|%4s|%4s|%4s|%4s|%4s|%10d|%10d|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10d|%10d|\n",
@@ -155,14 +196,7 @@ public class GUI_Terminal{
 
     }
 
-    public void printAmZugDialog(Spieler[] spieler, int posi) {
-        System.out.println("Am Zug ist : " + spieler[posi].toString());
-        System.out.println("Ihr Zwischenergebnis:");
-        printErgebnisspalte(spieler);
-        System.out.println("Ihr Wurf:");
-        System.out.println(spieler[posi].getWurf().toString());
-
-    }
+    
 
     
     
