@@ -5,12 +5,14 @@ import logic.Wurf;
 
 /**
  * 
+ * @author Katharina, Ali, Fritz and André
+ *
+ * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu überprüfen ob es sich
+ * tatsaechlich um einen "Dreierpasch" handelt, und dann werden die erreichten Punkte berechnet.
  */
 public class Dreierpasch extends Ergebnis {
 
-    /**
-     * 
-     */
+  
     public Dreierpasch() {
         oben = false;
     }

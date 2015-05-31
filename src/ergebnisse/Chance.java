@@ -3,6 +3,15 @@ package ergebnisse;
 import logic.Wuerfel;
 import logic.Wurf;
 
+/**
+ * 
+ * @author Katharina, Ali, Fritz and André
+ * 
+ * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu überprüfen ob es
+ * tatsaechlich eine "Chance" ist, und dann werden die erreichten Punkte berechnet. 
+ *
+ */
+
 public class Chance extends Ergebnis {
 
     @Override

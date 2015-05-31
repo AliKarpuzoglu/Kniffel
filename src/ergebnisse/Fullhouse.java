@@ -7,12 +7,15 @@ import logic.Wurf;
 
 /**
  * 
+ * @author Katharina, Ali, Fritz and André
+ *
+ * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu überprüfen ob es
+ * tatsaechlich um ein "FullHouse" handelt, und dann werden die erreichten Punkte berechnet.
+ * 
  */
 public class Fullhouse extends Ergebnis {
 
-    /**
-     * 
-     */
+    
     public Fullhouse() {
     }
 
