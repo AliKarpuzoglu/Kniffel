@@ -6,6 +6,7 @@ import java.awt.Insets;
 import java.awt.event.WindowAdapter;
 
 import javax.swing.*;
+import javax.swing.JTable.PrintMode;
 
 import ergebnisse.Chance;
 import ergebnisse.KleineStrasse;
@@ -20,8 +21,26 @@ public class SwingClass {
 	JButton spielenButton = new JButton("Spielen");
 	JButton abbruch = new JButton("Beenden");
 
-	String[] spieler = new String[6];
-	int i = 0;
+	static String[] spieler = new String[6];
+	int i;
+	int c = 0;
+	int a = 0;
+
+	public int getI() {
+		return i;
+	}
+
+	public void setI(int i) {
+		this.i = i;
+	}
+
+	public int getC() {
+		return c;
+	}
+
+	public void setC(int c) {
+		this.c = c;
+	}
 
 	// Für Computer Spieler
 	GrundFrame compFrame;
@@ -62,12 +81,7 @@ public class SwingClass {
 		abbruch.addActionListener((e) -> System.exit(0));
 		spielenButton.addActionListener((e) -> label
 				.setText("Spiel startet jetzt!"));
-		spielerNamen.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(java.awt.event.WindowEvent e) {
-				System.exit(0);
-			};
-		});
+
 		spielerNamen.pack();
 
 		spielerNamen.setVisible(true);
@@ -85,16 +99,11 @@ public class SwingClass {
 		auswahl4 = new JButton("4");
 		auswahl5 = new JButton("5");
 
-		auswahl1.addActionListener((e) -> compPanel.add(new JLabel(
-				"Ein Computer Spieler spielt jetzt mit.")));
-		auswahl2.addActionListener((e) -> compPanel.add(new JLabel(
-				"Zwei Computer Spieler spielt jetzt mit.")));
-		auswahl3.addActionListener((e) -> compPanel.add(new JLabel(
-				"Drei Computer Spieler spielt jetzt mit.")));
-		auswahl4.addActionListener((e) -> compPanel.add(new JLabel(
-				"Vier Computer Spieler spielt jetzt mit.")));
-		auswahl5.addActionListener((e) -> compPanel.add(new JLabel("Fünf")));
-		abbruch.addActionListener((e) -> System.exit(0));
+		auswahl1.addActionListener((e) -> c = 1);
+		auswahl2.addActionListener((e) -> c = 2);
+		auswahl3.addActionListener((e) -> c = 3);
+		auswahl4.addActionListener((e) -> c = 4);
+		auswahl5.addActionListener((e) -> c = 5);
 
 		compPanel
 				.add(new JLabel("Wieviele Computer Spieler sollen mitspielen?"));
@@ -105,16 +114,10 @@ public class SwingClass {
 		compPanel.add(auswahl3);
 		compPanel.add(auswahl4);
 		compPanel.add(auswahl5);
-		compPanel.add(abbruch);
 
 		compPanel.add(compLabel);
 		compFrame.add(compPanel);
-		compFrame.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(java.awt.event.WindowEvent e) {
-				System.exit(0);
-			};
-		});
+
 		compFrame.pack();
 		compFrame.showIt("Computer Spieler", 600, 400);
 
@@ -124,7 +127,6 @@ public class SwingClass {
 
 		namePanel = new JPanel();
 		nameLabel = new JLabel("Waehlen Sie einen Spielernamen: ");
-		nameFrame = new GrundFrame();
 
 		namePanel.add(nameLabel);
 		tfName = new JTextField("", 15);
@@ -133,40 +135,55 @@ public class SwingClass {
 		namePanel.add(tfName);
 
 		ok = new JButton("OK");
-		ok.addActionListener((e) -> spieler[i] = tfName.getText());
+		ok.addActionListener((e) -> nameLabel
+				.setText("Name des nächsten Spielers:"));
+		ok.addActionListener((e) -> tfName.setText(""));
 
 		namePanel.add(ok);
-		
-		
-		nameFrame.add(namePanel);
-		nameFrame.pack();
-		nameFrame.showIt("Name", 600, 400);
+
+		JDialog dialog = new JDialog();
+		dialog.setTitle("Spielernamen");
+		dialog.setAlwaysOnTop(true);
+
+		dialog.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(java.awt.event.WindowEvent e) {
+				System.exit(0);
+			}
+		});
+		ok.addActionListener((e) -> spieler[0] = "" + tfName.getText());
+		ok.addActionListener((e) -> dialog.setVisible(false));
+
+		dialog.setLocation(600, 400);
+
+		dialog.add(namePanel);
+		dialog.pack();
+
+		dialog.setVisible(true);
 
 	}
 
-	public void printWelcome() {
+	public boolean printWelcome() {
 
 		GrundFrame willkommen = new GrundFrame();
 		JPanel jP = new JPanel();
 		JButton jB = new JButton("Spielen!");
 
-		jP.add(new JLabel(
-				"Die Gruppe um Jonas Jaeckel wuenscht ihnen ein erfreuliches Spiel!"));
+		jP.add(new JLabel("Willkommen zu Kniffel!"));
 		jP.add(jB);
 		jB.addActionListener((e) -> printMSpielerAuswahl());
 		jB.addActionListener((e) -> willkommen.setVisible(false));
 		jP.add(abbruch);
 		abbruch.addActionListener((e) -> System.exit(0));
-		willkommen.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(java.awt.event.WindowEvent e) {
-				System.exit(0);
-			};
-		});
 
 		willkommen.add(jP);
 		willkommen.pack();
 		willkommen.showIt("Willkommen zu Kniffel!", 600, 400);
+
+		if (!willkommen.isShowing()) {
+			return false;
+		}
+		return true;
 
 	}
 
@@ -230,6 +247,10 @@ public class SwingClass {
 
 	}
 
+	public void reihenfolgeWuerfeln() {
+
+	}
+
 	public void printMSpielerAuswahl() {
 		spielerFrame = new GrundFrame();
 		spielerPanel = new JPanel();
@@ -242,31 +263,24 @@ public class SwingClass {
 		auswahlS5 = new JButton("5");
 		auswahlS6 = new JButton("6");
 
-		auswahlS1.addActionListener((e) -> i = 1);
+		auswahlS1.addActionListener((e) -> setI(1));
 		auswahlS1.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS1.addActionListener((e) -> printSpielerdialog());
-		auswahlS2.addActionListener((e) -> i = 2);
+		auswahlS2.addActionListener((e) -> setI(2));
 		auswahlS2.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS2.addActionListener((e) -> printSpielerdialog());
-		auswahlS3.addActionListener((e) -> i = 3);
+		auswahlS3.addActionListener((e) -> setI(3));
 		auswahlS3.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS3.addActionListener((e) -> printSpielerdialog());
-		auswahlS4.addActionListener((e) -> i = 4);
+		auswahlS4.addActionListener((e) -> setI(4));
 		auswahlS4.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS4.addActionListener((e) -> printSpielerdialog());
-		auswahlS5.addActionListener((e) -> i = 5);
+		auswahlS5.addActionListener((e) -> setI(5));
 		auswahlS5.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS5.addActionListener((e) -> printSpielerdialog());
-		auswahlS6.addActionListener((e) -> i = 6);
+		auswahlS6.addActionListener((e) -> setI(6));
 		auswahlS6.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS6.addActionListener((e) -> printSpielerdialog());
-		abbruch.addActionListener((e) -> System.exit(0));
-		spielerFrame.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(java.awt.event.WindowEvent e) {
-				System.exit(0);
-			};
-		});
 
 		spielerPanel.add(new JLabel(
 				"Wieviele menschliche Spieler moechten mitspielen?"));
@@ -276,13 +290,13 @@ public class SwingClass {
 		spielerPanel.add(auswahlS4);
 		spielerPanel.add(auswahlS5);
 		spielerPanel.add(auswahlS6);
-		spielerPanel.add(abbruch);
 
 		spielerPanel.add(labelS);
 		spielerFrame.add(spielerPanel);
 		spielerFrame.pack();
 
 		spielerFrame.showIt("Spieleranzahl", 600, 400);
+
 	}
 
 	public void printErgebnistabelle() {
@@ -334,8 +348,7 @@ public class SwingClass {
 	public static void main(String[] args) {
 
 		SwingClass wK = new SwingClass();
+
 		wK.printWelcome();
-
 	}
-
 }
