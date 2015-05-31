@@ -104,15 +104,15 @@ public class SwingClass {
 		auswahl4 = new JButton("4");
 		auswahl5 = new JButton("5");
 
-		auswahl1.addActionListener((e) -> reihenfolgeWuerfeln());
+		auswahl1.addActionListener((e) -> printreihenfolgeWuerfeln());
 		auswahl1.addActionListener((e) -> compFrame.setVisible(false));
-		auswahl2.addActionListener((e) -> reihenfolgeWuerfeln());
+		auswahl2.addActionListener((e) -> printreihenfolgeWuerfeln());
 		auswahl2.addActionListener((e) -> compFrame.setVisible(false));
-		auswahl3.addActionListener((e) -> reihenfolgeWuerfeln());
+		auswahl3.addActionListener((e) -> printreihenfolgeWuerfeln());
 		auswahl3.addActionListener((e) -> compFrame.setVisible(false));
-		auswahl4.addActionListener((e) -> reihenfolgeWuerfeln());
+		auswahl4.addActionListener((e) -> printreihenfolgeWuerfeln());
 		auswahl4.addActionListener((e) -> compFrame.setVisible(false));
-		auswahl5.addActionListener((e) -> reihenfolgeWuerfeln());
+		auswahl5.addActionListener((e) -> printreihenfolgeWuerfeln());
 		auswahl5.addActionListener((e) -> compFrame.setVisible(false));
 
 		compPanel
@@ -203,7 +203,8 @@ public class SwingClass {
 		abbruch.addActionListener((e) -> System.exit(0));
 
 		willkommen.add(jP);
-		willkommen.pack();
+		willkommen.setSize(400, 300);
+		// willkommen.pack();
 		willkommen.showIt("Willkommen zu Kniffel!", 600, 400);
 
 		/*
@@ -330,7 +331,7 @@ public class SwingClass {
 
 	}
 
-	public void reihenfolgeWuerfeln() {
+	public void printreihenfolgeWuerfeln() {
 
 		GrundFrame wurfFrame = new GrundFrame();
 		JFrame platzWahl = new JFrame();
@@ -344,7 +345,8 @@ public class SwingClass {
 		platzPanel.add(gutZuWissen);
 		platzWahl.getContentPane().add(platzPanel, "Center");
 		platzWahl.setLocation(600, 400);
-		platzWahl.pack();
+		platzWahl.setTitle("Ihre Position");
+		platzWahl.setSize(300, 90);
 		JPanel panel = new JPanel();
 		JButton wuerfeln = new JButton("Wuerfeln");
 		panel.add(new JLabel("Wuerfeln Sie Ihre Position aus!"));
@@ -352,7 +354,7 @@ public class SwingClass {
 		wuerfeln.addActionListener((e) -> platzWahl.setVisible(true));
 
 		wurfFrame.getContentPane().add(panel);
-		wurfFrame.setSize(200, 200);
+		wurfFrame.setSize(400, 300);
 		wurfFrame.showIt("Wuerfeln", 600, 400);
 
 	}
@@ -455,7 +457,7 @@ public class SwingClass {
 		jP.add(jB, "Center");
 
 		wuerfeln.add(jP);
-		wuerfeln.setSize(400, 200);
+		wuerfeln.setSize(400, 300);
 		wuerfeln.showIt("Wuerfeln!", 600, 400);
 
 	}

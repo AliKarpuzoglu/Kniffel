@@ -13,6 +13,7 @@ public class GrundFrame extends JFrame {
 
 	public GrundFrame() {
 
+		this.setSize(400, 400);
 		JFrame infoFrame = new JFrame("Info");
 		JLabel infoLabel = new JLabel(
 				"Viel Spaß wünscht euch das Team von Jonas Jäckel!");
