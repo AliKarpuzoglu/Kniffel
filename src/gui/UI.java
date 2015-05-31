@@ -107,7 +107,7 @@ public class UI{
     }
     private boolean wuerfelWeglegenDialog() {
         boolean flagg = true;
-        while(flagg){
+        do{
         System.out.printf("Geben sie den wegzulegenden Wuerfel  an\n");        
         if(spiel.weglegbareWuerfel()==null){
             System.out.println("Keine weglegbare Wuerfel mehr");  
@@ -119,11 +119,25 @@ public class UI{
             }
         }
         try{
-            spiel.wuerfelWeglegen(in.nextInt());
+            if(!spiel.wuerfelWeglegen(in.nextInt())){
+                System.out.println("Ungueltiger Wuerfel");
+            }
         }catch(Exception e){
-            
+            break;
         }
+        
+        System.out.println("Moechten sie noch einen Wuerfel weglegen(Ja = 1, Nein = 0");
+        int wahl = -1;
+        try{
+            wahl = in.nextInt();
+        }catch(Exception e){
+            break;
         }
+        if(wahl==0){
+            flagg = false;
+        }
+        }while(flagg);
+        return true;
     }
     private boolean ergebnisAuswaehlenDialog() {
         int moeglichkeiten = moeglicheErgebnisse();
@@ -146,7 +160,7 @@ public class UI{
         System.out.println("Moegliche Ergebnisse:");
         ArrayList<Ergebnis> moeglich = spiel.moeglicheErgebnisse();
         for(int s = 0; s< moeglich.size();s++){
-            System.out.println(moeglich.get(s)+" : "+(s+1));
+            System.out.println(moeglich.get(s).getName()+" : "+(s+1));
         }
         return moeglich.size();
         
