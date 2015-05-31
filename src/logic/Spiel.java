@@ -28,11 +28,16 @@ public class Spiel {
     }
 
     /**
-     * wuerfelt fuer den aktuellen menschl Spieler und gibt ein String-Array mit den Ergebnissen zurueck
+     * wuerfelt fuer den aktuellen Spieler und gibt ein String-Array mit den Ergebnissen zurueck
      * @return Stringdarstellung des Ergebnisses
      */
     public String[] wuerfeln() {
-        return null;
+        this.spieler[pointer].getWurf().wuerfeln();
+        String[] temp = new String[5];
+        for(int i =0; i< temp.length;i++){
+            temp[i] = this.spieler[pointer].getWurf().getAlleWuerfel()[i].toString();
+        }
+        return temp;
     }
 
     public boolean erstelleSpieler(String[] namen) {
@@ -156,8 +161,11 @@ public class Spiel {
     }
 
     public void zugBeenden() {
-        pointer++;
-        
+        if(pointer == spieler.length-1){
+            pointer = 0;
+        }else{
+            pointer++;
+        }
     }
 
 }

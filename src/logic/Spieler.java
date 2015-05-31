@@ -15,6 +15,7 @@ public abstract class Spieler {
 
 	public Spieler(String name) {
 		this.name = name;
+		this.wurf = new Wurf();
 	}
 
 	/**
@@ -54,11 +55,7 @@ public abstract class Spieler {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result
-                + ((ergebnisTabelle == null) ? 0 : ergebnisTabelle.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + runde;
-        result = prime * result + ((wurf == null) ? 0 : wurf.hashCode());
         return result;
     }
 
@@ -71,24 +68,13 @@ public abstract class Spieler {
         if (getClass() != obj.getClass())
             return false;
         Spieler other = (Spieler) obj;
-        if (ergebnisTabelle == null) {
-            if (other.ergebnisTabelle != null)
-                return false;
-        } else if (!ergebnisTabelle.equals(other.ergebnisTabelle))
-            return false;
         if (name == null) {
             if (other.name != null)
                 return false;
         } else if (!name.equals(other.name))
             return false;
-        if (runde != other.runde)
-            return false;
-        if (wurf == null) {
-            if (other.wurf != null)
-                return false;
-        } else if (!wurf.equals(other.wurf))
-            return false;
         return true;
     }
+
 	
 }

@@ -52,13 +52,13 @@ public class ComputerSpieler extends Spieler {
 			return;
 		}
 
-		// große straße
+		// groï¿½e straï¿½e
 		if (ergebnisTabelle.getErgebnis()[11].ueberpruefen(wurf)) {
 			kiErgebnisEintragen(ergebnisTabelle.getErgebnis()[11]);
 			return;
 		}
 
-		// kleine Straße
+		// kleine Straï¿½e
 		if (ergebnisTabelle.getErgebnis()[10].ueberpruefen(wurf)) {
 			kiErgebnisEintragen(ergebnisTabelle.getErgebnis()[10]);
 			return;
@@ -75,7 +75,7 @@ public class ComputerSpieler extends Spieler {
 			if (maxMoeglich(moeglich).isOben()) {
 
 				if (runde < 5) {
-					// lege alle anderen würfel weg
+					// lege alle anderen wï¿½rfel weg
 					for (Wuerfel w : wurf.getAlleWuerfel()) {
 						if (w.getAugenzahl() == ((SummeOben) maxMoeglich(moeglich))
 								.getWert()) {
@@ -84,7 +84,7 @@ public class ComputerSpieler extends Spieler {
 
 					}
 					wurf.wuerfeln();
-					System.out.println(wurf);
+					System.out.println(wurf); //such bm, much wow
 					runde++;
 					ergebnisAuswaehlenHelper1();
 					return;
@@ -111,7 +111,7 @@ public class ComputerSpieler extends Spieler {
 				}
 			}
 			if (runde < 5) {
-				// lege alle passenden würfel weg
+				// lege alle passenden wï¿½rfel weg
 				for (Wuerfel w : wurf.getAlleWuerfel()) {
 					if (w.getAugenzahl() == maxGleich) {
 						w.beiseiteLegen();
@@ -140,7 +140,7 @@ public class ComputerSpieler extends Spieler {
 	}
 
 	/**
-	 * gebe die augenzahl zurück die am meisten vor kommt
+	 * gebe die augenzahl zurï¿½ck die am meisten vor kommt
 	 * 
 	 * @param w
 	 * @return
@@ -259,7 +259,7 @@ public class ComputerSpieler extends Spieler {
 				}
 			}
 		}
-		// chance als letztes auswählen
+		// chance als letztes auswï¿½hlen
 		if (beste == null && chance != null) {
 			if (chance.ueberpruefen(wurf)) {
 				beste = chance;

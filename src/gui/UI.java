@@ -83,8 +83,8 @@ public class UI{
         
     }
     public void wuerfeln(){
-        System.out.println("Druecken sie Eingabe um zu wuerfeln");
-        in.nextLine();
+        System.out.println("Taetige eine Eingabe um zu wuerfeln");
+        in.next();
         String[] wuerfel = spiel.wuerfeln();
         for(int i = 0; i< wuerfel.length;i++){
             System.out.printf("Wuerfel %d: %s\n",i,wuerfel[i]);
@@ -92,10 +92,10 @@ public class UI{
     }
     
     public void amZug(){
-        System.out.printf("Am Zug ist: %s", spiel.amZug());
+        System.out.printf("Am Zug ist: %s \n", spiel.amZug());
     }
     public void wuerfeln(String i){
-        System.out.println(i+": Bitte gib etwas ein und druecke Eingabe um deinen Platz auszuwürfeln");
+        System.out.println(i+": Bitte taetige eine Eingabe um deinen Platz auszuwürfeln");
         in.next();
     }
     public void somethingWentTerriblyWrong(){
@@ -117,14 +117,21 @@ public class UI{
     public int printComputerSpielerDialog(int i) {
         
         int ret = 0;
-        while(ret == 0){
-            System.out.printf("Wie viele Computerspieler sollen teilnehmen?(0-%d)\n", i);
+        boolean flagg = true;
+        while(flagg){
+            System.out.printf("Wie viele Computerspieler sollen teilnehmen?(1-%d)\n", i);
             try{
                 ret = in.nextInt();
-            }catch(Exception e){}
+            }catch(Exception e){
+                flagg = false;
+                break;
+            }
         
             if(ret>i){
                 ret =  0;
+            }
+            if(!(ret==0)){
+                flagg = false;
             }
         }
         return ret;
