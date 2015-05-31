@@ -9,15 +9,21 @@ import logic.MenschlicheSpieler;
 import logic.Spiel;
 import logic.Spieler;
 import logic.Wurf;
-
-public class GUI_Terminal{
+/**
+ * Klasse zur Ausgabe des Spiel auf der Console
+ * @author fritzbaumann
+ * @param in Scanner des Consolen-UI
+ * @param spiel Spiel-Instanz des UI
+ * 
+ */
+public class UI{
     
     private Scanner in = new Scanner(System.in);
     
     private Spiel spiel= Spiel.getInstance();
     
     public static void main(String[] a){
-        GUI_Terminal gui = new GUI_Terminal();
+        UI gui = new UI();
         gui.printWelcome();
         //erstelle menschliche Spieler
         int mSpieler = gui.printSpielerdialog();
@@ -49,6 +55,7 @@ public class GUI_Terminal{
                     gui.moeglicheErgebnisse();
                     zug = gui.auswaehlenDialog();
                 }
+                gui.spiel.zugBeenden();
                 
             }else{
                 //Computerzug
@@ -73,7 +80,6 @@ public class GUI_Terminal{
     public void moeglicheErgebnisse() {
         System.out.println("Moegliche Ergebnisse:");
         header();
-        System.out.format("|%20s|%4s|%4s|%4s|%4s|%4s|%4s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|%10s|\n",spiel.moeglicheErgebnisse());
         
     }
     public void wuerfeln(){
@@ -81,7 +87,7 @@ public class GUI_Terminal{
         in.nextLine();
         String[] wuerfel = spiel.wuerfeln();
         for(int i = 0; i< wuerfel.length;i++){
-            System.out.printf("Wuerfel %d: %s\n",i,wuerfel[1]);
+            System.out.printf("Wuerfel %d: %s\n",i,wuerfel[i]);
         }
     }
     
