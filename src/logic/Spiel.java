@@ -122,7 +122,9 @@ public class Spiel {
     public boolean computerSpielerZug(){
         if(spieler[this.pointer] instanceof ComputerSpieler){
             spieler[this.pointer].ergebnisAuswaehlen();
+            zugBeenden();
             return true;
+            
         }
         return false;
     }
@@ -151,6 +153,11 @@ public class Spiel {
 
     public static void setInstance(Spiel instance) {
         Spiel.instance = instance;
+    }
+
+    public void zugBeenden() {
+        pointer++;
+        
     }
 
 }
