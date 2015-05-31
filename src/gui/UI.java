@@ -121,6 +121,7 @@ public class UI{
         try{
             if(!spiel.wuerfelWeglegen(in.nextInt())){
                 System.out.println("Ungueltiger Wuerfel");
+                break;
             }
         }catch(Exception e){
             break;
