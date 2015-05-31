@@ -119,7 +119,7 @@ public class UI{
             }
         }
         try{
-            if(!spiel.wuerfelWeglegen(in.nextInt())){
+            if(!spiel.wuerfelWeglegen(in.nextInt()-1)){
                 System.out.println("Ungueltiger Wuerfel");
                 break;
             }
@@ -244,11 +244,10 @@ public class UI{
         int ret = 0;
         boolean flagg = true;
         while(flagg){
-            System.out.printf("Wie viele Computerspieler sollen teilnehmen?(1-%d)\n", i);
+            System.out.printf("Wie viele Computerspieler sollen teilnehmen?(0-%d)\n", i);
             try{
                 ret = in.nextInt();
             }catch(Exception e){
-                flagg = false;
                 break;
             }
         

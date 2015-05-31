@@ -67,6 +67,15 @@ public class Spiel {
 
     public boolean erstelleCmSpieler(int i) {
         if(i==0){
+            Spieler[] temp = new Spieler[pointer];
+            for (int m = 0; m < temp.length; m++) {
+                temp[m] = spieler[m];
+            }
+            
+            pointer = 0;
+            this.spieler = temp;
+            wuerfelReihenfolgeAus();
+            
             return true;
         }
         if ((pointer + i) > 6) {
