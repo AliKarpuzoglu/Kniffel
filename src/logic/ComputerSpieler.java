@@ -1,6 +1,6 @@
 package logic;
 
-import java.io.IOException;
+
 import java.util.*;
 
 import ergebnisse.*;
@@ -30,7 +30,7 @@ public class ComputerSpieler extends Spieler {
 	 * Finde das beste Ergebnis und Wuerfel erneut
 	 * 
 	 */
-	public void ergebnisAuswaehlenHelper1() {
+	private void ergebnisAuswaehlenHelper1() {
 
 		if (runde >= 5) {
 			ergebnisAuswaehlenHelper();
@@ -94,7 +94,7 @@ public class ComputerSpieler extends Spieler {
 		}
 
 		if (Ergebnis.gleicheZahlen(wurf) >= 2) {
-			int maxGleich = meisteWuerfel(wurf);
+			int maxGleich = meisteAugen(wurf);
 			for (int i = 0; i < 6; i++) {
 				// wenn das, was am meisten vorhanden ist, nicht offen ist, leg
 				// einen anderne zur Seite
@@ -145,7 +145,7 @@ public class ComputerSpieler extends Spieler {
 	 * @param w
 	 * @return
 	 */
-	private int meisteWuerfel(Wurf w) {
+	private int meisteAugen(Wurf w) {
 		int count = 1, tempCount;
 		int popular = w.getAlleWuerfel()[0].getAugenzahl();
 		int temp = 0;
