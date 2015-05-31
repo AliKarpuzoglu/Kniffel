@@ -2,10 +2,15 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 
 import javax.swing.*;
+import javax.swing.JTable.PrintMode;
 
 import ergebnisse.Chance;
 import ergebnisse.KleineStrasse;
@@ -20,8 +25,26 @@ public class SwingClass {
 	JButton spielenButton = new JButton("Spielen");
 	JButton abbruch = new JButton("Beenden");
 
-	String[] spieler = new String[6];
-	int i = 0;
+	static String[] spieler = new String[6];
+	int i;
+	int c = 0;
+	int a = 0;
+
+	public int getI() {
+		return i;
+	}
+
+	public void setI(int i) {
+		this.i = i;
+	}
+
+	public int getC() {
+		return c;
+	}
+
+	public void setC(int c) {
+		this.c = c;
+	}
 
 	// Für Computer Spieler
 	GrundFrame compFrame;
@@ -51,6 +74,7 @@ public class SwingClass {
 	GrundFrame spielerFrame;
 	JPanel spielerPanel;
 	JLabel labelS;
+	boolean visible = true;
 
 	public void printReihenfolge(Spieler[] spieler) {
 
@@ -62,12 +86,7 @@ public class SwingClass {
 		abbruch.addActionListener((e) -> System.exit(0));
 		spielenButton.addActionListener((e) -> label
 				.setText("Spiel startet jetzt!"));
-		spielerNamen.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(java.awt.event.WindowEvent e) {
-				System.exit(0);
-			};
-		});
+
 		spielerNamen.pack();
 
 		spielerNamen.setVisible(true);
@@ -85,16 +104,16 @@ public class SwingClass {
 		auswahl4 = new JButton("4");
 		auswahl5 = new JButton("5");
 
-		auswahl1.addActionListener((e) -> compPanel.add(new JLabel(
-				"Ein Computer Spieler spielt jetzt mit.")));
-		auswahl2.addActionListener((e) -> compPanel.add(new JLabel(
-				"Zwei Computer Spieler spielt jetzt mit.")));
-		auswahl3.addActionListener((e) -> compPanel.add(new JLabel(
-				"Drei Computer Spieler spielt jetzt mit.")));
-		auswahl4.addActionListener((e) -> compPanel.add(new JLabel(
-				"Vier Computer Spieler spielt jetzt mit.")));
-		auswahl5.addActionListener((e) -> compPanel.add(new JLabel("Fünf")));
-		abbruch.addActionListener((e) -> System.exit(0));
+		auswahl1.addActionListener((e) -> reihenfolgeWuerfeln());
+		auswahl1.addActionListener((e) -> compFrame.setVisible(false));
+		auswahl2.addActionListener((e) -> reihenfolgeWuerfeln());
+		auswahl2.addActionListener((e) -> compFrame.setVisible(false));
+		auswahl3.addActionListener((e) -> reihenfolgeWuerfeln());
+		auswahl3.addActionListener((e) -> compFrame.setVisible(false));
+		auswahl4.addActionListener((e) -> reihenfolgeWuerfeln());
+		auswahl4.addActionListener((e) -> compFrame.setVisible(false));
+		auswahl5.addActionListener((e) -> reihenfolgeWuerfeln());
+		auswahl5.addActionListener((e) -> compFrame.setVisible(false));
 
 		compPanel
 				.add(new JLabel("Wieviele Computer Spieler sollen mitspielen?"));
@@ -105,16 +124,10 @@ public class SwingClass {
 		compPanel.add(auswahl3);
 		compPanel.add(auswahl4);
 		compPanel.add(auswahl5);
-		compPanel.add(abbruch);
 
 		compPanel.add(compLabel);
 		compFrame.add(compPanel);
-		compFrame.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(java.awt.event.WindowEvent e) {
-				System.exit(0);
-			};
-		});
+
 		compFrame.pack();
 		compFrame.showIt("Computer Spieler", 600, 400);
 
@@ -124,7 +137,6 @@ public class SwingClass {
 
 		namePanel = new JPanel();
 		nameLabel = new JLabel("Waehlen Sie einen Spielernamen: ");
-		nameFrame = new GrundFrame();
 
 		namePanel.add(nameLabel);
 		tfName = new JTextField("", 15);
@@ -133,104 +145,219 @@ public class SwingClass {
 		namePanel.add(tfName);
 
 		ok = new JButton("OK");
-		ok.addActionListener((e) -> spieler[i] = tfName.getText());
+		ok.addActionListener((e) -> nameLabel
+				.setText("Name des nächsten Spielers:"));
+		ok.addActionListener((e) -> tfName.setText(""));
 
 		namePanel.add(ok);
-		
-		
-		nameFrame.add(namePanel);
-		nameFrame.pack();
-		nameFrame.showIt("Name", 600, 400);
 
-	}
+		JDialog dialog = new JDialog();
+		dialog.setTitle("Spielernamen");
+		dialog.setAlwaysOnTop(true);
 
-	public void printWelcome() {
+		dialog.addWindowListener(new WindowAdapter() {
 
-		GrundFrame willkommen = new GrundFrame();
-		JPanel jP = new JPanel();
-		JButton jB = new JButton("Spielen!");
-
-		jP.add(new JLabel(
-				"Die Gruppe um Jonas Jaeckel wuenscht ihnen ein erfreuliches Spiel!"));
-		jP.add(jB);
-		jB.addActionListener((e) -> printMSpielerAuswahl());
-		jB.addActionListener((e) -> willkommen.setVisible(false));
-		jP.add(abbruch);
-		abbruch.addActionListener((e) -> System.exit(0));
-		willkommen.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(java.awt.event.WindowEvent e) {
 				System.exit(0);
-			};
+			}
 		});
+		ok.addActionListener((e) -> spieler[0] = "" + tfName.getText());
+		ok.addActionListener((e) -> nameLabel
+				.setText("Name des nächsten Spielers:"));
+		ok.addActionListener((e) -> tfName.setText(""));
+		ok.addActionListener((e) -> printComputerSpielerDialog());
+		ok.addActionListener((e) -> dialog.setVisible(false));
+
+		dialog.setLocation(600, 400);
+
+		dialog.add(namePanel);
+		dialog.pack();
+
+		dialog.setVisible(true);
+
+	}
+
+	public void printStart() {
+
+		GrundFrame willkommen = new GrundFrame();
+		JPanel jP = new JPanel();
+		JButton spielen = new JButton("Spielen!");
+
+		jP.add(new JLabel("Willkommen zu Kniffel!"));
+		jP.add(spielen);
+		spielen.addActionListener((e) -> printAnzahlSpielerAuswahl());
+		spielen.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == spielen) {
+					willkommen.setVisible(false);
+					;
+
+				}
+
+			}
+		});
+		jP.add(abbruch);
+		abbruch.addActionListener((e) -> System.exit(0));
 
 		willkommen.add(jP);
 		willkommen.pack();
 		willkommen.showIt("Willkommen zu Kniffel!", 600, 400);
+
+		/*
+		 * if (!willkommen.isVisible()) { printAnzahlSpielerAuswahl(); }
+		 */
 
 	}
 
 	public void printWurf() {
 
 		GrundFrame grundF = new GrundFrame();
-		JPanel colP = new javax.swing.JPanel();
-		JPanel colP2 = new javax.swing.JPanel();
+		grundF.setLayout(new GridLayout(/* 3 */0, 2, 28, 14));
 
-		JLabel compLabel = new JLabel("Waehle dein Ergebnis:");
-		JButton einer = new JButton("");
-		JButton zweier = new JButton("");
-		JButton dreier = new JButton("");
-		JButton vierer = new JButton("");
-		JButton fuenfer = new JButton("");
-		JButton sechser = new JButton("");
-		JButton drpasch = new JButton("");
-		JButton vipasch = new JButton("");
-		JButton qfolge = new JButton("");
-		JButton fullhouse = new JButton("");
-		JButton klstrasse = new JButton("");
-		JButton grstrasse = new JButton("");
-		JButton kniffel = new JButton("");
-		JButton chance = new JButton("");
+		JLabel compLabel = new JLabel("Du hast folgendes gewuerfelt:");
+		JButton einer = new JButton("5");
+		einer.addActionListener((e) -> printErgebnistabelle());
+		einer.addActionListener((e) -> grundF.setVisible(false));
+		JButton zweier = new JButton("10");
+		zweier.addActionListener((e) -> printErgebnistabelle());
+		zweier.addActionListener((e) -> grundF.setVisible(false));
+		JButton dreier = new JButton("15");
+		dreier.addActionListener((e) -> printErgebnistabelle());
+		dreier.addActionListener((e) -> grundF.setVisible(false));
+		JButton vierer = new JButton("20");
+		vierer.addActionListener((e) -> printErgebnistabelle());
+		vierer.addActionListener((e) -> grundF.setVisible(false));
+		JButton fuenfer = new JButton("25");
+		fuenfer.addActionListener((e) -> printErgebnistabelle());
+		fuenfer.addActionListener((e) -> grundF.setVisible(false));
+		JButton sechser = new JButton("30");
+		sechser.addActionListener((e) -> printErgebnistabelle());
+		sechser.addActionListener((e) -> grundF.setVisible(false));
+		JButton drpasch = new JButton("18");
+		drpasch.addActionListener((e) -> printErgebnistabelle());
+		drpasch.addActionListener((e) -> grundF.setVisible(false));
+		JButton vipasch = new JButton("16");
+		vipasch.addActionListener((e) -> printErgebnistabelle());
+		vipasch.addActionListener((e) -> grundF.setVisible(false));
+		JButton qfolge = new JButton("25");
+		qfolge.addActionListener((e) -> printErgebnistabelle());
+		qfolge.addActionListener((e) -> grundF.setVisible(false));
+		JButton fullhouse = new JButton("20");
+		fullhouse.addActionListener((e) -> printErgebnistabelle());
+		fullhouse.addActionListener((e) -> grundF.setVisible(false));
+		JButton klstrasse = new JButton("30");
+		klstrasse.addActionListener((e) -> printErgebnistabelle());
+		klstrasse.addActionListener((e) -> grundF.setVisible(false));
+		JButton grstrasse = new JButton("40");
+		grstrasse.addActionListener((e) -> printErgebnistabelle());
+		grstrasse.addActionListener((e) -> grundF.setVisible(false));
+		JButton kniffel = new JButton("35");
+		kniffel.addActionListener((e) -> printErgebnistabelle());
+		kniffel.addActionListener((e) -> grundF.setVisible(false));
+		JButton chance = new JButton("50");
+		chance.addActionListener((e) -> printErgebnistabelle());
+		chance.addActionListener((e) -> grundF.setVisible(false));
 
-		colP2.add(compLabel, "North");
-		colP.add(new JLabel("Einer"));
-		colP2.add(einer);
-		colP.add(new JLabel("Zweier"));
-		colP2.add(zweier);
-		colP.add(new JLabel("Dreier"));
-		colP2.add(dreier);
-		colP.add(new JLabel("Vierer"));
-		colP2.add(vierer);
-		colP.add(new JLabel("Fuenfer"));
-		colP2.add(fuenfer);
-		colP.add(new JLabel("Sechser"));
-		colP2.add(sechser);
-		colP.add(new JLabel("Dreierpasch"));
-		colP2.add(drpasch);
-		colP.add(new JLabel("Viererpasch"));
-		colP2.add(vipasch);
-		colP.add(new JLabel("Quadratfolge"));
-		colP2.add(qfolge);
-		colP.add(new JLabel("Full House"));
-		colP2.add(fullhouse);
-		colP.add(new JLabel("Kleine Strasse"));
-		colP2.add(klstrasse);
-		colP.add(new JLabel("Grosse Strasse"));
-		colP2.add(grstrasse);
-		colP.add(new JLabel("Kniffel"));
-		colP2.add(kniffel);
-		colP.add(new JLabel("Chance"));
-		colP2.add(chance);
-		grundF.getContentPane().add(compLabel, "North");
-		grundF.getContentPane().add(colP, "Center");
-		grundF.getContentPane().add(colP2, "South");
-		grundF.setSize(900, 150);
+		grundF.add(compLabel, "North");
+		grundF.add(new JLabel(""));
+		grundF.add(new JLabel("Einer"));
+		grundF.add(einer);
+		grundF.add(new JLabel("Zweier"));
+		grundF.add(zweier);
+		grundF.add(new JLabel("Dreier"));
+		grundF.add(dreier);
+		grundF.add(new JLabel("Vierer"));
+		grundF.add(vierer);
+		grundF.add(new JLabel("Fuenfer"));
+		grundF.add(fuenfer);
+		grundF.add(new JLabel("Sechser"));
+		grundF.add(sechser);
+		grundF.add(new JLabel("Dreierpasch"));
+		grundF.add(drpasch);
+		grundF.add(new JLabel("Viererpasch"));
+		grundF.add(vipasch);
+		grundF.add(new JLabel("Quadratfolge"));
+		grundF.add(qfolge);
+		grundF.add(new JLabel("Full House"));
+		grundF.add(fullhouse);
+		grundF.add(new JLabel("Kleine Strasse"));
+		grundF.add(klstrasse);
+		grundF.add(new JLabel("Grosse Strasse"));
+		grundF.add(grstrasse);
+		grundF.add(new JLabel("Kniffel"));
+		grundF.add(kniffel);
+		grundF.add(new JLabel("Chance"));
+		grundF.add(chance);
 
-		grundF.showIt("Buttons", 600, 400);
+		JPanel wuerfelW = new JPanel();
+		JPanel wuerfelW2 = new JPanel();
+		wuerfelW2.add(new JLabel("Dein Wurf:  2  3  4  5  6"));
+		JRadioButton eins = new JRadioButton("Wuerfel 1");
+		JRadioButton zwei = new JRadioButton("Wuerfel 2");
+		JRadioButton drei = new JRadioButton("Wuerfel 3");
+		JRadioButton vier = new JRadioButton("Wuerfel 4");
+		JRadioButton fuenf = new JRadioButton("Wuerfel 5");
+		JFrame wuerfelWeglegen = new JFrame();
+		wuerfelWeglegen.setLocation(600, 400);
+		JButton weglegen = new JButton("Ok");
+		weglegen.addActionListener((e) -> printWurf());
+		weglegen.addActionListener((e) -> wuerfelWeglegen.setVisible(false));
+		weglegen.addActionListener((e) -> grundF.setVisible(false));
+		JPanel wuerfW = new JPanel();
+
+		wuerfW.add(eins);
+		wuerfW.add(zwei);
+		wuerfW.add(drei);
+		wuerfW.add(vier);
+		wuerfW.add(fuenf);
+		wuerfW.add(weglegen);
+		wuerfelWeglegen.getContentPane().add(wuerfW);
+		wuerfelWeglegen.pack();
+
+		JButton aus = new JButton("Wuerfel weglegen");
+		aus.addActionListener((e) -> wuerfelWeglegen.setVisible(true));
+
+		wuerfelW.add(aus);
+		grundF.getContentPane().add(wuerfelW);
+		grundF.getContentPane().add(wuerfelW2);
+
+		grundF.pack();
+
+		grundF.showIt("Ergebnisse", 600, 150);
 
 	}
 
-	public void printMSpielerAuswahl() {
+	public void reihenfolgeWuerfeln() {
+
+		GrundFrame wurfFrame = new GrundFrame();
+		JFrame platzWahl = new JFrame();
+		JLabel platz = new JLabel("Sie sind auf Platz 1!");
+		JPanel platzPanel = new JPanel();
+		JButton gutZuWissen = new JButton("Ok");
+		gutZuWissen.addActionListener((e) -> platzWahl.setVisible(false));
+		gutZuWissen.addActionListener((e) -> wurfFrame.setVisible(false));
+		gutZuWissen.addActionListener((e) -> printWurfAufforderung());
+		platzPanel.add(platz);
+		platzPanel.add(gutZuWissen);
+		platzWahl.getContentPane().add(platzPanel, "Center");
+		platzWahl.setLocation(600, 400);
+		platzWahl.pack();
+		JPanel panel = new JPanel();
+		JButton wuerfeln = new JButton("Wuerfeln");
+		panel.add(new JLabel("Wuerfeln Sie Ihre Position aus!"));
+		panel.add(wuerfeln);
+		wuerfeln.addActionListener((e) -> platzWahl.setVisible(true));
+
+		wurfFrame.getContentPane().add(panel);
+		wurfFrame.setSize(200, 200);
+		wurfFrame.showIt("Wuerfeln", 600, 400);
+
+	}
+
+	public int printAnzahlSpielerAuswahl() {
 		spielerFrame = new GrundFrame();
 		spielerPanel = new JPanel();
 		labelS = new JLabel();
@@ -242,31 +369,24 @@ public class SwingClass {
 		auswahlS5 = new JButton("5");
 		auswahlS6 = new JButton("6");
 
-		auswahlS1.addActionListener((e) -> i = 1);
+		auswahlS1.addActionListener((e) -> setI(1));
 		auswahlS1.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS1.addActionListener((e) -> printSpielerdialog());
-		auswahlS2.addActionListener((e) -> i = 2);
+		auswahlS2.addActionListener((e) -> setI(2));
 		auswahlS2.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS2.addActionListener((e) -> printSpielerdialog());
-		auswahlS3.addActionListener((e) -> i = 3);
+		auswahlS3.addActionListener((e) -> setI(3));
 		auswahlS3.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS3.addActionListener((e) -> printSpielerdialog());
-		auswahlS4.addActionListener((e) -> i = 4);
+		auswahlS4.addActionListener((e) -> setI(4));
 		auswahlS4.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS4.addActionListener((e) -> printSpielerdialog());
-		auswahlS5.addActionListener((e) -> i = 5);
+		auswahlS5.addActionListener((e) -> setI(5));
 		auswahlS5.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS5.addActionListener((e) -> printSpielerdialog());
-		auswahlS6.addActionListener((e) -> i = 6);
+		auswahlS6.addActionListener((e) -> setI(6));
 		auswahlS6.addActionListener((e) -> spielerFrame.setVisible(false));
 		auswahlS6.addActionListener((e) -> printSpielerdialog());
-		abbruch.addActionListener((e) -> System.exit(0));
-		spielerFrame.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(java.awt.event.WindowEvent e) {
-				System.exit(0);
-			};
-		});
 
 		spielerPanel.add(new JLabel(
 				"Wieviele menschliche Spieler moechten mitspielen?"));
@@ -276,13 +396,14 @@ public class SwingClass {
 		spielerPanel.add(auswahlS4);
 		spielerPanel.add(auswahlS5);
 		spielerPanel.add(auswahlS6);
-		spielerPanel.add(abbruch);
 
 		spielerPanel.add(labelS);
 		spielerFrame.add(spielerPanel);
 		spielerFrame.pack();
 
 		spielerFrame.showIt("Spieleranzahl", 600, 400);
+
+		return i;
 	}
 
 	public void printErgebnistabelle() {
@@ -293,6 +414,8 @@ public class SwingClass {
 				{ "Vierer", "", "", "", "", "", "" },
 				{ "Fuenfer", "", "", "", "", "", "" },
 				{ "Sechser", "", "", "", "", "", "" },
+				{ "Summe oben", "", "", "", "", "", "" },
+				{ "Bonus", "", "", "", "", "", "" },
 				{ "Dreierpasch", "", "", "", "", "", "" },
 				{ "Viererpasch", "", "", "", "", "", "" },
 				{ "Quadratfolge", "", "", "", "", "", "" },
@@ -300,27 +423,33 @@ public class SwingClass {
 				{ "Kleine Strasse", "", "", "", "", "", "" },
 				{ "Grosse Strasse", "", "", "", "", "", "" },
 				{ "Kniffel", "", "", "", "", "", "" },
-				{ "Chance", "", "", "", "", "", "" }, };
+				{ "Chance", "", "", "", "", "", "" },
+				{ "Summe unten", "", "", "", "", "", "" },
+				{ "Endergebnis", "", "", "", "", "", "" } };
 		String[] spaltenNamen = { "Ergebnisse", "Spieler 1", "Spieler 2",
 				"Spieler 3", "Spieler 4", "Spieler 5", "Spieler 6" };
 		JTable jTab = new JTable(inhalt, spaltenNamen);
+		jTab.setAutoResizeMode(0);
 		JScrollPane sp = new JScrollPane(jTab);
 		sp.setBackground(Color.yellow);
 
-		jTab.setAutoResizeMode(0);
 		jTab.setIntercellSpacing(new Dimension(8, 2));
 		jTab.setGridColor(Color.black);
 
 		gF.getContentPane().add(sp);
-		gF.setSize(550, 325);
+		gF.setSize(600, 400);
 
 		gF.showIt("Ergebnistabelle", 600, 400);
+		printEndergebnis();
 	}
 
 	public void printWurfAufforderung() {
 		GrundFrame wuerfeln = new GrundFrame();
 		JPanel jP = new JPanel();
 		JButton jB = new JButton("Wuerfeln");
+
+		jB.addActionListener((e) -> wuerfeln.setVisible(false));
+		jB.addActionListener((e) -> printWurf());
 
 		jP.add(new JLabel("Spieler 1 ist am Zug"));
 		jP.add(jB, "Center");
@@ -331,11 +460,29 @@ public class SwingClass {
 
 	}
 
+	public void printEndergebnis() {
+		JFrame end = new JFrame();
+		ColorPanel col = new ColorPanel(Color.LIGHT_GRAY);
+		JButton ende = new JButton("Beenden");
+		JLabel gewinner = new JLabel("Der Gewinner ist:");
+		gewinner.setFont(new Font("Cambria", Font.PLAIN, 20));
+		col.add(gewinner);
+		col.add(new JLabel("Spieler 1 mit 100 Punkten!"));
+		col.add(ende);
+		ende.addActionListener((e) -> System.exit(0));
+		end.getContentPane().add(col, "Center");
+		end.setSize(300, 300);
+		end.setLocation(600, 400);
+		end.setVisible(true);
+	}
+
 	public static void main(String[] args) {
 
 		SwingClass wK = new SwingClass();
-		wK.printWelcome();
+		wK.printStart();
 
+		// if (!wK.printWelcome()) {
+		// int anzahl = wK.printMSpielerAuswahl();
+		// }
 	}
-
 }

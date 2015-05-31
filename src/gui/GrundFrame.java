@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
 
@@ -41,10 +42,14 @@ public class GrundFrame extends JFrame {
 		bar.setBorder(bo);
 		JMenu menu = new JMenu("Optionen");
 		JMenuItem info = new JMenuItem("Info");
+		JMenuItem tabelle = new JMenuItem("Ergebnistabelle");
+		tabelle.addActionListener((e) -> printErgebnistabelle());
 		info.addActionListener((e) -> infoFrame.setVisible(true));
 		JMenuItem item = new JMenuItem("Beenden");
 		item.addActionListener((e) -> System.exit(0));
 		menu.add(info);
+		menu.add(tabelle);
+		menu.addSeparator();
 		menu.add(item);
 		bar.add(menu);
 
@@ -70,4 +75,40 @@ public class GrundFrame extends JFrame {
 		setVisible(false);
 	}
 
+	public void printErgebnistabelle() {
+		JFrame gF = new JFrame();
+		String[][] inhalt = { { "Einser", "", "", "", "", "", "" },
+				{ "Zweier", "", "", "", "", "", "" },
+				{ "Dreier", "", "", "", "", "", "" },
+				{ "Vierer", "", "", "", "", "", "" },
+				{ "Fuenfer", "", "", "", "", "", "" },
+				{ "Sechser", "", "", "", "", "", "" },
+				{ "Summe oben", "", "", "", "", "", "" },
+				{ "Bonus", "", "", "", "", "", "" },
+				{ "Dreierpasch", "", "", "", "", "", "" },
+				{ "Viererpasch", "", "", "", "", "", "" },
+				{ "Quadratfolge", "", "", "", "", "", "" },
+				{ "Full House", "", "", "", "", "", "" },
+				{ "Kleine Strasse", "", "", "", "", "", "" },
+				{ "Grosse Strasse", "", "", "", "", "", "" },
+				{ "Kniffel", "", "", "", "", "", "" },
+				{ "Chance", "", "", "", "", "", "" },
+				{ "Summe unten", "", "", "", "", "", "" },
+				{ "Endergebnis", "", "", "", "", "", "" } };
+		String[] spaltenNamen = { "Ergebnisse", "Spieler 1", "Spieler 2",
+				"Spieler 3", "Spieler 4", "Spieler 5", "Spieler 6" };
+		JTable jTab = new JTable(inhalt, spaltenNamen);
+		jTab.setAutoResizeMode(0);
+		JScrollPane sp = new JScrollPane(jTab);
+		sp.setBackground(Color.yellow);
+
+		jTab.setIntercellSpacing(new Dimension(8, 2));
+		jTab.setGridColor(Color.black);
+
+		gF.getContentPane().add(sp);
+		gF.setSize(600, 400);
+		gF.setLocation(600, 400);
+
+		gF.setVisible(true);
+	}
 }

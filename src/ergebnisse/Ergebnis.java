@@ -55,7 +55,7 @@ public abstract class Ergebnis {
      * @param wurf
      * @return ueberprueft ob die gleiche Zahl nochmal vorhanden ist
      */
-    public static int gleicheZahlen(Wurf wurf) {
+    protected static int gleicheZahlen(Wurf wurf) {
         int gleicheZahlen = 1;
         Wuerfel[] temp = wurf.getAlleWuerfel();// CHECK IF THIS IS
                                                // OKAYY!!!!!!!!!!!!!!!!!!!
@@ -81,7 +81,7 @@ public abstract class Ergebnis {
      * @return gleicheZahlen, sortiert die Zahlen 
      */
 
-    public static int aufsteigendeZahlen(Wurf wurf) {
+    protected static int aufsteigendeZahlen(Wurf wurf) {
         int gleicheZahlen = 1;
         Wuerfel[] temp = wurf.getAlleWuerfel();// CHECK IF THIS IS
                                                // OKAYY!!!!!!!!!!!!!!!!!!!
