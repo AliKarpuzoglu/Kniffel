@@ -93,6 +93,7 @@ public class UI{
         try{
             wahl = in.nextInt();
         }catch(Exception e){
+            in.next();
             return true;
         }
         if(!((wahl==1)||(wahl==2))){
@@ -124,6 +125,7 @@ public class UI{
                 break;
             }
         }catch(Exception e){
+            in.next();
             break;
         }
         
@@ -132,6 +134,7 @@ public class UI{
         try{
             wahl = in.nextInt();
         }catch(Exception e){
+            in.next();
             break;
         }
         if(wahl==0){
@@ -153,7 +156,8 @@ public class UI{
             try{
                 choice = in.nextInt();
             }catch(Exception e){
-                break;
+                in.next();
+                continue;
             }
             if((choice==1)||(choice==2)){
                 flagg = false;
@@ -163,6 +167,9 @@ public class UI{
         if(choice == 1){
              moeglichkeiten = moeglicheErgebnisse();
         }else{
+            if(choice!=2){
+                
+            }
              moeglichkeiten = alleEintragbarenErgebnisse();
         }
         System.out.println("Gib die Zahl entsprechend dem anzurechnenden Ergebnis an");
@@ -170,6 +177,7 @@ public class UI{
         try{
             wahl = in.nextInt();
         }catch(Exception e){
+            in.next();
             return true;
         }
         if(choice == 1){
@@ -248,38 +256,44 @@ public class UI{
             try{
                 ret = in.nextInt();
             }catch(Exception e){
+                in.next();
                 break;
             }
         
             if(ret>i){
                 ret =  0;
+                break;
             }
-            if(!(ret==0)){
-                flagg = false;
-            }
+            
+            flagg = false;
+            
         }
         return ret;
     }
 
     public int printSpielerdialog() {
         System.out.println("Es dürfen bis zu 6 Spieler teilnehmen");
-        System.out.println("Bitte geben sie die Anzahl der menschlichen Spieler an(1-6)");
+        
+     
         int temp = 0;
-        int input = 0;
-        while(temp == 0){     
+        boolean flagg=true;
+        while(flagg){     
+            System.out.println("Bitte geben sie die Anzahl der menschlichen Spieler an(1-6)");
             try{
-                input = in.nextInt();
-            }catch(Exception e){
-                break;
-            }
-            if(input>6){
-                break;
-            }else{
+                int input = in.nextInt();
                 temp = input;
+                if(!((temp>6)||(temp<=0))){
+                    flagg = false;
+                    return temp;
+                }
+            }catch(Exception e){
+                in.next();
+                continue;
             }
             
+            
         }
-        return input;
+        return temp;
     }
 
     public void printWelcome() {
