@@ -359,19 +359,19 @@ public class SwingClass {
 				{ "Kniffel", "", "", "", "", "", "" },
 				{ "Chance", "", "", "", "", "", "" },
 				{ "Summe unten", "", "", "", "", "", "" },
-				{ "Ergebnis", "", "", "", "", "", "" } };
+				{ "Endergebnis", "", "", "", "", "", "" } };
 		String[] spaltenNamen = { "Ergebnisse", "Spieler 1", "Spieler 2",
 				"Spieler 3", "Spieler 4", "Spieler 5", "Spieler 6" };
 		JTable jTab = new JTable(inhalt, spaltenNamen);
+		jTab.setAutoResizeMode(0);
 		JScrollPane sp = new JScrollPane(jTab);
 		sp.setBackground(Color.yellow);
 
-		jTab.setAutoResizeMode(0);
 		jTab.setIntercellSpacing(new Dimension(8, 2));
 		jTab.setGridColor(Color.black);
 
 		gF.getContentPane().add(sp);
-		gF.pack();
+		gF.setSize(600, 400);
 
 		gF.showIt("Ergebnistabelle", 600, 400);
 	}
