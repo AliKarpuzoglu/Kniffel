@@ -5,9 +5,9 @@ import logic.Wurf;
 
 /**
  * 
- * @author Katharina, Ali, Fritz and AndrŽ
+ * @author Katharina, Ali, Fritz and Andrï¿½
  * 
- * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu ŸberprŸfen ob es
+ * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu ï¿½berprï¿½fen ob es
  * tatsaechlich eine "Chance" ist, und dann werden die erreichten Punkte berechnet. 
  *
  */
@@ -22,6 +22,11 @@ public class Chance extends Ergebnis {
     
     
 
+    
+    public String getName(){
+        return "Chance";
+    }
+    
     @Override
     public int punkteBerechnen(Wurf wurf) {
         int temp = 0;

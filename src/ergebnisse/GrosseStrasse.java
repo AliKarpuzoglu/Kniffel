@@ -6,9 +6,9 @@ import logic.Wurf;
 
 /**
  * 
- * @author Katharina, Ali, Fritz and AndrŽ
+ * @author Katharina, Ali, Fritz and Andrï¿½
  * 
- * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu ŸberprŸfen ob es sich
+ * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu ï¿½berprï¿½fen ob es sich
  * tatsaechlich um eine "GrosseStrasse" handelt, und dann werden die erreichten Punkte berechnet.
  *
  */
@@ -32,4 +32,7 @@ public class GrosseStrasse extends Ergebnis {
         }
     }
 
+    public String getName(){
+        return "Grossestrasse";
+    }
 }

@@ -4,9 +4,9 @@ import logic.Wurf;
 
 /**
  * 
- * @author Katharina, Ali, Fritz and AndrŽ
+ * @author Katharina, Ali, Fritz and Andrï¿½
  * 
- * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu ŸberprŸfen ob es sich
+ * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu ï¿½berprï¿½fen ob es sich
  * tatsaechlich um eine "Quadratfolge" handelt, und dann werden die erreichten Punkte berechnet.
  *
  */
@@ -32,5 +32,7 @@ public class Quadratfolge extends Ergebnis {
             return 0;
         }    }
 
-
+    public String getName(){
+        return "Quadratfolge";
+    }
 }

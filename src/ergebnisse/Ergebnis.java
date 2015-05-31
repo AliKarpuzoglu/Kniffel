@@ -5,7 +5,7 @@ import logic.Wurf;
 
 /**
  * 
- * @author Katharina, Ali, Fritz and AndrŽ 
+ * @author Katharina, Ali, Fritz and Andrï¿½ 
  * 
  * 
  *
@@ -140,6 +140,6 @@ public abstract class Ergebnis {
             return false;
         return true;
     }
-    
+    public abstract String getName();
 
 }

@@ -1,5 +1,6 @@
 package logic;
 
+import ergebnisse.Ergebnis;
 import gui.*;
 
 import java.util.*;
@@ -23,8 +24,15 @@ public class Spiel {
     private Spiel() {
     }
 
-    public String[] moeglicheErgebnisse() {
-        return null;
+    public ArrayList<Ergebnis> moeglicheErgebnisse() {
+        ArrayList<Ergebnis> moeglich = new ArrayList<>();
+        for (Ergebnis e : this.spieler[pointer].ergebnisTabelle.getErgebnis()) {
+
+            if (e.ueberpruefen(this.spieler[pointer].getWurf())) {
+                  moeglich.add(e);
+            }
+      }
+        return moeglich;
     }
 
     /**
@@ -80,6 +88,27 @@ public class Spiel {
 
     }
     
+    public int[] weglegbareWuerfel(){
+        int[] ret = new int[5];
+        int counter = 0;
+        Wuerfel[] temp = spieler[pointer].getWurf().getAlleWuerfel();
+        for(int n = 0; n < temp.length; n++){
+            if(!temp[n].isWeggelegt()){
+                ret[counter] = temp[n].getAugenzahl();
+                counter++;
+            }
+            
+        }
+        if(counter == 0){
+            return null;
+        }
+        int[] ret2 = new int[counter];
+        for(int i = 0; i<ret2.length;i++){
+            ret2[i] = ret[i];
+        }
+        return ret2;
+    }
+    
     public String platzAuswuerfeln(){
         for(int i = 0; i < this.spieler.length; i++){
             if(this.wuerfelReihenfolge[this.wuerfeltReihenfolge].equals(this.spieler[i])){
@@ -90,12 +119,22 @@ public class Spiel {
         return null;
     }
 
-    public boolean wuerfelWeglegen(int[] i) {
-        return false;
-    }
+    public boolean wuerfelWeglegen(int i) {
+        
+            Wuerfel x = spieler[pointer].getWurf().getAlleWuerfel()[i];
+            if(x.isWeggelegt()){
+                return false;
+            }else{
+                x.beiseiteLegen();
+                return true;
+            }
+        }
+       
+    
 
-    public boolean ergebnisAnrechnen(Ergebnisse x) {
-        return false;
+    public boolean ergebnisAnrechnen(Ergebnis x) {
+        x.punkteAnrechnen(spieler[pointer].getWurf());
+        return true;
     }
 
     /**

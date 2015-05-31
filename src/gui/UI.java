@@ -1,9 +1,11 @@
 package gui;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JTable.PrintMode;
 
+import ergebnisse.Ergebnis;
 import logic.ComputerSpieler;
 import logic.MenschlicheSpieler;
 import logic.Spiel;
@@ -42,6 +44,7 @@ public class UI{
             String platz = gui.spiel.platzAuswuerfeln();
             System.out.printf("Du bist der %s -te Spieler \n",platz);
         }
+        gui.clear();
         //Spielzuege
         while(gui.spiel.getRunde()<15){
             gui.amZug();
@@ -56,12 +59,16 @@ public class UI{
                     zug = gui.auswaehlenDialog();
                 }
                 gui.spiel.zugBeenden();
+                gui.uIwait();
+                gui.clear();
                 
             }else{
                 //Computerzug
                     if(!gui.spiel.computerSpielerZug()){
                         gui.somethingWentTerriblyWrong();
                     }
+                    gui.uIwait();
+                    gui.clear();
             }
         }
         
@@ -69,17 +76,79 @@ public class UI{
         //schließe den Scanner
         gui.in.close();
     }
+    public void clear(){
+        System.out.printf("\n\n\n\n\n\n\n\n");
+    }
+    public void uIwait(){
+        System.out.println("Taetige eine Eingabe um fortzufahren");
+        in.next();
+    }
     public void endergebnis(){
         System.out.println("Das Endergebnis: ");
         printErgebnisspalte(spiel.getSpieler());
     } 
     public boolean auswaehlenDialog() {
-        // TODO Auto-generated method stub
-        return false;
+        System.out.println("Moechten sie ein Ergebnis eintragen oder Wuerfel weglegen (1/2)");
+        int wahl = 0;
+        try{
+            wahl = in.nextInt();
+        }catch(Exception e){
+            return true;
+        }
+        if(!((wahl==1)||(wahl==2))){
+            return true;
+        }
+        if(wahl ==1 ){
+            return ergebnisAuswaehlenDialog();
+        }else{
+            return wuerfelWeglegenDialog();
+        }
+       
     }
-    public void moeglicheErgebnisse() {
+    private boolean wuerfelWeglegenDialog() {
+        boolean flagg = true;
+        while(flagg){
+        System.out.printf("Geben sie den wegzulegenden Wuerfel  an\n");        
+        if(spiel.weglegbareWuerfel()==null){
+            System.out.println("Keine weglegbare Wuerfel mehr");  
+            return true;
+        }else{
+            System.out.println("Noch wegzulegende Wuerfel:");
+            for(int i = 0; i< spiel.weglegbareWuerfel().length;i++){
+                System.out.println(spiel.weglegbareWuerfel()[i]);
+            }
+        }
+        try{
+            spiel.wuerfelWeglegen(in.nextInt());
+        }catch(Exception e){
+            
+        }
+        }
+    }
+    private boolean ergebnisAuswaehlenDialog() {
+        int moeglichkeiten = moeglicheErgebnisse();
+        System.out.println("Gib die Zahl entsprechend dem anzurechnenden Ergebnis an");
+        int wahl = 0;
+        try{
+            wahl = in.nextInt();
+        }catch(Exception e){
+            return true;
+        }
+        if(!(wahl==0)&&(wahl<(moeglichkeiten+1))){
+            spiel.ergebnisAnrechnen(spiel.moeglicheErgebnisse().get(wahl-1));
+            return false;
+        }else{
+            return true;
+        }
+        
+    }
+    public int moeglicheErgebnisse() {
         System.out.println("Moegliche Ergebnisse:");
-        header();
+        ArrayList<Ergebnis> moeglich = spiel.moeglicheErgebnisse();
+        for(int s = 0; s< moeglich.size();s++){
+            System.out.println(moeglich.get(s)+" : "+(s+1));
+        }
+        return moeglich.size();
         
     }
     public void wuerfeln(){
@@ -87,7 +156,7 @@ public class UI{
         in.next();
         String[] wuerfel = spiel.wuerfeln();
         for(int i = 0; i< wuerfel.length;i++){
-            System.out.printf("Wuerfel %d: %s\n",i,wuerfel[i]);
+            System.out.printf("Wuerfel %d: %s\n",(i+1) ,wuerfel[i]);
         }
     }
     

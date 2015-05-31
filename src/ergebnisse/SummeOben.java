@@ -4,9 +4,9 @@ import logic.*;
 
 /**
  * 
- * @author Katharina, Ali, Fritz and AndrŽ
+ * @author Katharina, Ali, Fritz and Andrï¿½
  * 
- * Berechnet die Summe Oben, das hei§t das Programm rechnet die oben erzielten Punkte zusammen
+ * Berechnet die Summe Oben, das heiï¿½t das Programm rechnet die oben erzielten Punkte zusammen
  *
  */
 
@@ -56,6 +56,9 @@ public class SummeOben extends Ergebnis {
         return wert;
     }
 
+    public String getName(){
+        return this.wert+"er";
+    }
   
 
 

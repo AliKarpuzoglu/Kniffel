@@ -6,9 +6,9 @@ import logic.*;
 
 /**
  * 
- * @author Katharina, Ali, Fritz and AndrŽ
+ * @author Katharina, Ali, Fritz and Andrï¿½
  * 
- * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu ŸberprŸfen ob es sich
+ * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu ï¿½berprï¿½fen ob es sich
  * tatsaechlich um einen "Viererpasch" handelt, und dann werden die erreichten Punkte berechnet.
  *
  */
@@ -35,6 +35,9 @@ public class Viererpasch extends Ergebnis {
             }
         }
         return temp;
+    }
+    public String getName(){
+        return "Viererpasch";
     }
 
 }

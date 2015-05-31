@@ -18,10 +18,9 @@ public class MenschlicheSpieler extends Spieler {
     
     }
 
-    /**
-     * @param wurf 
-     * @return
-     */
+   
+   
+  
     public void ergebnisAuswaehlen() {
         // TODO implement here
 

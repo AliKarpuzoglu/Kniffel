@@ -4,9 +4,9 @@ import logic.Wurf;
 
 /**
  * 
- * @author Katharina, Ali, Fritz and AndrŽ
+ * @author Katharina, Ali, Fritz and Andrï¿½
  * 
- * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu ŸberprŸfen ob es sich
+ * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu ï¿½berprï¿½fen ob es sich
  * tatsaechlich um eine "KleineStrasse" handelt, und dann werden die erreichten Punkte berechnet.
  */
 public class KleineStrasse extends Ergebnis {
@@ -28,6 +28,10 @@ public class KleineStrasse extends Ergebnis {
         } else {
             return 0;
         }
+    }
+
+    public String getName(){
+        return "KleineStrasse";
     }
 
 }
