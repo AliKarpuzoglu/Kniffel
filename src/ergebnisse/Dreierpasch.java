@@ -17,6 +17,7 @@ public class Dreierpasch extends Ergebnis {
         oben = false;
     }
 
+   
     @Override
     public boolean ueberpruefen(Wurf wurf) {
         return super.gleicheZahlen(wurf) >= 3 && !gestrichen&&summe==0;

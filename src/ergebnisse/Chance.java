@@ -13,11 +13,14 @@ import logic.Wurf;
  */
 
 public class Chance extends Ergebnis {
+	
 
     @Override
     public boolean ueberpruefen(Wurf wurf) {
         return !gestrichen&&summe==0;
     }
+    
+    
 
     @Override
     public int punkteBerechnen(Wurf wurf) {
