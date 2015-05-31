@@ -134,6 +134,7 @@ public class UI{
             break;
         }
         if(wahl==0){
+            wuerfeln();
             flagg = false;
         }
         }while(flagg);
