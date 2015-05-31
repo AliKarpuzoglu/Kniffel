@@ -94,4 +94,33 @@ public abstract class Ergebnis {
         return "" + summe;
     }
 
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (gestrichen ? 1231 : 1237);
+        result = prime * result + (oben ? 1231 : 1237);
+        result = prime * result + summe;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Ergebnis other = (Ergebnis) obj;
+        if (gestrichen != other.gestrichen)
+            return false;
+        if (oben != other.oben)
+            return false;
+        if (summe != other.summe)
+            return false;
+        return true;
+    }
+    
+
 }

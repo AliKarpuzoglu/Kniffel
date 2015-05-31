@@ -52,4 +52,31 @@ public class Wurf {
         }
         return temp;
     }
+
+
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + Arrays.hashCode(alleWuerfel);
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Wurf other = (Wurf) obj;
+        if (!Arrays.equals(alleWuerfel, other.alleWuerfel))
+            return false;
+        return true;
+    }
+    
 }

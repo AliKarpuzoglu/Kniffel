@@ -1,5 +1,7 @@
 package ergebnisse;
 
+import java.util.Arrays;
+
 /**
  * 
  */
@@ -116,5 +118,32 @@ public class ErgebnisTabelle {
 			System.out.println(e.ergebnisse[i]);
 		}
 	}
+	
 */
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + BONUS;
+        result = prime * result + Arrays.hashCode(ergebnisse);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        ErgebnisTabelle other = (ErgebnisTabelle) obj;
+        if (BONUS != other.BONUS)
+            return false;
+        if (!Arrays.equals(ergebnisse, other.ergebnisse))
+            return false;
+        return true;
+    }
+	
 }
