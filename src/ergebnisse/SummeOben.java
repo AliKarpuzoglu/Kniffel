@@ -2,9 +2,15 @@ package ergebnisse;
 
 import logic.*;
 
-/**TODO============================ Eventuell abfrage, ob der wert zwischen 1 und 6 ist
+/**
  * 
+ * @author Katharina, Ali, Fritz and AndrŽ
+ * 
+ * Berechnet die Summe Oben, das hei§t das Programm rechnet die oben erzielten Punkte zusammen
+ *
  */
+
+
 public class SummeOben extends Ergebnis {
     protected int wert;
     
@@ -17,7 +23,7 @@ public class SummeOben extends Ergebnis {
     }
     
     /**
-     * rechnet aus, wie viele punkte dieser Wurf theoretisch geben würde.
+     * Berechnet die moeglichen Punkte, die dieser Wurf geben wuerde
      */
     @Override
     public int punkteBerechnen(Wurf wurf) {
@@ -32,7 +38,7 @@ public class SummeOben extends Ergebnis {
     }
  
     /**
-     * @return true wenn der Wurf die Bedingung erfüllt
+     * @return true wenn der Wurf die Bedingung erfuellt
      */
     @Override
     public boolean ueberpruefen(Wurf wurf) {

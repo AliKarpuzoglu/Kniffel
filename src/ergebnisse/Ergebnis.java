@@ -5,7 +5,12 @@ import logic.Wurf;
 
 /**
  * 
+ * @author Katharina, Ali, Fritz and André 
+ * 
+ * 
+ *
  */
+
 public abstract class Ergebnis {
 
     protected int summe = 0;
@@ -24,6 +29,9 @@ public abstract class Ergebnis {
         return gestrichen;
     }
 
+    /**
+     * Ueberprueft ob die Zahl gestrichen wurde
+     */
     public void streiche() {
         this.gestrichen = true;
     }
@@ -34,7 +42,7 @@ public abstract class Ergebnis {
     public abstract boolean ueberpruefen(Wurf wurf);
 
     /**
-     * @param wurf
+     * @param wurf berechnet die moeglichen Punkte
      */
     public abstract int punkteBerechnen(Wurf wurf);
 
@@ -42,6 +50,11 @@ public abstract class Ergebnis {
         this.summe = punkteBerechnen(wurf);
     }
 
+    /**
+     * 
+     * @param wurf
+     * @return ueberprueft ob die gleiche Zahl nochmal vorhanden ist
+     */
     public static int gleicheZahlen(Wurf wurf) {
         int gleicheZahlen = 1;
         Wuerfel[] temp = wurf.getAlleWuerfel();// CHECK IF THIS IS
@@ -61,6 +74,12 @@ public abstract class Ergebnis {
         return gleicheZahlen;
 
     }
+    
+    /**
+     * 
+     * @param wurf
+     * @return gleicheZahlen, sortiert die Zahlen 
+     */
 
     public static int aufsteigendeZahlen(Wurf wurf) {
         int gleicheZahlen = 1;

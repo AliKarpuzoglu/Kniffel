@@ -6,12 +6,14 @@ import logic.Wurf;
 
 /**
  * 
+ * @author Katharina, Ali, Fritz and André
+ * 
+ * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu überprüfen ob es sich
+ * tatsaechlich um eine "GrosseStrasse" handelt, und dann werden die erreichten Punkte berechnet.
+ *
  */
 public class GrosseStrasse extends Ergebnis {
 
-    /**
-     * 
-     */
     public GrosseStrasse() {
         oben = false;
     }

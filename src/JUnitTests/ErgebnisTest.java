@@ -1,4 +1,4 @@
-package jUnitTests;
+package JUnitTests;
 
 import static org.junit.Assert.*;
 import logic.Wuerfel;

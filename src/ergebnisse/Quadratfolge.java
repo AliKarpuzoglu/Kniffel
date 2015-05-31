@@ -4,12 +4,15 @@ import logic.Wurf;
 
 /**
  * 
+ * @author Katharina, Ali, Fritz and André
+ * 
+ * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu überprüfen ob es sich
+ * tatsaechlich um eine "Quadratfolge" handelt, und dann werden die erreichten Punkte berechnet.
+ *
  */
 public class Quadratfolge extends Ergebnis {
 
-    /**
-     * 
-     */
+    
     public Quadratfolge() {
     }
 

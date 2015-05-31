@@ -6,6 +6,11 @@ import logic.*;
 
 /**
  * 
+ * @author Katharina, Ali, Fritz and André
+ * 
+ * In dieser Klasse werden zwei Methoden aufgerufen, die dazu dienen, den Wurf zu überprüfen ob es sich
+ * tatsaechlich um einen "Viererpasch" handelt, und dann werden die erreichten Punkte berechnet.
+ *
  */
 public class Viererpasch extends Ergebnis {
 
