@@ -127,7 +127,7 @@ public class UI{
             break;
         }
         
-        System.out.println("Moechten sie noch einen Wuerfel weglegen(Ja = 1, Nein = 0");
+        System.out.println("Moechten sie noch einen Wuerfel weglegen(Ja = 1, Nein = 0)");
         int wahl = -1;
         try{
             wahl = in.nextInt();
@@ -135,14 +135,36 @@ public class UI{
             break;
         }
         if(wahl==0){
+            if(spiel.getGewuerfelt()>=5){
+                System.out.println("Kann nicht erneut gewuerfelt werden. Bitte Ergebnis auswaehlen.");
+                flagg = false;
+            }else{
             wuerfeln();
-            flagg = false;
+            flagg = false;}
         }
         }while(flagg);
         return true;
     }
     private boolean ergebnisAuswaehlenDialog() {
-        int moeglichkeiten = moeglicheErgebnisse();
+        boolean flagg = true;
+        int choice = 0;
+        while(flagg){
+            System.out.println("Moechten sie ein moegliches Ergebnis eintragen oder ein Ergebnis streichen (1, 2)");
+            try{
+                choice = in.nextInt();
+            }catch(Exception e){
+                break;
+            }
+            if((choice==1)||(choice==2)){
+                flagg = false;
+            }
+        }
+        int moeglichkeiten;
+        if(choice == 1){
+             moeglichkeiten = moeglicheErgebnisse();
+        }else{
+             moeglichkeiten = alleEintragbarenErgebnisse();
+        }
         System.out.println("Gib die Zahl entsprechend dem anzurechnenden Ergebnis an");
         int wahl = 0;
         try{
@@ -150,13 +172,31 @@ public class UI{
         }catch(Exception e){
             return true;
         }
+        if(choice == 1){
         if(!(wahl==0)&&(wahl<(moeglichkeiten+1))){
             spiel.ergebnisAnrechnen(spiel.moeglicheErgebnisse().get(wahl-1));
+            spiel.wuerfeln();
             return false;
         }else{
             return true;
+        }}else{
+            if(!(wahl==0)&&(wahl<(moeglichkeiten+1))){
+                spiel.ergebnisAnrechnen(spiel.eintragbareErgebnisse().get(wahl-1));
+                spiel.wuerfeln();
+                return false;
+            }else{
+                return true;
+            }
         }
         
+    }
+    private int alleEintragbarenErgebnisse() {
+        System.out.println("Alle eintragbaren Ergebnisse");
+        ArrayList<Ergebnis> moeglich = spiel.eintragbareErgebnisse();
+        for(int s = 0; s< moeglich.size();s++){
+            System.out.println(moeglich.get(s).getName()+" : "+(s+1));
+        }
+        return moeglich.size();
     }
     public int moeglicheErgebnisse() {
         System.out.println("Moegliche Ergebnisse:");

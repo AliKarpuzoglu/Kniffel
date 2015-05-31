@@ -17,6 +17,7 @@ public class Spiel {
     private int pointer = 0;
 
     private int rundeSpiel = 1;
+    private int gewuerfelt = 0;
 
     private static Spiel instance = new Spiel();
 
@@ -44,7 +45,9 @@ public class Spiel {
         String[] temp = new String[5];
         for(int i =0; i< temp.length;i++){
             temp[i] = this.spieler[pointer].getWurf().getAlleWuerfel()[i].toString();
+            this.spieler[pointer].getWurf().getAlleWuerfel()[i].wiederReinholen();
         }
+        gewuerfelt++;
         return temp;
     }
 
@@ -133,6 +136,7 @@ public class Spiel {
 
     public boolean ergebnisAnrechnen(Ergebnis x) {
         x.punkteAnrechnen(spieler[pointer].getWurf());
+        gewuerfelt=0;
         return true;
     }
 
@@ -198,12 +202,26 @@ public class Spiel {
         Spiel.instance = instance;
     }
 
+    public int getGewuerfelt(){
+        return gewuerfelt;
+    }
     public void zugBeenden() {
         if(pointer == spieler.length-1){
             pointer = 0;
         }else{
             pointer++;
         }
+    }
+
+    public ArrayList<Ergebnis> eintragbareErgebnisse() {
+        ArrayList<Ergebnis> moeglich = new ArrayList<>();
+        for (Ergebnis e : this.spieler[pointer].ergebnisTabelle.getErgebnis()) {
+
+            if ((!e.isGestrichen())&&(e.getSumme()==0)) {
+                  moeglich.add(e);
+            }
+      }
+        return moeglich;
     }
 
 }
