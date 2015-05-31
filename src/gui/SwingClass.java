@@ -126,48 +126,45 @@ public class SwingClass {
 
 	public void printSpielerdialog() {
 
-		int a = printMSpielerAuswahl();
+		namePanel = new JPanel();
+		nameLabel = new JLabel("Waehlen Sie einen Spielernamen: ");
 
-		/*
-		 * namePanel = new JPanel(); nameLabel = new
-		 * JLabel("Waehlen Sie einen Spielernamen: ");
-		 * 
-		 * namePanel.add(nameLabel); tfName = new JTextField("", 15);
-		 * tfName.setForeground(Color.BLUE); tfName.setBackground(Color.CYAN);
-		 * namePanel.add(tfName);
-		 * 
-		 * ok = new JButton("OK"); ok.addActionListener((e) -> nameLabel
-		 * .setText("Name des nächsten Spielers:")); ok.addActionListener((e) ->
-		 * tfName.setText(""));
-		 * 
-		 * namePanel.add(ok);
-		 * 
-		 * JDialog dialog = new JDialog(); dialog.setTitle("Spielernamen");
-		 * dialog.setAlwaysOnTop(true);
-		 * 
-		 * dialog.addWindowListener(new WindowAdapter() {
-		 * 
-		 * @Override public void windowClosing(java.awt.event.WindowEvent e) {
-		 * System.exit(0); } }); ok.addActionListener((e) -> spieler[0] = "" +
-		 * tfName.getText()); ok.addActionListener((e) ->
-		 * dialog.setVisible(false));
-		 * 
-		 * dialog.setLocation(600, 400);
-		 * 
-		 * dialog.add(namePanel); dialog.pack();
-		 * 
-		 * dialog.setVisible(true);
-		 */
+		namePanel.add(nameLabel);
+		tfName = new JTextField("", 15);
+		tfName.setForeground(Color.BLUE);
+		tfName.setBackground(Color.CYAN);
+		namePanel.add(tfName);
 
-		if (a == 1) {
-			TextPanelModel tpm = new TextPanelModel(Color.WHITE);
-			GrundFrame frame = new GrundFrame();
+		ok = new JButton("OK");
+		ok.addActionListener((e) -> nameLabel
+				.setText("Name des nächsten Spielers:"));
+		ok.addActionListener((e) -> tfName.setText(""));
 
-			frame.add(tpm);
-			frame.setVisible(true);
-			spieler[0] = tpm.getName();
+		namePanel.add(ok);
 
-		}
+		JDialog dialog = new JDialog();
+		dialog.setTitle("Spielernamen");
+		dialog.setAlwaysOnTop(true);
+
+		dialog.addWindowListener(new WindowAdapter() {
+
+			@Override
+			public void windowClosing(java.awt.event.WindowEvent e) {
+				System.exit(0);
+			}
+		});
+		ok.addActionListener((e) -> spieler[0] = "" + tfName.getText());
+		ok.addActionListener((e) -> nameLabel
+				.setText("Name des nächsten Spielers:"));
+		ok.addActionListener((e) -> tfName.setText(""));
+		// ok.addActionListener((e) -> dialog.setVisible(false));
+
+		dialog.setLocation(600, 400);
+
+		dialog.add(namePanel);
+		dialog.pack();
+
+		dialog.setVisible(true);
 
 	}
 
@@ -311,16 +308,22 @@ public class SwingClass {
 
 		auswahlS1.addActionListener((e) -> setI(1));
 		auswahlS1.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS1.addActionListener((e) -> printSpielerdialog());
 		auswahlS2.addActionListener((e) -> setI(2));
 		auswahlS2.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS2.addActionListener((e) -> printSpielerdialog());
 		auswahlS3.addActionListener((e) -> setI(3));
 		auswahlS3.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS3.addActionListener((e) -> printSpielerdialog());
 		auswahlS4.addActionListener((e) -> setI(4));
 		auswahlS4.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS4.addActionListener((e) -> printSpielerdialog());
 		auswahlS5.addActionListener((e) -> setI(5));
 		auswahlS5.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS5.addActionListener((e) -> printSpielerdialog());
 		auswahlS6.addActionListener((e) -> setI(6));
 		auswahlS6.addActionListener((e) -> spielerFrame.setVisible(false));
+		auswahlS6.addActionListener((e) -> printSpielerdialog());
 
 		spielerPanel.add(new JLabel(
 				"Wieviele menschliche Spieler moechten mitspielen?"));
