@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 
 import javax.swing.*;
@@ -71,6 +73,7 @@ public class SwingClass {
 	GrundFrame spielerFrame;
 	JPanel spielerPanel;
 	JLabel labelS;
+	boolean visible = true;
 
 	public void printReihenfolge(Spieler[] spieler) {
 
@@ -168,16 +171,27 @@ public class SwingClass {
 
 	}
 
-	public boolean printWelcome() {
+	public void printWelcome() {
 
 		GrundFrame willkommen = new GrundFrame();
 		JPanel jP = new JPanel();
-		JButton jB = new JButton("Spielen!");
+		JButton spielen = new JButton("Spielen!");
 
 		jP.add(new JLabel("Willkommen zu Kniffel!"));
-		jP.add(jB);
-		jB.addActionListener((e) -> printMSpielerAuswahl());
-		jB.addActionListener((e) -> willkommen.setVisible(false));
+		jP.add(spielen);
+		// jB.addActionListener((e) -> printMSpielerAuswahl());
+		spielen.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == spielen) {
+					willkommen.setVisible(false);
+					;
+
+				}
+
+			}
+		});
 		jP.add(abbruch);
 		abbruch.addActionListener((e) -> System.exit(0));
 
@@ -185,10 +199,9 @@ public class SwingClass {
 		willkommen.pack();
 		willkommen.showIt("Willkommen zu Kniffel!", 600, 400);
 
-		if (!willkommen.isShowing()) {
-			return false;
+		if (!willkommen.isVisible()) {
+			printMSpielerAuswahl();
 		}
-		return true;
 
 	}
 
@@ -396,7 +409,10 @@ public class SwingClass {
 	public static void main(String[] args) {
 
 		SwingClass wK = new SwingClass();
-
 		wK.printWelcome();
+
+		// if (!wK.printWelcome()) {
+		// int anzahl = wK.printMSpielerAuswahl();
+		// }
 	}
 }
