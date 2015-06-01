@@ -18,7 +18,8 @@ public class ErgebnisTest {
 
     @Test
     public void testUeberpruefen() {
-        fail("Not yet implemented");
+       Wurf w1 = new Wurf();
+        
     }
 
     @Test
